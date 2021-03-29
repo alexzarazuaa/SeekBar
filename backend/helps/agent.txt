@@ -1,0 +1,20 @@
+()Optional
+[]Type
+
++++++++++++++++++++++++++ Authentication  ++++++++++++++++++++++++++++
+
+Register -> POST
+http://0.0.0.0:8001/api/users/client
+http://0.0.0.0:8001/api/users/worker
+{
+    "user":{
+        "username":"viceentcb",        
+        "email":"viceentcb@gmail.com",
+        "password":"123",
+        "name":"Vicent Coll Borreda"
+        ("phone_number":"987654321")
+        ("image":"987654321")
+       }
+}
+
+------------------------- End Authentication  ------------------------
