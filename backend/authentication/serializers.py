@@ -89,7 +89,7 @@ class LoginSerializer(serializers.Serializer): #Login / Deactive User
                 )
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer): #Retrieve & Update User
 
     password = serializers.CharField(
         max_length=128,
@@ -112,7 +112,7 @@ class UserSerializer(serializers.ModelSerializer):
         read_only_fields = ('token',)
 
 
-    def update(self, instance, validated_data):
+    def update(self, instance, validated_data): #Update User
         password = validated_data.pop('password', None)
 
         for (key, value) in validated_data.items():

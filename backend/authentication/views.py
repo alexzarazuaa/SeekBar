@@ -24,7 +24,7 @@ class RegistrationAPIView(APIView): #Register
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-class LoginAPIView(APIView): #Login / Deactive User
+class LoginAPIView(APIView): #Login & Deactive User
     permission_classes = (AllowAny,)
     renderer_classes = (UserJSONRenderer,)
     serializer_class = LoginSerializer
@@ -43,16 +43,16 @@ class LoginAPIView(APIView): #Login / Deactive User
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-class UserRetrieveUpdateAPIView(RetrieveUpdateAPIView):
+class UserRetrieveUpdateAPIView(RetrieveUpdateAPIView): #Retrieve & Update User
     permission_classes = (IsAuthenticated,)
     renderer_classes = (UserJSONRenderer,)
     serializer_class = UserSerializer
 
-    def retrieve(self, request, *args, **kwargs):
+    def retrieve(self, request, *args, **kwargs): #Retrieve
         serializer = self.serializer_class(request.user)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def update(self, request, *args, **kwargs):
+    def update(self, request, *args, **kwargs): #Update User
         user_data = request.data.get('user', {})
 
         serializer_data = {
