@@ -19,7 +19,7 @@ router = DefaultRouter()
 urlpatterns = [
     url(r'^', include(router.urls)),
 
+    url(r'^user/(?P<type>[-\w]+)/?$', RegistrationAPIView.as_view()), #Register
+    url(r'^users/login/?$', LoginAPIView.as_view()), #Login
     url(r'^user/?$', UserRetrieveUpdateAPIView.as_view()),
-    url(r'^users/(?P<type>[-\w]+)/?$', RegistrationAPIView.as_view()),
-    url(r'^users/login/?$', LoginAPIView.as_view()),
 ]

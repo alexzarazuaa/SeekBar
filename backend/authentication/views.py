@@ -11,7 +11,7 @@ from .serializers import (
 )
 
 
-class RegistrationAPIView(APIView):
+class RegistrationAPIView(APIView): #Register
     permission_classes = (AllowAny,)
     renderer_classes = (UserJSONRenderer,)
     serializer_class = RegistrationSerializer
@@ -24,7 +24,7 @@ class RegistrationAPIView(APIView):
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-class LoginAPIView(APIView):
+class LoginAPIView(APIView): #Login
     permission_classes = (AllowAny,)
     renderer_classes = (UserJSONRenderer,)
     serializer_class = LoginSerializer

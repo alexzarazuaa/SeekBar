@@ -4,8 +4,8 @@
 +++++++++++++++++++++++++ Authentication  ++++++++++++++++++++++++++++
 
 Register -> POST
-http://0.0.0.0:8001/api/users/client
-http://0.0.0.0:8001/api/users/worker
+http://0.0.0.0:8001/api/user/client
+http://0.0.0.0:8001/api/user/worker
 {
     "user":{
         "username":"viceentcb",        
@@ -16,5 +16,15 @@ http://0.0.0.0:8001/api/users/worker
         ("image":"987654321")
        }
 }
+
+Login -> POST
+http://0.0.0.0:8001/api/users/login
+{
+    "user":{
+        "username":"viceentcb",        
+        "password":"123"
+    }
+}
+
 
 ------------------------- End Authentication  ------------------------
