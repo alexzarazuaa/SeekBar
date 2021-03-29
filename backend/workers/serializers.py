@@ -8,9 +8,16 @@ class WorkerSerializer(serializers.ModelSerializer): #Worker
     name = serializers.CharField(source='user.name')
     phone_number = serializers.CharField(source='user.phone_number')
     image = serializers.CharField(source='user.image')
-    Dni = serializers.CharField(allow_null=True)
+    dni = serializers.CharField(allow_null=True)
 
     class Meta:
         model = Worker
-        fields = ('username', 'email', 'name', 'phone_number', 'image', 'Dni')
-        read_only_fields = ('username','email','name','phone_number','image')
+        fields = ('username', 'email', 'name', 'phone_number', 'image', 'dni')
+
+    def update(self, instance, validated_data): #Update Worker
+
+        for (key, value) in validated_data.items():
+            setattr(instance, key, value)
+        instance.save()
+        
+        return instance

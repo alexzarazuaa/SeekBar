@@ -3,7 +3,7 @@ Legend{
     []Type
 }
 
-+++++++++++++++++++++++++ Authentication  ++++++++++++++++++++++++++++
++++++++++++++++++++++++++++ Authentication  +++++++++++++++++++++++++++
 
 Register -> POST
 http://0.0.0.0:8001/api/user/client
@@ -50,7 +50,36 @@ http://0.0.0.0:8001/api/user
        }
 }
 
-Retrieve User -> GET
+Retrieve User -> GET [Authentication]
 http://0.0.0.0:8001/api/user
 
-------------------------- End Authentication  ------------------------
+------------------------- End Authentication  -------------------------
+
+
+
+
+
++++++++++++++++++++++++++++++++ Clients  +++++++++++++++++++++++++++++++
+
+Retrieve Client -> GET
+http://0.0.0.0:8001/api/clients/username
+
+----------------------------- End Clients  -----------------------------
+
+
+
+
+
++++++++++++++++++++++++++++++++ Workers  +++++++++++++++++++++++++++++++
+Update User -> PUT [Authentication]
+http://0.0.0.0:8001/api/workers/update
+{
+    "worker":{
+        ("dni":"987654321")
+       }
+}
+
+Retrieve Worker -> GET
+http://0.0.0.0:8001/api/workers/username
+
+----------------------------- End Workers  -----------------------------

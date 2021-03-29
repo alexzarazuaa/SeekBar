@@ -5,7 +5,7 @@ class Worker(TimestampedModel):
     user = models.OneToOneField(
         'authentication.User', on_delete=models.CASCADE
     )
-    Dni = models.TextField(blank=True)
+    dni = models.TextField(blank=True)
     
     def __str__(self):
         return self.user.username
