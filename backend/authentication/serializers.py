@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate
 
 from rest_framework import serializers
+from clients.serializers import ClientSerializer
 
 from .models import User
 
@@ -16,10 +17,11 @@ class RegistrationSerializer(serializers.ModelSerializer): #Register
     token = serializers.CharField(max_length=255, read_only=True)
     phone_number= serializers.CharField(required=False)
     image= serializers.CharField(required=False)
+    check = serializers.CharField(max_length=255, read_only=True)
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'token', 'name', 'phone_number', 'image']
+        fields = ['username', 'email', 'password', 'token', 'name', 'phone_number', 'image', 'check']
 
     def create(self, validated_data):
         type = self.context.get('type', None)
@@ -36,7 +38,7 @@ class LoginSerializer(serializers.Serializer): #Login / Deactive User
     phone_number = serializers.CharField(read_only=True)
     image = serializers.CharField(read_only=True)
     info  = serializers.CharField(read_only=True)
-
+    check  = serializers.CharField(read_only=True)
 
     def validate(self, data):
         username = data.get('username', None)
@@ -64,7 +66,18 @@ class LoginSerializer(serializers.Serializer): #Login / Deactive User
                 'This user has been deactivated.'
             )
 
+        try:
+            user.client
+            value='Client'
+        except: 
+            try:
+                user.worker
+                value='Worker'
+            except: 
+                value=''
+
         method = self.context.get('method', None)
+
 
         if method == "POST": #Login
             return {
@@ -74,7 +87,9 @@ class LoginSerializer(serializers.Serializer): #Login / Deactive User
                 'name': user.name,
                 'phone_number': user.phone_number,
                 'image': user.image,
+                'check': value
             }
+
         elif method == "DELETE": #Deactivate User
             try:
                 user.is_active = False

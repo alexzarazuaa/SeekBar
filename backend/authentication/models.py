@@ -29,6 +29,16 @@ class UserManager(BaseUserManager):
             
         user.set_password(password)
         user.save()
+        
+        try:
+            user.client
+            user.check='Client'
+        except: 
+            try:
+                user.worker
+                user.check='Worker'
+            except: 
+                user.check=''  
 
         return user
 
