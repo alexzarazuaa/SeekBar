@@ -6,21 +6,24 @@ from .models import User
 
 
 class RegistrationSerializer(serializers.ModelSerializer):
-    """Serializers registration requests and creates a new user."""
 
     password = serializers.CharField(
         max_length=128,
-        min_length=8,
+        min_length=3,
         write_only=True
     )
 
     token = serializers.CharField(max_length=255, read_only=True)
+    phone_number= serializers.CharField(required=False)
+    image= serializers.CharField(required=False)
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password', 'token', 'name', 'phone_number', 'image']
 
     def create(self, validated_data):
+        type = self.context.get('type', None)
+        User.type=type
         return User.objects.create_user(**validated_data)
 
 
@@ -64,7 +67,6 @@ class LoginSerializer(serializers.Serializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    """Handles serialization and deserialization of User objects."""
 
     password = serializers.CharField(
         max_length=128,
@@ -72,11 +74,11 @@ class UserSerializer(serializers.ModelSerializer):
         write_only=True
     )
 
-    username = models.CharField(db_index=True, max_length=255, unique=True)
-    email = models.EmailField(db_index=True)
-    name = models.CharField(db_index=True)
-    phone_number= models.CharField(db_index=True, max_length=14)
-    image= models.CharField(db_index=True)
+    username = serializers.CharField(max_length=255)
+    email = serializers.EmailField()
+    name = serializers.CharField()
+    phone_number= serializers.CharField(max_length=14)
+    image= serializers.CharField()
 
     class Meta:
         model = User
@@ -88,8 +90,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
     def update(self, instance, validated_data):
-        """Performs an update on a User."""
-
+        
         password = validated_data.pop('password', None)
 
         for (key, value) in validated_data.items():
