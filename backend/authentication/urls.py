@@ -14,8 +14,6 @@ router = DefaultRouter()
 #Admin
 # router.register(r'^userlist', UserViewSet)
 
-
-
 urlpatterns = [
     url(r'^', include(router.urls)),
 

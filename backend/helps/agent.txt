@@ -26,5 +26,13 @@ http://0.0.0.0:8001/api/users/login
     }
 }
 
+Deactivate User -> DELETE
+http://0.0.0.0:8001/api/users/login
+{
+    "user":{
+        "username":"viceentcb",        
+        "password":"123"
+    }
+}
 
 ------------------------- End Authentication  ------------------------

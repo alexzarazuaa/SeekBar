@@ -27,7 +27,7 @@ class RegistrationSerializer(serializers.ModelSerializer): #Register
         return User.objects.create_user(**validated_data)
 
 
-class LoginSerializer(serializers.Serializer): #Login
+class LoginSerializer(serializers.Serializer): #Login / Deactive User
     email = serializers.CharField(read_only=True)
     username = serializers.CharField(max_length=255)
     password = serializers.CharField(max_length=128, write_only=True)
@@ -35,6 +35,7 @@ class LoginSerializer(serializers.Serializer): #Login
     name = serializers.CharField(read_only=True)
     phone_number = serializers.CharField(read_only=True)
     image = serializers.CharField(read_only=True)
+    info  = serializers.CharField(read_only=True)
 
 
     def validate(self, data):
@@ -63,14 +64,29 @@ class LoginSerializer(serializers.Serializer): #Login
                 'This user has been deactivated.'
             )
 
-        return {
-            'email': user.email,
-            'username': user.username,
-            'token': user.token,
-            'name': user.name,
-            'phone_number': user.phone_number,
-            'image': user.image,
-        }
+        method = self.context.get('method', None)
+
+        if method == "POST": #Login
+            return {
+                'email': user.email,
+                'username': user.username,
+                'token': user.token,
+                'name': user.name,
+                'phone_number': user.phone_number,
+                'image': user.image,
+            }
+        elif method == "DELETE": #Deactivate User
+            try:
+                user.is_active = False
+                user.save()
+                return {
+                    'username': user.username,
+                    'info': 'user ' + user.username + ' successfully disabled',
+                }
+            except:
+                raise serializers.ValidationError(
+                    'An error occurred when disabling the user'
+                )
 
 
 class UserSerializer(serializers.ModelSerializer):
