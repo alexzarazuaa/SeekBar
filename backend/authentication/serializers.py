@@ -93,15 +93,15 @@ class UserSerializer(serializers.ModelSerializer):
 
     password = serializers.CharField(
         max_length=128,
-        min_length=8,
+        min_length=3,
         write_only=True
     )
 
     username = serializers.CharField(max_length=255)
     email = serializers.EmailField()
     name = serializers.CharField()
-    phone_number= serializers.CharField(max_length=14)
-    image= serializers.CharField()
+    phone_number= serializers.CharField(max_length=14, allow_null=True)
+    image= serializers.CharField(max_length=255, allow_null=True)
 
     class Meta:
         model = User
@@ -113,7 +113,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 
     def update(self, instance, validated_data):
-        
         password = validated_data.pop('password', None)
 
         for (key, value) in validated_data.items():
@@ -123,5 +122,4 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
 
         instance.save()
-
         return instance

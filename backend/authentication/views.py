@@ -43,8 +43,6 @@ class LoginAPIView(APIView): #Login / Deactive User
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-
-
 class UserRetrieveUpdateAPIView(RetrieveUpdateAPIView):
     permission_classes = (IsAuthenticated,)
     renderer_classes = (UserJSONRenderer,)
@@ -58,12 +56,14 @@ class UserRetrieveUpdateAPIView(RetrieveUpdateAPIView):
         user_data = request.data.get('user', {})
 
         serializer_data = {
-            'username': user_data.get('username', request.user.username),
-            'email': user_data.get('email', request.user.email),
             'name': user_data.get('name', request.user.name),
-            'phone_number': user_data.get('phone_number', request.user.phone_number),
-            'image': user_data.get('image', request.user.image),
+            'phone_number':user_data.get('phone_number', request.user.phone_number),
+            'image':user_data.get('image', request.user.image),
+            'email':user_data.get('email', request.user.email),
+            'username':user_data.get('username', request.user.username),
+            'password':user_data.get('password', request.user.password),
         }
+
         serializer = self.serializer_class(
             request.user, data=serializer_data, partial=True
         )

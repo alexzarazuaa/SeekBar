@@ -11,9 +11,9 @@ http://0.0.0.0:8001/api/user/worker
         "username":"viceentcb",        
         "email":"viceentcb@gmail.com",
         "password":"123",
-        "name":"Vicent Coll Borreda"
-        ("phone_number":"987654321")
-        ("image":"987654321")
+        "name":"Vicent Coll Borreda",
+        ("phone_number":"987654321"),
+        ("image":"..............")
        }
 }
 
@@ -34,5 +34,21 @@ http://0.0.0.0:8001/api/users/login
         "password":"123"
     }
 }
+
+Update User -> PUT [Authentication]
+http://0.0.0.0:8001/api/user
+{
+    "user":{
+        ("username":"viceentcb"),        
+        ("email":"viceentcb@gmail.com"),
+        ("password":"1234"),
+        ("name":"Vicent Coll Borreda"),
+        ("phone_number":"987654321"),
+        ("image":"..............")
+       }
+}
+
+Retrieve User -> GET
+http://0.0.0.0:8001/api/user
 
 ------------------------- End Authentication  ------------------------
