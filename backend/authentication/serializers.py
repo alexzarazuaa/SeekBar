@@ -23,7 +23,7 @@ class RegistrationSerializer(serializers.ModelSerializer): #Register
 
     def create(self, validated_data):
         type = self.context.get('type', None)
-        User.algo=type
+        User.type=type
         return User.objects.create_user(**validated_data)
 
 

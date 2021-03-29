@@ -7,5 +7,6 @@ urlpatterns = [
     url('api-auth/', include('rest_framework.urls')),
 
     url('api/', include('authentication.urls')),
+    url('api/', include('clients.urls')),
 ]
 

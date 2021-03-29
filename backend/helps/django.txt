@@ -23,7 +23,7 @@ sudo docker-compose up
 +++++++++++++++++++++++++  Create app  +++++++++++++++++++++++++++++++++
 
 sudo docker exec -it BackendSeekBar sh
-python3 manage.py startapp profiles
+python3 manage.py startapp clients
 sudo chmod -R 777 .
 
 -------------------------  End Create app  -----------------------------

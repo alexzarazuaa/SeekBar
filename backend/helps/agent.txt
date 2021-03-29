@@ -1,5 +1,7 @@
-()Optional
-[]Type
+Legend{
+    ()Optional
+    []Type
+}
 
 +++++++++++++++++++++++++ Authentication  ++++++++++++++++++++++++++++
 
