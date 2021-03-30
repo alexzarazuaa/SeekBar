@@ -67,14 +67,10 @@ class LoginSerializer(serializers.Serializer): #Login / Deactive User
             )
 
         try:
-            user.client
-            value='Client'
+            user.worker
+            value='Worker'
         except: 
-            try:
-                user.worker
-                value='Worker'
-            except: 
-                value=''
+            value='Client'
 
         method = self.context.get('method', None)
 

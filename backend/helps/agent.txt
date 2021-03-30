@@ -71,7 +71,7 @@ http://0.0.0.0:8001/api/clients/username
 
 
 +++++++++++++++++++++++++++++++ Workers  +++++++++++++++++++++++++++++++
-Update User -> PUT [Authentication]
+Update Worker -> PUT [Authentication]
 http://0.0.0.0:8001/api/workers/update
 {
     "worker":{
