@@ -51,3 +51,15 @@ class JWTAuthentication(authentication.BaseAuthentication):
             raise exceptions.AuthenticationFailed(msg)
 
         return (user, token)
+
+    def login(username, password):
+
+        try:
+            user = User.objects.get(username=username)
+        except:
+            return None
+
+        if (not user.check_password(password)):
+            return None
+        
+        return user

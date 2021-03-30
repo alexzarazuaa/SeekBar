@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate
 from rest_framework import serializers
 from clients.serializers import ClientSerializer
 
+from .backends import JWTAuthentication
 from .models import User
 
 
@@ -29,7 +30,7 @@ class RegistrationSerializer(serializers.ModelSerializer): #Register
         return User.objects.create_user(**validated_data)
 
 
-class LoginSerializer(serializers.Serializer): #Login / Deactive User
+class LoginSerializer(serializers.Serializer): #Login & Deactive & Reactivate User
     email = serializers.CharField(read_only=True)
     username = serializers.CharField(max_length=255)
     password = serializers.CharField(max_length=128, write_only=True)
@@ -40,28 +41,17 @@ class LoginSerializer(serializers.Serializer): #Login / Deactive User
     info  = serializers.CharField(read_only=True)
     check  = serializers.CharField(read_only=True)
 
-    def validate(self, data):
-        username = data.get('username', None)
-        password = data.get('password', None)
-
-        if username is None:
-            raise serializers.ValidationError(
-                'An username is required to log in.'
-            )
-
-        if password is None:
-            raise serializers.ValidationError(
-                'A password is required to log in.'
-            )
-
-        user = authenticate(username=username, password=password)
+    def validate(self, data): #Login
+        username = data.get('username')
+        password = data.get('password')
+        user = JWTAuthentication.login(username=username, password=password)
 
         if user is None:
             raise serializers.ValidationError(
                 'A user with this email and password was not found.'
             )
 
-        if not user.is_active:
+        if not user.is_active:    
             raise serializers.ValidationError(
                 'This user has been deactivated.'
             )
@@ -72,33 +62,61 @@ class LoginSerializer(serializers.Serializer): #Login / Deactive User
         except: 
             value='Client'
 
-        method = self.context.get('method', None)
+        return {
+            'email': user.email,
+            'username': user.username,
+            'token': user.token,
+            'name': user.name,
+            'phone_number': user.phone_number,
+            'image': user.image,
+            'check': value
+        }
 
-
-        if method == "POST": #Login
-            return {
-                'email': user.email,
-                'username': user.username,
-                'token': user.token,
-                'name': user.name,
-                'phone_number': user.phone_number,
-                'image': user.image,
-                'check': value
-            }
-
-        elif method == "DELETE": #Deactivate User
-            try:
-                user.is_active = False
-                user.save()
-                return {
-                    'username': user.username,
-                    'info': 'user ' + user.username + ' successfully disabled',
-                }
-            except:
-                raise serializers.ValidationError(
+    def deactivate(data): #Deactive User
+        username = data.get('username')
+        password = data.get('password')
+        user = authenticate(username=username, password=password)
+            
+        try:
+            user.is_active = False
+            user.save()
+        except:
+            raise serializers.ValidationError(
                     'An error occurred when disabling the user'
-                )
+            )
 
+        return {
+            'username': user.username,
+            'info': 'user ' + user.username + ' successfully disabled',
+        }
+
+    def reactivate(data): #Reactivate User
+        username = data.get('username')
+        password = data.get('password')
+        user = JWTAuthentication.login(username=username, password=password)
+
+        if user is None:
+            raise serializers.ValidationError(
+                'A user with this email and password was not found.'
+            )
+
+        if user.is_active:  
+            raise serializers.ValidationError(
+                'This user is actived'
+            )
+
+        try:
+            user.is_active = True
+            user.save()
+        except:
+            raise serializers.ValidationError(
+                    'An error occurred when reactivate the user'
+            )
+
+        return {
+            'username': user.username,
+            'info': 'user ' + user.username + ' successfully activated',
+        }
 
 class UserSerializer(serializers.ModelSerializer): #Retrieve & Update User
 

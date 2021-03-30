@@ -24,24 +24,33 @@ class RegistrationAPIView(APIView): #Register
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-class LoginAPIView(APIView): #Login & Deactive User
+class LoginAPIView(APIView): #Login & Deactive & Reactive User
     permission_classes = (AllowAny,)
     renderer_classes = (UserJSONRenderer,)
     serializer_class = LoginSerializer
 
     def post(self, request): #Login
         user = request.data.get('user', {})
-        serializer = self.serializer_class(data=user, context={'method': request.method})
+        serializer = self.serializer_class(data=user)
         serializer.is_valid(raise_exception=True)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def delete(self, request): #Deactive User
         user = request.data.get('user', {})
-        serializer = self.serializer_class(data=user, context={'method': request.method})
-        serializer.is_valid(raise_exception=True)
+        serializer = self.serializer_class(data=user)
 
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        if serializer.is_valid(raise_exception=True):
+            serializer = self.serializer_class.deactivate(data=user)
+
+        return Response(serializer, status=status.HTTP_200_OK)
+    
+    def put(self, request): #Reactivate User
+        user = request.data.get('user', {})
+        serializer = self.serializer_class.reactivate(data=user)
+
+        return Response(serializer, status=status.HTTP_200_OK)
+
 
 class UserRetrieveUpdateAPIView(RetrieveUpdateAPIView): #Retrieve & Update User
     permission_classes = (IsAuthenticated,)
