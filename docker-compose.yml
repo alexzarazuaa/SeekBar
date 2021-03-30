@@ -42,6 +42,20 @@ services:
       - "8001:8001"
     networks:
     - SeekBar
+  front:
+    container_name: FrondtendSeekBar
+    build: ./frontend/.
+    working_dir: /app
+    command: bash -c "npm install && npm start"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/.:/app
+    depends_on:
+      - back
+    networks:
+      - SeekBar
+
 
   
 
