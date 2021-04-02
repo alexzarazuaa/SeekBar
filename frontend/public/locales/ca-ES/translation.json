@@ -1,0 +1,22 @@
+{
+  "WELCOME": {
+    "START": "Començar"
+  },
+  "ERROR404":{
+    "HOME":"Tornar a Inici"
+  },
+  "LOGIN": {
+    "TITLE": "Inicia Sessió",
+    "HOME":"Inici",
+    "BUTTON":"Iniciar Sessió",
+    "NOT_ACCOUNT":"Encara no tens un compte?",
+    "SIGNUP":"Registrat"
+  },
+  "REGISTER": {
+    "TITLE": "Registrate",
+    "HOME":"Inicio",
+    "BUTTON":"Registrarse",
+    "HAVE_ACCOUNT": "Ja tens un compte?",
+    "SIGNIN":"Inicia Sessió"
+  }
+}

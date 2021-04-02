@@ -1,0 +1,22 @@
+{
+  "WELCOME": {
+    "START": "GET STARTED"
+  },
+  "ERROR404":{
+    "GOHOME":"Go Home"
+  },
+  "LOGIN": {
+    "TITLE": "SignIn",
+    "HOME": "Home",
+    "BUTTON": "SignIn",
+    "NOT_ACCOUNT": "Already jave an account?",
+    "SIGNUP": "SignUp"
+  },
+  "REGISTER": {
+    "TITLE": "Registrate",
+    "HOME": "Inicio",
+    "BUTTON": "Registrarse",
+    "HAVE_ACCOUNT": "Do you have an Account?",
+    "SIGNIN": "SignIn"
+  }
+}

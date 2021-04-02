@@ -1,0 +1,31 @@
+/***************************************
+*             HOME PAGE                *
+***************************************/
+
+/* VARIABLES */
+
+:root{
+  --align--center : center;
+  --margin--auto:auto;
+}
+
+
+/* PAGE  CONTENT */
+.sb-home {
+  background-color: #f4f4f4;
+  height: 100vh;
+  width: 100vw;
+}
+
+
+/* HOME IONCARD */ 
+
+.sb-home-ionCard{
+    background-color: white;
+    margin: 45px var(--margin--auto) ;
+    display: flex;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
+    width: 60vw;
+    height: 20vh;
+}

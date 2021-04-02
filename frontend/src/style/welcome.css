@@ -1,8 +1,14 @@
 
-
 /***************************************
-*         WELCOME PAGE                 *
+*             WELCOME PAGE             *
 ***************************************/
+
+/* VARIABLES */
+
+:root{
+  --align--center : center;
+  --margin--auto:auto;
+}
 
 /* PAGE  CONTENT */
 .sb-welcome-page {
@@ -13,10 +19,10 @@
 
 /* LOGO SEEKBAR */
 .sb-welcome-logo {
-  margin: auto;
+  margin: var(--margin--auto);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: var(--align--center);
+  align-items: var(--align--center);
   width: 35%;
 }
 
@@ -31,10 +37,10 @@
   max-width: 600px;
   height: 42px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: var(--align--center);
+  align-items: var(--align--center);
   cursor: pointer;
-  text-align: center;
-  margin: auto;
+  text-align: var(--align--center);
+  margin: var(--margin--auto);
   margin-top: 75px;
 }
