@@ -52,6 +52,7 @@
 .sb-register-page-form {
   margin-top: 55px;
 }
+
 /*  REGISTER INPUTS */
 .inputFieldRegister {
   background-color: white;
@@ -142,6 +143,7 @@
     margin: var(--margin--auto);
     margin-top: 5px;
   }
+  
   /* LOGO SEEKBAR */
   .sb-register-page--logo {
     margin: var(--margin--auto);
