@@ -1,7 +1,6 @@
 from django.contrib.auth import authenticate
 
 from rest_framework import serializers
-from clients.serializers import ClientSerializer
 
 from .backends import JWTAuthentication
 from .models import User

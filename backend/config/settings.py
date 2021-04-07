@@ -30,7 +30,8 @@ INSTALLED_APPS = [
     'core',
     'authentication',
     'clients',
-    'workers'
+    'workers',
+    'bars'
 ]
 
 MIDDLEWARE = [

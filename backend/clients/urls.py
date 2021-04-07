@@ -1,5 +1,4 @@
 from django.conf.urls import include, url
-from django.urls import reverse
 from .views import ClientRetrieveAPIView
 from rest_framework.routers import DefaultRouter
 

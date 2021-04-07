@@ -9,5 +9,6 @@ urlpatterns = [
     url('api/', include('authentication.urls')),
     url('api/', include('clients.urls')),
     url('api/', include('workers.urls')),
+    url('api/', include('bars.urls')),
 ]
 

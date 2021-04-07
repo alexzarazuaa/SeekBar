@@ -1,12 +1,11 @@
 from rest_framework import serializers, status
 from rest_framework.exceptions import NotFound
 from rest_framework.generics import RetrieveAPIView
-from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Client
 from .serializers import ClientSerializer
-from rest_framework import viewsets
 
 
 class ClientRetrieveAPIView(RetrieveAPIView): #Client
