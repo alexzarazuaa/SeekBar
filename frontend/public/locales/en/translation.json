@@ -10,13 +10,23 @@
     "HOME": "Home",
     "BUTTON": "SignIn",
     "NOT_ACCOUNT": "Already jave an account?",
-    "SIGNUP": "SignUp"
+    "SIGNUP": "SignUp",
+    "FORM":{
+      "EMAIL":"Email",
+      "PASSWORD":"Password"
+}
   },
   "REGISTER": {
     "TITLE": "Registrate",
     "HOME": "Inicio",
     "BUTTON": "Registrarse",
     "HAVE_ACCOUNT": "Do you have an Account?",
-    "SIGNIN": "SignIn"
+    "SIGNIN": "SignIn",
+    "FORM":{
+          "USERNAME":"Username",
+          "EMAIL":"Email",
+          "PASSWORD":"Password",
+          "CONFPASSWORD":"Cofirm your Password"
+    }
   }
 }

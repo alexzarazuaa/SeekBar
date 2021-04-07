@@ -1,39 +1,36 @@
-import React from "react";
-import { IonButton, IonImg, IonInput, IonLabel, IonPage, IonTitle } from "@ionic/react";
+import React ,{ useState } from "react";
+import {
+  IonButton,
+  IonImg,
+  IonInput,
+  IonLabel,
+  IonPage,
+  IonTitle,
+} from "@ionic/react";
 import "../../style/login/login.css";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import Login from "./utils";
 import Logo from "../../assets/img/LogoSeekBar_2.png";
 
 const SBlogin = () => {
   const { t } = useTranslation();
-  //KEY ENTER LOGIN
-  // const KEYENTER__LOGIN = (event) => {
-  //   if (event.key === "Enter") {
-  //     console.log("ENTRA");
-  //     try {
-  //       let username = email;
-  //       let user = {
-  //         email: email,
-  //         username: username.split("@")[0],
-  //       };
-  //       setShowLoading(true);
-  //     } catch (e) {
-  //       console.error(e);
-  //       setShowLoading(false);
-  //       setFormErrors(e);
-  //     }
-  //   }
-  // };
-  const handleSubmit = (e) => {
-    console.log('ENTRA LOGIN')
-    console.log(e)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  const handleSubmit = async (e) => {
+    console.log("entra")
     e.preventDefault();
-    // login({ username, password })
+    Login(email, password);
   };
 
+  const KEYENTER__LOGIN = (event) => {
+    if (event.key === "Enter") {
+      Login( email, password);
+    }
+  };
 
   return (
-    
     <IonPage class="sb-login-page">
       <section>
         <article>
@@ -46,40 +43,43 @@ const SBlogin = () => {
             className="sb-login-page--homebtn"
             href="/sb/home"
           >
-             {t("LOGIN.HOME")}
+            {t("LOGIN.HOME")}
           </IonButton>
         </article>
       </section>
       <section>
-        <article class="sb-login-page-form">
-          <form
-            onSubmit={handleSubmit}
-            method="post"
-            name="login_form"
-          >
+        <article className="sb-login-page-form">
+          <form onSubmit={handleSubmit} method="post">
             <IonInput
               type="email"
               required
+              value={email}
+              onInput={(e) => setEmail(e.currentTarget.value)}
               className="inputFieldLogin"
-
-              placeholder="Enter your email"
+              placeholder={t("LOGIN.FORM.EMAIL")}
             />
             <IonInput
               type="password"
-              className="inputFieldLogin"
               required
-              placeholder="Password"
-      
-              placeholder="Enter your password"
+              value={password}
+              onInput={(e) => setPassword(e.currentTarget.value)}
+              onKeyDown={KEYENTER__LOGIN}
+              className="inputFieldLogin"
+              placeholder={t("LOGIN.FORM.PASSWORD")}
             />
             <IonButton
               color="dark"
               className="sb-login-page--loginbtn"
-              href="/sb/home"
+              type="submit"
             >
-               {t("LOGIN.BUTTON")}
+              {t("LOGIN.BUTTON")}
             </IonButton>
-            <IonLabel class="sb-register-page--account">{t("LOGIN.NOT_ACCOUNT")}<IonLabel class="sb-register-page--signin">{t("LOGIN.SIGNUP")}</IonLabel></IonLabel>
+            <IonLabel class="sb-login-page--account">
+              {t("LOGIN.NOT_ACCOUNT")}
+              <IonLabel  class="sb-register-page--signin">
+                {t("LOGIN.SIGNUP")}
+              </IonLabel>
+            </IonLabel>
           </form>
         </article>
       </section>

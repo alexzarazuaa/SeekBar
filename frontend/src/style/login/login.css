@@ -78,3 +78,17 @@
   margin: var(--margin--auto);
   margin-top: 15px;
 }
+.sb-login-page--account{
+  display: flex;
+  justify-content: var(--align--center);
+  align-items: var(--align--center);
+  text-align: var(--align--center);
+  margin: 25px var(--margin--auto);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* QUERIES RESPONSIVE */
+
+@media only screen and (max-width: 850px) {
+}

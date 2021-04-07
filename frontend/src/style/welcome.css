@@ -1,13 +1,12 @@
-
 /***************************************
 *             WELCOME PAGE             *
 ***************************************/
 
 /* VARIABLES */
 
-:root{
-  --align--center : center;
-  --margin--auto:auto;
+:root {
+  --align--center: center;
+  --margin--auto: auto;
 }
 
 /* PAGE  CONTENT */
@@ -43,4 +42,33 @@
   text-align: var(--align--center);
   margin: var(--margin--auto);
   margin-top: 75px;
+}
+
+/* QUERIES RESPONSIVE */
+
+@media only screen and (max-width: 850px) {
+  /* PAGE  CONTENT */
+  .sb-welcome-page {
+    background-color: #fa9950;
+    height: 100vh;
+    width: 100vw;
+  }
+  /* BTN STARTED */
+  .sb-welcome-btnStart {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-family: Poppins-Bold;
+    font-size: 26px;
+    width: 85%;
+    max-width: 200px;
+    height: 42px;
+    display: flex;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
+    cursor: pointer;
+    text-align: var(--align--center);
+    margin: var(--margin--auto);
+    margin-top: 75px;
+  }
 }
