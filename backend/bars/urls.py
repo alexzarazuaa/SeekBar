@@ -1,14 +1,14 @@
 from django.conf.urls import include, url
-from .views import ClientRetrieveAPIView
 from rest_framework.routers import DefaultRouter
+from .views import (
+    BarViewSet
+)
 
-app_name = 'clients'
+app_name = 'bars'
 
 router = DefaultRouter()
-
+router.register(r'bars', BarViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-
-    url(r'^clients/(?P<username>\w+)/?$', ClientRetrieveAPIView.as_view()), #Client
 ]
