@@ -7,7 +7,7 @@ from .views import (
 app_name = 'bars'
 
 router = DefaultRouter()
-router.register(r'bars', BarViewSet)
+router.register(r'bars', BarViewSet) #Retrieve & List & Create Bar
 
 urlpatterns = [
     url(r'^', include(router.urls)),
