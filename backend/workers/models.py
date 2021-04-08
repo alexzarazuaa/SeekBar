@@ -10,3 +10,11 @@ class Worker(TimestampedModel):
     def __str__(self):
         return self.user.username
 
+
+class Work(models.Model):
+    class Meta:
+            unique_together=('worker','bar')
+
+    worker = models.ForeignKey(Worker, on_delete=models.CASCADE)
+    bar = models.ForeignKey('bars.Bar', on_delete=models.CASCADE)
+    isBoss = models.BooleanField()

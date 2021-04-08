@@ -8,8 +8,8 @@ class BarSerializer(serializers.ModelSerializer):
     description = serializers.CharField(required=False)
     phone_number = serializers.CharField(required=False)
     location = serializers.CharField(required=False)
-    valoration = serializers.CharField(required=False)
-    image = serializers.CharField(required=False)
+    valoration = serializers.DecimalField(required=False, max_digits=2, decimal_places=1)
+    image = serializers.ImageField(required=False)
 
     createdAt = serializers.SerializerMethodField(method_name='get_created_at')
     updatedAt = serializers.SerializerMethodField(method_name='get_updated_at')
