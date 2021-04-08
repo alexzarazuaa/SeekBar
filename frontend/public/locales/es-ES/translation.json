@@ -10,13 +10,23 @@
     "HOME":"Inicio",
     "BUTTON":"Iniciar Sessión",
     "NOT_ACCOUNT":"Aún no tienes una cuenta?",
-    "SIGNUP": "Registrate"
+    "SIGNUP": "Registrate",
+    "FORM":{
+      "EMAIL":"Email",
+      "PASSWORD":"Contraseña"
+}
   },
   "REGISTER": {
     "TITLE": "Registrate",
     "HOME":"Inicio",
     "BUTTON":"Registrarse",
     "HAVE_ACCOUNT": "Ya tienes una cuenta?",
-    "SIGNIN":"Inicia Sessión"
+    "SIGNIN":"Inicia Sessión",
+    "FORM":{
+          "USERNAME":"Nombre de Usuario",
+          "EMAIL":"Email",
+          "PASSWORD":"Contraseña",
+          "CONFPASSWORD":"Confirmar Contraseña"
+    }
   }
 }
