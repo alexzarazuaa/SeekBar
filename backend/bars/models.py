@@ -13,4 +13,4 @@ class Bar(TimestampedModel):
     image= models.ImageField(max_length=255)
     
     def __str__(self):
-        return self.name
+        return self.name 
