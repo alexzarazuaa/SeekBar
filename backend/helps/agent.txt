@@ -71,6 +71,7 @@ http://0.0.0.0:8001/api/clients/username
 
 
 +++++++++++++++++++++++++++++++ Workers  +++++++++++++++++++++++++++++++
+
 Update Worker -> PUT [Authentication]
 http://0.0.0.0:8001/api/workers/update
 {
@@ -82,4 +83,26 @@ http://0.0.0.0:8001/api/workers/update
 Retrieve Worker -> GET
 http://0.0.0.0:8001/api/workers/username
 
------------------------------ End Workers  -----------------------------
+------------------------------ End Workers ------------------------------
+
+
+
+
+
++++++++++++++++++++++++++++++++++ Bars +++++++++++++++++++++++++++++++++
+
+Create Bar -> POST [Worker Authentication]
+http://0.0.0.0:8001/api/bars/
+{
+    "bar":{
+        "name":"BarName",
+        ("description":"This is a bar"),
+        ("phone_number":"987654321"),
+        ("location":"LocationBar"),
+        ("valoration":"3.5")
+    }
+}
+
+
+------------------------------- End Bars -------------------------------
+
