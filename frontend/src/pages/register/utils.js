@@ -1,4 +1,5 @@
- let Register = (username, email,password, confPassword) => {
+let Register = (username, email,password, confPassword) => {
+  // const { dispatch } = useContext(AppContext);
 
     let check=true
 
@@ -13,28 +14,24 @@
     if (!CheckRegex(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,email)){
         console.log("EMAIL ERROR",email)
         console.log(types)
+        types.push("email")
         check=false
 
     }
-    if (!CheckRegex(/^[a-zA-Z0-9]{3,16}$/,password)){
+
+    if (!CheckRegex(/^[a-zA-Z0-9]{3,16}$/,password) || (password !== confPassword)){
         console.log("PASSWORD ERROR",password)
-        check=false
-
-    }
-
-    if(password !== confPassword){
+        types.push("password")
         check=false
     }
 
-      (check) ? RegisterUser(username, email,password ) : console.log("types")
+     return types
 
- 
   };
   
 let CheckRegex = (regEx,text) => {
 
     return regEx.test(text) ?  true : false;
-
 }
 
 let RegisterUser= (username, email,password) => {
