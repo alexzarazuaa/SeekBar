@@ -7,10 +7,18 @@ class Worker(TimestampedModel):
     )
     dni = models.TextField(blank=True)
     
+
+    referenceWorker = models.ManyToManyField(
+        'bars.Bar', 
+        through='Work',
+        related_name='isAssign')
+        
     def __str__(self):
         return self.user.username
 
-
+    def assignWorker(self, bar, isBoss):
+        self.referenceWorker.add(bar,through_defaults={'isBoss':isBoss})
+        
 class Work(models.Model):
     class Meta:
             unique_together=('worker','bar')
@@ -18,3 +26,6 @@ class Work(models.Model):
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE)
     bar = models.ForeignKey('bars.Bar', on_delete=models.CASCADE)
     isBoss = models.BooleanField()
+
+
+    

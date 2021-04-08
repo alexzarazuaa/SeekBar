@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
-
+from workers.serializers import WorkerSerializer
 from .models import Bar
 
-class BarSerializer(serializers.ModelSerializer):
+class BarSerializer(serializers.ModelSerializer):#Retrieve & List & Create Bar
     slug = serializers.SlugField(required=False)
     description = serializers.CharField(required=False)
     phone_number = serializers.CharField(required=False)
@@ -11,10 +11,11 @@ class BarSerializer(serializers.ModelSerializer):
     valoration = serializers.DecimalField(required=False, max_digits=2, decimal_places=1)
     image = serializers.ImageField(required=False)
 
+    owner= WorkerSerializer(read_only=True)
     createdAt = serializers.SerializerMethodField(method_name='get_created_at')
     updatedAt = serializers.SerializerMethodField(method_name='get_updated_at')
 
-    class Meta:
+    class Meta: #Retrieve & List
         model = Bar
         fields = (
             'slug',
@@ -26,13 +27,13 @@ class BarSerializer(serializers.ModelSerializer):
             'image',
             'createdAt',
             'updatedAt',
+            'owner'
         )
 
-    def create(self, validated_data):
-        # owner = self.context.get('owner', None)
-
+    def create(self, validated_data):   #Create Bar
+        owner = self.context.get('owner', None)
         bar = Bar.objects.create(**validated_data)
-
+        owner.assignWorker(bar, True)
         return bar
 
     def get_created_at(self, instance):

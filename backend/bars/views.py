@@ -7,7 +7,7 @@ from .models import Bar
 from .renderers import BarJSONRenderer
 from .serializers import BarSerializer
 
-class BarViewSet(viewsets.ModelViewSet):
+class BarViewSet(viewsets.ModelViewSet): #Retrieve & List & Create Bar
     queryset = Bar.objects.all()
     serializer_class = BarSerializer
     lookup_field = 'slug'
@@ -19,16 +19,7 @@ class BarViewSet(viewsets.ModelViewSet):
 
         return super(BarViewSet, self).get_permissions()
 
-    # def get_queryset(self):
-    #     queryset = self.queryset
-    #     print("+++++++++++++++++++++++++")
-    #     # owner = self.request.query_params.get('owner', None)
-    #     # if owner is not None:
-    #     #     queryset = queryset.filter(owner__user__username=owner)
-
-    #     return queryset
-
-    def create(self, request):
+    def create(self, request): #Create Bar
         self.check_object_permissions(request,"")
 
         serializer_context = {
