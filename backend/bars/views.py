@@ -1,6 +1,8 @@
 from rest_framework import status, viewsets
 from rest_framework.response import Response
 
+from core.permissions import IsWorker
+
 from .models import Bar
 from .renderers import BarJSONRenderer
 from .serializers import BarSerializer
@@ -11,18 +13,26 @@ class BarViewSet(viewsets.ModelViewSet):
     lookup_field = 'slug'
 
 
+    def get_permissions(self):
+        if self.request.method == 'POST':
+            self.permission_classes = [IsWorker,]
+
+        return super(BarViewSet, self).get_permissions()
+
     # def get_queryset(self):
     #     queryset = self.queryset
-
-    #     owner = self.request.query_params.get('owner', None)
-    #     if owner is not None:
-    #         queryset = queryset.filter(owner__user__username=owner)
+    #     print("+++++++++++++++++++++++++")
+    #     # owner = self.request.query_params.get('owner', None)
+    #     # if owner is not None:
+    #     #     queryset = queryset.filter(owner__user__username=owner)
 
     #     return queryset
 
     def create(self, request):
+        self.check_object_permissions(request,"")
+
         serializer_context = {
-            'owner': request.user.profile,
+            'owner': request.user.worker,
             'request': request
         }
         serializer_data = request.data.get('bar', {})

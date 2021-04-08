@@ -11,7 +11,7 @@ def add_slug_to_bar_if_not_exists(sender, instance, *args, **kwargs):
     MAXIMUM_SLUG_LENGTH = 255
 
     if instance and not instance.slug:
-        slug = slugify(instance.title)
+        slug = slugify(instance.name)
         unique = generate_random_string()
 
         if len(slug) > MAXIMUM_SLUG_LENGTH:

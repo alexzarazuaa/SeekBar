@@ -24,17 +24,16 @@ class BarSerializer(serializers.ModelSerializer):
             'location',
             'valoration',
             'image',
-            'owner',
             'createdAt',
             'updatedAt',
         )
 
-    # def create(self, validated_data):
+    def create(self, validated_data):
         # owner = self.context.get('owner', None)
 
-        # bar = Bar.objects.create(owner=owner, **validated_data)
+        bar = Bar.objects.create(**validated_data)
 
-        # return bar
+        return bar
 
     def get_created_at(self, instance):
         return instance.created_at.isoformat()
