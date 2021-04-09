@@ -21,10 +21,39 @@ const SBregister = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confPassword, setConfPassword] = useState("");
+  const [typeErrors, setTypeErrors] = useState("");
+  const [errorPassword, setTypeErrorPassword] = useState("");
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    Register(username, email, password, confPassword);
+    setTypeErrors([])
+   let errors= Register(username, email, password, confPassword);
+   if (errors.length==0){
+     console.log("")
+
+    //  RegisterUser(username, email, password)}
+   }else {
+     console.log("else")
+     console.log(errors)
+
+     errors.forEach(error=>{
+
+      switch (error) {
+        case "password":
+         console.log("pa")
+
+          setTypeErrorPassword("REGISTER.HOME")
+          break;
+      
+        default:
+          break;
+      }
+     })
+
+     }
+     setTypeErrors(errors)
   };
 
   const KEYENTER__REGISTER = (event) => {
@@ -73,7 +102,7 @@ const SBregister = () => {
               className="inputFieldRegister"
               placeholder={t("REGISTER.FORM.EMAIL")}
             />
-                   {/* <span class="error_email">{t("REGISTER.FORM.ERROR_EMAIL")}</span> */}
+            {/* <span class="error_email">{t("REGISTER.FORM.ERROR_EMAIL")}</span> */}
             <IonInput
               type="password"
               required
@@ -82,7 +111,7 @@ const SBregister = () => {
               className="inputFieldRegister"
               placeholder={t("REGISTER.FORM.PASSWORD")}
             />
-                   {/* <span class="error_password">{t("REGISTER.FORM.ERROR_PASSWORD")}</span> */}
+            {/* <span class="error_password">{t("REGISTER.FORM.ERROR_PASSWORD")}</span> */}
             <IonInput
               type="password"
               required
@@ -92,7 +121,8 @@ const SBregister = () => {
               className="inputFieldRegister"
               placeholder={t("REGISTER.FORM.CONFPASSWORD")}
             />
-                   {/* <span class="error_confPassword">{t("REGISTER.FORM.ERROR_CONFPASSWORD")}</span> */}
+            {errorPassword ? 
+            <span class="error_confPassword">{t(errorPassword)}</span> : <></>}
             <IonButton
               color="dark"
               className="sb-register-page--registerbtn"

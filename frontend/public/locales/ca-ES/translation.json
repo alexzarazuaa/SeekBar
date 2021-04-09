@@ -28,5 +28,7 @@
       "PASSWORD": "Contrasenya",
       "CONFPASSWORD": "Confirmar Contrasenya"
     }
-  }
+  },
+  "ErrorPassword1":"La contraseña es erronea"
+
 }

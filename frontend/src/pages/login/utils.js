@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { AppContext } from "../../state";
+
 let Login = (email, password) => {
+  const { dispatch } = useContext(AppContext);
+
   let check = true;
 
   let types = [];
@@ -16,7 +21,11 @@ let Login = (email, password) => {
     check = false;
   }
 
-    (check) ? LoginUser( email,password ) : console.log("false")
+    (check) ? LoginUser( email,password ) 
+    : dispatch({
+      type: "SET_ERROR",
+      value: types
+    });
 };
 
 let CheckRegex = (regEx, text) => {
