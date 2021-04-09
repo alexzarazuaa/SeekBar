@@ -1,13 +1,13 @@
-from rest_framework import serializers, status
+from rest_framework import mixins, status, viewsets
 from rest_framework.exceptions import NotFound
 from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import permission_classes
-from .models import Worker
-from .serializers import WorkerSerializer
-from rest_framework import viewsets
+from .models import Worker, Work
+from .serializers import WorkerSerializer, WorkersInBar
+from core.permissions import IsOwnerOrAdmin
 
 
 class WorkerRetrieveUpdateAPIView(RetrieveUpdateAPIView): #Retrieve & Update Worker
@@ -50,4 +50,38 @@ class WorkerRetrieveUpdateAPIView(RetrieveUpdateAPIView): #Retrieve & Update Wor
         
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+class WorkersWorkBarViewSet(viewsets.ModelViewSet): #List Workers & Assign Worker to bar
+    queryset = Work.objects.all()
+    serializer_class = WorkersInBar
 
+    def get_permissions(self):
+        self.permission_classes = [IsOwnerOrAdmin,]
+
+        return super(WorkersWorkBarViewSet, self).get_permissions()
+
+    def get_queryset(self): #List Workers
+        slug = self.request.GET.get('slug')
+        self.check_object_permissions(self.request, slug)
+        
+        if slug is None:
+            return Work.objects.all().order_by('bar_id') 
+        return self.queryset.filter(bar__slug=slug).order_by('bar_id') 
+
+    def create(self, request): #Assign Worker to Bar
+        serializer_data = request.data.get('info', {})
+        self.check_object_permissions(request, serializer_data['slug'])
+
+        serializer_context = {
+            'slug':serializer_data['slug'],
+            'worker': serializer_data['worker'],
+            'request': request
+        }
+
+        serializer = self.serializer_class(
+        data=serializer_data, context=serializer_context
+        )
+
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        
+        return Response(serializer.data, status=status.HTTP_200_OK)

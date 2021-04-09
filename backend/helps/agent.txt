@@ -83,6 +83,20 @@ http://0.0.0.0:8001/api/workers/update
 Retrieve Worker -> GET
 http://0.0.0.0:8001/api/workers/username
 
+List Workers of a bars -> GET [IsOwnerOrAdmin]
+http://0.0.0.0:8001/api/workers/assignbar/
+
+List Workers of a specific bar -> GET [IsOwnerOrAdmin]
+http://0.0.0.0:8001/api/workers/assignbar/?slug=bar_slug
+
+Assign Worker to bar -> POST [IsOwnerOrAdmin]
+http://0.0.0.0:8001/api/workers/assignbar/
+{
+    "info":{
+        "slug":"bar_slug",
+        "worker":"username"
+    }
+}
 ------------------------------ End Workers ------------------------------
 
 

@@ -19,7 +19,7 @@ class BarViewSet(viewsets.ModelViewSet): #Retrieve & List & Create Bar
 
         return super(BarViewSet, self).get_permissions()
 
-    def create(self, request): #Create Bar
+    def create(self, validated_data):   #Create Bar
         self.check_object_permissions(request,"")
 
         serializer_context = {

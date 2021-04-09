@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
-from .models import Worker
+from .models import Worker, Work
+from bars.models import Bar
 
 class WorkerSerializer(serializers.ModelSerializer): #Worker
     username = serializers.CharField(source='user.username')
@@ -21,3 +22,30 @@ class WorkerSerializer(serializers.ModelSerializer): #Worker
         instance.save()
         
         return instance
+
+class WorkersInBar(serializers.ModelSerializer):
+    bar = serializers.CharField(read_only=True)
+    bar_id = serializers.CharField(read_only=True)
+    worker_id = serializers.CharField(read_only=True)
+    isBoss = serializers.BooleanField(read_only=True)
+    worker = WorkerSerializer(read_only=True)
+
+    class Meta:
+        model = Work
+        fields = ('bar','bar_id', 'worker_id', 'worker', 'isBoss',)
+
+    def create(self, validated_data): #Assign Worker to Bar
+        slug=self.context.get('slug', None)
+        worker = self.context.get('worker', None)
+        try:
+            bar_id =Bar.objects.filter(slug=slug).values_list(flat=True)[0]
+            worker=Worker.objects.select_related('user').get(user__username=worker)
+            worker.assignWorker(bar_id, False)
+        except:
+             raise serializers.ValidationError(
+                'This user not exist'
+            )
+
+        return {
+                'info': 'Okey',
+                }

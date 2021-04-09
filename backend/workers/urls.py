@@ -1,10 +1,11 @@
 from django.conf.urls import include, url
-from .views import WorkerRetrieveUpdateAPIView
+from .views import WorkerRetrieveUpdateAPIView, WorkersWorkBarViewSet
 from rest_framework.routers import DefaultRouter
 
 app_name = 'workers'
 
 router = DefaultRouter()
+router.register(r'workers/assignbar', WorkersWorkBarViewSet) #List Workers & Assign Worker to Bar
 
 
 urlpatterns = [

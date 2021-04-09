@@ -1,6 +1,6 @@
 from django.db import models
 from core.models import TimestampedModel
-
+from bars.models import Bar
 class Worker(TimestampedModel):
     user = models.OneToOneField(
         'authentication.User', on_delete=models.CASCADE
@@ -9,7 +9,7 @@ class Worker(TimestampedModel):
     
 
     referenceWorker = models.ManyToManyField(
-        'bars.Bar', 
+        Bar, 
         through='Work',
         related_name='isAssign')
         
@@ -27,5 +27,6 @@ class Work(models.Model):
     bar = models.ForeignKey('bars.Bar', on_delete=models.CASCADE)
     isBoss = models.BooleanField()
 
-
+    def __str__(self):
+        return self.worker
     
