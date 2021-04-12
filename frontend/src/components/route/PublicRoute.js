@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-const SBpublicRoute = ({component: Component, ...rest}) => {
+const PublicRoute = ({component: Component, ...rest}) => {
     return (
         <Route {...rest} render={props => (
             <Component {...props} />
@@ -9,4 +9,4 @@ const SBpublicRoute = ({component: Component, ...rest}) => {
     );
 };
 
-export default SBpublicRoute;
+export default PublicRoute;

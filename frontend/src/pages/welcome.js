@@ -13,11 +13,11 @@ const SBwelcome = () => {
       <IonContent fullscreen className="sb-welcome-page">
         <main className="sb-welcome-page">
           <section>
-            <IonImg class="sb-welcome-logo" src={SeekBarLogo}></IonImg>
+            <IonImg className="sb-welcome-logo" src={SeekBarLogo}></IonImg>
           </section>
           <section>
-            <IonButton color="dark" className="sb-welcome-btnStart" href="/sb/home">
-              {t("WELCOME.START")}
+            <IonButton color="dark" className="sb-welcome-btnStart" href="/home">
+              {t('welcome.start')}
             </IonButton>
           </section>
         </main>

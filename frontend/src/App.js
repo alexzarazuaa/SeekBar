@@ -8,12 +8,10 @@ import "./App.css";
 /* PAGES */ 
 import SBtabs from "./tabs";
 import SBwelcome from "./pages/welcome";
+import SBhome from "./pages/home";
 import Error404 from "./pages/error404";
-import SBlogin from './pages/login/login';
-import SBregister from './pages/register/register';
 /* COMPONENTS  */ 
-import SBpublicRoute from './components/route/PublicRoute';
-import SBmenu from './components/menu/menu';
+import PublicRoute from './components/route/PublicRoute';
 
 
 const App = () => {
@@ -22,13 +20,10 @@ const App = () => {
       <IonReactRouter>
         <Suspense fallback="loading">
           <IonPage>
-            <SBmenu />
             <IonRouterOutlet id="SBnavigation">
               
-              {/* <SBpublicRoute component={SBhome} path="/home" exact /> */}
-              <SBpublicRoute component={SBwelcome} path="/welcome" exact />
-              <SBpublicRoute component={SBlogin} path="/login" exact />
-              <SBpublicRoute component={SBregister} path="/register" exact />
+              <PublicRoute component={SBhome} path="/home" exact />
+              <PublicRoute component={SBwelcome} path="/welcome" exact />
 
               <Route
                 path="/"
