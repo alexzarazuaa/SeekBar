@@ -1,17 +1,33 @@
 import React from "react";
 
-import { IonContent, IonPage, IonHeader } from "@ionic/react";
-import "../style/welcome.css";
+import { IonContent, IonPage, IonHeader, IonCard } from "@ionic/react";
 
+
+/*  STYLE */
+import "../style/home.css";
 
 const SBhome = () => {
   return (
-    <IonPage>
+    <IonPage class="sb-home">
       <IonHeader>
-      <a href="/welcome">Welcome</a>
+      <a href="/sb/profile">Profile</a>&nbsp; &nbsp; &nbsp; 
+        <a href="/login">Login</a>&nbsp; &nbsp; &nbsp; &nbsp; 
+        <a href="/register">Register</a>   
+         <a href="/sb/profile">Profile</a>
       </IonHeader>
+      
       <IonContent>
+        <IonCard class="sb-home-ionCard">
+          <h1>jaj</h1>
+        </IonCard>
 
+        <IonCard class="sb-home-ionCard">
+          <h1>jaj</h1>
+        </IonCard>
+
+        <IonCard class="sb-home-ionCard">
+          <h1>jaj</h1>
+        </IonCard>
       </IonContent>
     </IonPage>
   );
