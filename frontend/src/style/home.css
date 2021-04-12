@@ -18,11 +18,21 @@
 }
 
 
+/*  HOME TITLE */
+
+.sb-home-title{
+  font-family: "Roboto", sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  text-align: var(--align--center);
+  margin: 12px var(--margin--auto);
+}
+
 /* HOME IONCARD */ 
 
 .sb-home-ionCard{
     background-color: white;
-    margin: 45px var(--margin--auto) ;
+    margin: 15px var(--margin--auto) ;
     display: flex;
     justify-content: var(--align--center);
     align-items: var(--align--center);

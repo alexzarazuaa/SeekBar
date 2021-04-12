@@ -2,6 +2,7 @@
   "WELCOME": {
     "START": "Començar"
   },
+
   "ERROR404": {
     "HOME": "Tornar a Inici"
   },
@@ -29,6 +30,14 @@
       "CONFPASSWORD": "Confirmar Contrasenya"
     }
   },
-  "ErrorPassword1":"La contraseña es erronea"
-
+  "BARSLIST": {
+    "ALLS": "Tots",
+    "YOURS": "Els teus"
+  },
+  "ErrorPassword1": "La contraseña es erronea",
+  "PROFILE": {
+    "UPDATE": "Actualizar Perfil",
+    "FAVOURITES": "Favorits",
+    "BOOKINGS": "Reserves"
+  }
 }

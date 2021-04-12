@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  IonContent,
+  
   IonPage,
   IonHeader,
   IonCard,
@@ -19,7 +19,6 @@ const SBbar = () => {
         <a href="/register">Register</a>
       </IonHeader>
 
-      <IonContent>
         <section>
           <IonCard class="sb-bar-ionCard">
             <h1>jaj</h1>
@@ -45,7 +44,7 @@ const SBbar = () => {
             <span class="fa fa-star "></span>
           </article>
         </section>
-      </IonContent>
+
     </IonPage>
   );
 };

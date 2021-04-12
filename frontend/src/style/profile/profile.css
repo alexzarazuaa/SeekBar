@@ -41,15 +41,34 @@
   box-sizing: border-box;
 }
 
-
 /*  PROFILE CARDS */
 
-.sb-profile-cards{
-    background-color: white;
-    margin: 45px var(--margin--auto) ;
-    display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
-    width: 60vw;
-    height: 20vh;
+.sb-profile-cards {
+  background-color: white;
+  margin: 45px var(--margin--auto);
+  display: flex;
+  justify-content: var(--align--center);
+  align-items: var(--align--center);
+  width: 60vw;
+  height: 20vh;
+}
+
+/* SEGMENTS */
+
+.sb-profile-segments {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+}
+
+
+/* SEGMENTS TITLES */
+
+.sb-profile-segments-titles{
+  font-family: "Rubik Mono One", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: var(--align--center);
+  margin: 45px var(--margin--auto);
 }

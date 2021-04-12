@@ -1,5 +1,5 @@
 import React from "react";
-import { IonButton, IonContent, IonImg, IonPage } from "@ionic/react";
+import { IonButton,  IonImg, IonPage } from "@ionic/react";
 import "../style/welcome.css";
 import { useTranslation } from 'react-i18next';
 import SeekBarLogo from "../assets/img/LogoSeekBar.png";
@@ -9,8 +9,7 @@ const SBwelcome = () => {
 
 
   return (
-    <IonPage>
-      <IonContent fullscreen className="sb-welcome-page">
+    <IonPage fullscreen className="sb-welcome-page">
         <main className="sb-welcome-page">
           <section>
             <IonImg class="sb-welcome-logo" src={SeekBarLogo}></IonImg>
@@ -21,7 +20,7 @@ const SBwelcome = () => {
             </IonButton>
           </section>
         </main>
-      </IonContent>
+
     </IonPage>
   );
 };

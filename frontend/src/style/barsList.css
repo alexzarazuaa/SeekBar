@@ -17,12 +17,19 @@
     width: 100vw;
   }
   
+  .sb-barsList-title{
+    font-family: "Roboto", sans-serif;
+    font-size: 68px;
+    font-weight: bold;
+    text-align: var(--align--center);
+    margin: 45px var(--margin--auto);
+  }
   
   /* BARS IONCARD */ 
   
   .sb-barsList-ionCard{
       background-color: white;
-      margin: 45px var(--margin--auto) ;
+      margin: 15px var(--margin--auto) ;
       display: flex;
       justify-content: var(--align--center);
       align-items: var(--align--center);
@@ -30,3 +37,23 @@
       height: 20vh;
   }
   
+
+/* SEGMENTS */
+
+.sb-barsList-segments {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+}
+
+
+/* SEGMENTS TITLES */
+
+.sb-barsList-segments-titles{
+  font-family: "Rubik Mono One", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: var(--align--center);
+  margin: 45px var(--margin--auto);
+}
