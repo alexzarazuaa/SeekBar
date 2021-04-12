@@ -13,7 +13,7 @@ from core.models import TimestampedModel
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, username, email, name, phone_number=None, image=None, password=None ):
+    def create_user(self, username, email, password=None, name=None, phone_number=None, image=None ):
         if username is None:
             raise TypeError('Users must have a username.')
 
@@ -54,7 +54,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     username = models.CharField(db_index=True, max_length=255, unique=True)
     email = models.EmailField(db_index=True)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, null=True, blank=True)
     phone_number= models.CharField(max_length=14, null=True, blank=True)
     image= models.CharField(max_length=255, null=True, blank=True)
     is_active = models.BooleanField(default=True)
@@ -62,6 +62,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
 
    
     USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
 
 
     objects = UserManager()
