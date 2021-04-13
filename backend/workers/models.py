@@ -17,8 +17,13 @@ class Worker(TimestampedModel):
         return self.user.username
 
     def assignWorker(self, bar, isBoss):
+        if isBoss is not False and isBoss is not True:
+            isBoss = False
         self.referenceWorker.add(bar,through_defaults={'isBoss':isBoss})
-        
+    
+    def deassign(self, bar):
+        self.referenceWorker.remove(bar)
+
 class Work(models.Model):
     class Meta:
             unique_together=('worker','bar')

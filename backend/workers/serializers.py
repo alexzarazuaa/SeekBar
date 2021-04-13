@@ -37,15 +37,26 @@ class WorkersInBar(serializers.ModelSerializer):
     def create(self, validated_data): #Assign Worker to Bar
         slug=self.context.get('slug', None)
         worker = self.context.get('worker', None)
+        isBoss = self.context.get('isBoss', None)
+        
         try:
             bar_id =Bar.objects.filter(slug=slug).values_list(flat=True)[0]
             worker=Worker.objects.select_related('user').get(user__username=worker)
-            worker.assignWorker(bar_id, False)
         except:
              raise serializers.ValidationError(
                 'This user not exist'
             )
 
-        return {
-                'info': 'Okey',
-                }
+        try:
+            if self.context.get('request', None).method == 'POST':
+                worker.assignWorker(bar_id, isBoss)
+            elif self.context.get('request', None).method == 'DELETE':
+                worker.deassign(bar_id)
+            else:
+                raise serializers.ValidationError('An error has occurred')
+        except:
+            raise serializers.ValidationError(
+                'An error has occurred'
+            )
+
+        return True

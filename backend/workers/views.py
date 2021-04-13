@@ -70,10 +70,15 @@ class WorkersWorkBarViewSet(viewsets.ModelViewSet): #List Workers & Assign Worke
     def create(self, request): #Assign Worker to Bar
         serializer_data = request.data.get('info', {})
         self.check_object_permissions(request, serializer_data['slug'])
+        try:
+            isBoss=serializer_data['isBoss']
+        except:
+            isBoss=False
 
         serializer_context = {
             'slug':serializer_data['slug'],
             'worker': serializer_data['worker'],
+            'isBoss': isBoss,
             'request': request
         }
 
@@ -84,4 +89,7 @@ class WorkersWorkBarViewSet(viewsets.ModelViewSet): #List Workers & Assign Worke
         serializer.is_valid(raise_exception=True)
         serializer.save()
         
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response('Ok',status=status.HTTP_200_OK)
+
+    def delete(self, request): #Assign Worker to Bar
+        return self.create(request)
