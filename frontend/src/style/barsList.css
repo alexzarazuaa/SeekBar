@@ -1,0 +1,59 @@
+/***************************************
+*             BARS LIST  PAGE          *
+***************************************/
+
+/* VARIABLES */
+
+:root{
+    --align--center : center;
+    --margin--auto:auto;
+  }
+  
+  
+  /* PAGE  CONTENT */
+  .sb-barsList {
+    background-color: #f4f4f4;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .sb-barsList-title{
+    font-family: "Roboto", sans-serif;
+    font-size: 68px;
+    font-weight: bold;
+    text-align: var(--align--center);
+    margin: 45px var(--margin--auto);
+  }
+  
+  /* BARS IONCARD */ 
+  
+  .sb-barsList-ionCard{
+      background-color: white;
+      margin: 15px var(--margin--auto) ;
+      display: flex;
+      justify-content: var(--align--center);
+      align-items: var(--align--center);
+      width: 60vw;
+      height: 20vh;
+  }
+  
+
+/* SEGMENTS */
+
+.sb-barsList-segments {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+}
+
+
+/* SEGMENTS TITLES */
+
+.sb-barsList-segments-titles{
+  font-family: "Rubik Mono One", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: var(--align--center);
+  margin: 45px var(--margin--auto);
+}

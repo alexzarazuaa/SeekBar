@@ -15,12 +15,12 @@ const ApiService = {
 export default ApiService;
 
 export const UserService = {
-  //   getUser(resource: string, slug = "") {
-  //     // console.log('entra',resource)
-  //     return axios.get(`${API_URL}/${resource}/${slug}`).catch((error) => {
-  //       throw new Error(`[RWV] ApiService ${error}`);
-  //     });
-  //   },
+    getUser(resource, slug = "") {
+      console.log('entra',resource)
+      return axios.get(`${API_URL}/${resource}/${slug}`).catch((error) => {
+        throw new Error(`[RWV] ApiService ${error}`);
+      });
+    },
 };
 
 
