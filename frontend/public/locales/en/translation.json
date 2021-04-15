@@ -2,8 +2,8 @@
   "WELCOME": {
     "START": "GET STARTED"
   },
-  "ERROR404": {
-    "GOHOME": "Go Home"
+  "ERROR404":{
+    "GOHOME":"Go Home"
   },
   "LOGIN": {
     "TITLE": "SignIn",
@@ -11,10 +11,10 @@
     "BUTTON": "SignIn",
     "NOT_ACCOUNT": "Already jave an account?",
     "SIGNUP": "SignUp",
-    "FORM": {
-      "EMAIL": "Email",
-      "PASSWORD": "Password"
-    }
+    "FORM":{
+      "EMAIL":"Email",
+      "PASSWORD":"Password"
+}
   },
   "REGISTER": {
     "TITLE": "Registrate",
@@ -22,20 +22,11 @@
     "BUTTON": "Registrarse",
     "HAVE_ACCOUNT": "Do you have an Account?",
     "SIGNIN": "SignIn",
-    "FORM": {
-      "USERNAME": "Username",
-      "EMAIL": "Email",
-      "PASSWORD": "Password",
-      "CONFPASSWORD": "Cofirm your Password"
+    "FORM":{
+          "USERNAME":"Username",
+          "EMAIL":"Email",
+          "PASSWORD":"Password",
+          "CONFPASSWORD":"Cofirm your Password"
     }
-  },
-  "BARSLIST": {
-    "ALLS": "Alls",
-    "YOURS": "Yours"
-  },
-  "PROFILE": {
-    "UPDATE": "Update Profile",
-    "FAVOURITES": "Yours Favorites",
-    "BOOKINGS": "Your Bookings"
   }
 }
