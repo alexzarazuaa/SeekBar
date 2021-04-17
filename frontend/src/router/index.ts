@@ -2,6 +2,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import SBhome from "../views/Home.vue";
 import SBlogin from "../views/auth/Login.vue";
 import SBregister from "../views/auth/Register.vue";
+import SBbarsList from "../pages/barsList/barsList.vue";
+import SBbar from "../pages/bar/bar.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -20,6 +22,16 @@ const routes: Array<RouteRecordRaw> = [
     path: "/register",
     name: "SBregister",
     component: SBregister,
+  },
+  {
+    path: "/bares",
+    name: "SBbarsList",
+    component: SBbarsList,
+  },
+  {
+    path: "/bar",
+    name: "SBbar",
+    component: SBbar,
   },
 
   {
