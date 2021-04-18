@@ -1,7 +1,8 @@
 <template>
   <footer class="footer">
-      <i class="fa fa-home"></i>
-      
+    <section class="icons">
+      <a :href="'/home'"><i class="fa fa-home" to="/home"></i></a>
+    </section>
   </footer>
 </template>
 
@@ -16,13 +17,23 @@ export default {
 *             FOOTER PAGE              *
 ***************************************/
 
-.footer {
+.footer i {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   background-color: black;
-  color: #FA9950;
+  color: #fa9950;
   text-align: center;
+}
+
+/* ICONS */
+.icons {
+  display: inline-block;
+}
+
+.fa-home {
+  font-size: 36px;
+  margin: auto;
 }
 </style>

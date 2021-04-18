@@ -17,13 +17,19 @@
       </article>
 
       <article>
-        <IonLabel class="sb-bar-reviews">REVIEWS</IonLabel>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star "></span>
-        <span class="fa fa-star "></span>
-        <span class="fa fa-star "></span>
-        <span class="fa fa-star "></span>
+        <IonCard class="sb-bar-ionmap">
+          <IonTitle>jaj</IonTitle>
+        </IonCard>
+      </article>
+      <article>
+        <IonLabel class="sb-bar-reviews">REVIEWS 
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star "></span>
+          <span class="fa fa-star "></span>
+          <span class="fa fa-star "></span>
+          <span class="fa fa-star "></span
+        ></IonLabel>
       </article>
     </IonContent>
     <SBfooter />
@@ -85,9 +91,10 @@ export default {
 
 .sb-bar-tables {
   position: absolute;
+  margin-top: -70px;
   width: 147px;
   height: 133px;
-  left: 227px;
+  left: 220px;
   top: 388px;
   background: #ffffff;
   border: 3px solid #000000;
@@ -96,20 +103,26 @@ export default {
 }
 
 /* BAR MAP ASIDE */
-/* .sb-bar-asideMap {
+.sb-bar-ionmap {
+  position: absolute;
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
+  justify-content: var(--align--center);
+  align-items: var(--align--center);
+  right: 50px;
+  top: 350px;
   background-color: black;
-  width: 374px;
-  height: 213px;
-} */
+  width: 210px;
+  height: 200px;
+}
 
 /* BAR REVIEWS  */
 .sb-bar-reviews {
   width: 140px;
   height: 30px;
-
+  position: absolute;
+  bottom: 40px;
+  width: 50%;
+  left: 50px;
   font-family: Ruluko;
   font-style: normal;
   font-weight: normal;
@@ -120,7 +133,8 @@ export default {
 
 /* BAR REVIEWS STARS */
 .fa .fa-star {
-  margin-left: 159px;
+  bottom: 40px;
+  left: 50px;
   width: 80px;
   height: 80px;
   background: #000000;

@@ -6,12 +6,9 @@
       </article>
       <article>
         <IonTitle class="sb-login-page--title"> {t("LOGIN.TITLE")}</IonTitle>
-        <IonButton
-          color="dark"
-          className="sb-login-page--homebtn"
-          href="/sb/home"
-        >
-          {t("LOGIN.HOME")}
+        <IonButton color="dark" className="sb-login-page--homebtn">
+            
+          <a :href="'/home'">HOME</a>
         </IonButton>
       </article>
     </section>
@@ -111,7 +108,7 @@ export default {
 
 /* HOME BTN */
 
-.sb-login-page--homebtn {
+.sb-login-page--homebtn a {
   background-color: black;
   color: white;
   width: 10vw;

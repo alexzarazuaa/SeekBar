@@ -4,6 +4,7 @@ import SBlogin from "../views/auth/Login.vue";
 import SBregister from "../views/auth/Register.vue";
 import SBbarsList from "../pages/barsList/barsList.vue";
 import SBbar from "../pages/bar/bar.vue";
+import SBprofile from "../pages/profile/profile.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -33,7 +34,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "SBbar",
     component: SBbar,
   },
-
+  {
+    path: "/profile",
+    name: "SBprofile",
+    component: SBprofile,
+  },
   {
     path: "/:catchAll(.*)",
     redirect: "/",
