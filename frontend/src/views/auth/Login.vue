@@ -2,12 +2,11 @@
   <IonPage class="sb-login-page">
     <section>
       <article>
-        <IonImg class="sb-login-page--logo" src="{Logo}"></IonImg>
+        <img class="sb-login-page--logo" :src="image" :alt="alt" />
       </article>
       <article>
-        <IonTitle class="sb-login-page--title"> {t("LOGIN.TITLE")}</IonTitle>
+        <IonTitle class="sb-login-page--title">SIGN IN</IonTitle>
         <IonButton color="dark" className="sb-login-page--homebtn">
-            
           <a :href="'/home'">HOME</a>
         </IonButton>
       </article>
@@ -31,9 +30,9 @@
           />
           <button class="sb-login-page--loginbtn">Sign In</button>
           <IonLabel class="sb-login-page--account">
-            {t("LOGIN.NOT_ACCOUNT")}
+            Ya tienes una cuenta?
             <IonLabel class="sb-register-page--signin">
-              {t("LOGIN.SIGNUP")}
+              Inicia Sessión
             </IonLabel>
           </IonLabel>
         </form>
@@ -43,16 +42,18 @@
 </template>
 
 <script>
-import { IonPage, IonImg, IonTitle, IonButton } from "@ionic/vue";
+import { IonPage, IonTitle, IonButton } from "@ionic/vue";
 import { mapState } from "vuex";
 import { ActionsType } from "@/store/actions.type";
 export default {
-  components: { IonPage, IonImg, IonTitle, IonButton },
+  components: { IonPage, IonTitle, IonButton },
   name: "SBlogin",
   data() {
     return {
       username: null,
       password: null,
+      image: "../assets/img/SEEK BAR BLANCO.png",
+      alt: "logo_seekbar",
     };
   },
   methods: {
@@ -99,11 +100,16 @@ export default {
 }
 /* PAGE TITLE */
 .sb-login-page--title {
-  font-family: "Rubik Mono One", sans-serif;
-  font-size: 40px;
-  font-weight: bold;
-  text-align: var(--align--center);
-  margin: 45px var(--margin--auto);
+  font-family: Rubik One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 45px;
+  text-align: center;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  margin: 75px var(--margin--auto);
 }
 
 /* HOME BTN */
@@ -118,12 +124,11 @@ export default {
   cursor: pointer;
   text-align: var(--align--center);
   margin: var(--margin--auto);
-  margin-top: 5px;
 }
 
 /* LOGIN FORM */
 .sb-login-page-form {
-  margin-top: 55px;
+  margin-top: 25px;
 }
 /*  LOGIN INPUTS */
 .inputFieldLogin {
@@ -359,7 +364,7 @@ export default {
     font-size: 35px;
     font-weight: bold;
     text-align: var(--align--center);
-    margin: 45px var(--margin--auto);
+    margin: 75px var(--margin--auto);
   }
   /* LOGO SEEKBAR */
   .sb-login-page--logo {
@@ -416,7 +421,7 @@ export default {
     font-size: 30px;
     font-weight: bold;
     text-align: var(--align--center);
-    margin: 45px var(--margin--auto);
+    margin: 75px var(--margin--auto);
   }
 
   /* LOGO SEEKBAR */
