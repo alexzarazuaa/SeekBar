@@ -3,22 +3,24 @@
     <section>
       <SBheader />
     </section>
+    <main>
+      <IonContent>
+        <IonTitle class="sb-home-title">SEEKBAR</IonTitle>
 
-    <IonContent>
-      <IonTitle class="sb-home-title">SEEKBAR</IonTitle>
+        <IonCard class="sb-home-ionCard">
+          <h1>jaj</h1>
+        </IonCard>
 
-      <IonCard class="sb-home-ionCard">
-        <h1>jaj</h1>
-      </IonCard>
+        <IonCard class="sb-home-ionCard">
+          <h1>jaj</h1>
+        </IonCard>
 
-      <IonCard class="sb-home-ionCard">
-        <h1>jaj</h1>
-      </IonCard>
+        <IonCard class="sb-home-ionCard">
+          <h1>jaj</h1>
+        </IonCard> </IonContent
+      >I
+    </main>
 
-      <IonCard class="sb-home-ionCard">
-        <h1>jaj</h1>
-      </IonCard>
-    </IonContent>
     <SBfooter />
   </IonPage>
 </template>
@@ -63,7 +65,6 @@ export default {
   justify-content: var(--align--center);
   align-items: var(--align--center);
   margin-top: -10px;
-
 }
 
 /* HOME IONCARD */

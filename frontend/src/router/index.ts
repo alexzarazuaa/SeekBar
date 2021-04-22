@@ -6,6 +6,14 @@ import SBbarsList from "../pages/barsList/barsList.vue";
 import SBbar from "../pages/bar/bar.vue";
 import SBprofile from "../pages/profile/profile.vue";
 
+const noAuthGuard = (to: any, from: any, next: any) => {
+  (localStorage.getItem("token")) ? next("/") : next()
+}
+
+const authGuard = (to: any, from: any, next: any) => {
+  (!localStorage.getItem("token")) ? next("/login") : next()
+}
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -17,12 +25,14 @@ const routes: Array<RouteRecordRaw> = [
     path: "/login",
     name: "SBlogin",
     component: SBlogin,
+    beforeEnter: noAuthGuard
   },
 
   {
     path: "/register",
     name: "SBregister",
     component: SBregister,
+    beforeEnter: noAuthGuard
   },
   {
     path: "/bares",

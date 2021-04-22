@@ -29,10 +29,11 @@
             required
           />
           <button class="sb-login-page--loginbtn">Sign In</button>
+
           <IonLabel class="sb-login-page--account">
-            Ya tienes una cuenta?
+            Aún no tienes una cuenta?
             <IonLabel class="sb-register-page--signin">
-              Inicia Sessión
+              <a :href="'/register'">Resgistrate</a>
             </IonLabel>
           </IonLabel>
         </form>

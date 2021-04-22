@@ -14,15 +14,17 @@
         >
       </article>
 
-      <section class="navbar">
-        <a v-if="!isAuthenticated" :href="'/login'">Login</a>
+      <article class="navbar">
+        <a v-if="!isAuthenticated" :href="'/login'" class="header--login"
+          >Login</a
+        >
 
         <a @click="profile(currentUser.username)">
           {{ currentUser.username }}
         </a>
 
         <a class="Btn-logout" v-if="isAuthenticated" @click="logout">LogOut</a>
-      </section>
+      </article>
     </nav>
   </section>
 </template>
@@ -41,6 +43,7 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch(ActionsType.LOGOUT);
+      this.$router.push({ name: "Sbhome" });
     },
     VAL_TOKEN() {
       this.$store.dispatch(ActionsType.CHECK_AUTH);
@@ -85,6 +88,16 @@ export default {
   padding: 10px 10px;
 }
 
+/* LOGIN BTN */
+.header--login {
+  font-family: Ruluko;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+
 /* MENU ICON */
 .container {
   display: inline-block;
@@ -120,7 +133,7 @@ export default {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: white;
   display: block;
   transition: 0.3s;
 }
@@ -142,7 +155,7 @@ export default {
   margin-left: 20px;
 }
 .header a:hover {
-  background-color: #ddd;
+  
   color: white;
 }
 .header__nav {
@@ -152,10 +165,10 @@ export default {
   justify-content: space-between;
   margin-bottom: 5px;
 }
-a,
+sidenav a,
 a:visited,
-a:active {
-  color: white;
+ a:active {
+  color : #fff;
   text-decoration: none;
 }
 /*  NAVBAR CLASS */
@@ -171,15 +184,10 @@ a:active {
   font-weight: bold;
   cursor: pointer;
 }
-.navbar a:hover {
-  background-color: #ddd;
-  color: black;
+.navbar a {
+  color: #000000;
+  text-decoration: none;
 }
-.navbar a.active {
-  background-color: dodgerblue;
-  color: white;
-}
-
 /* BTN LOGOUT */
 .Btn-logout {
   cursor: pointer;

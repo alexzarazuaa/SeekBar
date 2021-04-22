@@ -9,7 +9,7 @@
 
       <IonSegment class="sb-barsList-segments">
         <IonSegmentButton value="recent">
-          <IonLabel class="sb-barsList-segments-titles">
+          <IonLabel class="sb-barsList-segments-titles" >
             ALLS
           </IonLabel>
         </IonSegmentButton>
@@ -123,4 +123,5 @@ export default {
 .sb-barsList-segments-titles:checked {
   text-decoration: underline;
 }
+
 </style>

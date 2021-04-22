@@ -15,9 +15,9 @@ const ApiService = {
     });
   },
 
-  get(resource: string, slug = "") {
+  get(resource: string, params = "") {
     // console.log('entra',resource)
-    return axios.get(`${resource}/${slug}`).catch((error) => {
+    return axios.get(`${resource}/${params}`).catch((error) => {
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },
@@ -39,6 +39,28 @@ const ApiService = {
     });
   },
 };
+
+
+export const ProfileService = {
+  getProfile(resource: string, username: any) {
+    console.log("entra profile", resource);
+    return axios.get(`${API_URL}/${resource}${username}`).catch((error) => {
+      throw new Error(`[RWV] ApiService ${error}`);
+    });
+  },
+};
+
+export const RegisterService = {
+
+  register(type: string,  credentials: any) {
+  
+    return ApiService.post(`user/${type}`,credentials);
+  },
+};
+
+
+
+
 
 
 
