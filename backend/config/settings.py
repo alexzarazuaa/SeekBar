@@ -31,20 +31,24 @@ INSTALLED_APPS = [
     'authentication',
     'clients',
     'workers',
-    'bars'
+    'bars',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+ 
 ]
 
 ROOT_URLCONF = 'config.urls'
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {
@@ -118,6 +122,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+CORS_ORIGIN_WHITELIST = (
+   'http://localhost:8080',
+    'http://0.0.0.0:8080'
+)
 AUTH_USER_MODEL = 'authentication.User'
 
 
