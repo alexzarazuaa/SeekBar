@@ -2,7 +2,7 @@
 
 <p align="center">
 
-  <a href="https://github.com/alexzarazuaa/AngularJS_FW_PHP_OO">
+  <a>
     <img src="frontend/src/assets/img/SEEK_BAR_BLANCO.png" alt="Seekbar_logo">
   </a>
 
