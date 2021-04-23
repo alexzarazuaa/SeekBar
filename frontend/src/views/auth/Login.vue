@@ -21,6 +21,9 @@
             placeholder="username"
             required
           />
+          <span v-if="errors.some((error) => error.name === 'log_username', value)">{{
+            errors.filter((error) => error.name === "log_username")[0].value
+          }}</span>
           <input
             class="inputFieldLogin"
             type="password"
@@ -28,6 +31,9 @@
             placeholder="password"
             required
           />
+          <span v-if="errors.some((error) => error.name === 'log_password', value)">{{
+            errors.filter((error) => error.name === "log_password")[0].value
+          }}</span>
           <button class="sb-login-page--loginbtn">Sign In</button>
 
           <IonLabel class="sb-login-page--account">
@@ -46,11 +52,13 @@
 import { IonPage, IonTitle, IonButton } from "@ionic/vue";
 import { mapState } from "vuex";
 import { ActionsType } from "@/store/actions.type";
+import { LoginFormErrors } from "./utils";
 export default {
   components: { IonPage, IonTitle, IonButton },
   name: "SBlogin",
   data() {
     return {
+      errors: [],
       username: null,
       password: null,
       image: "../assets/img/SEEK BAR BLANCO.png",
@@ -59,9 +67,15 @@ export default {
   },
   methods: {
     onSubmit(username, password) {
-      this.$store
-        .dispatch(ActionsType.LOGIN, { username, password })
-        .then(() => this.$router.push({ name: "SBhome" }));
+      this.errors = [];
+      const regexErrors = LoginFormErrors(this);
+      if (regexErrors.length > 0) {
+        this.errors = regexErrors;
+      } else {
+        this.$store
+          .dispatch(ActionsType.LOGIN, { username, password })
+          .then(() => this.$router.push({ name: "SBhome" }));
+      }
     },
   },
   computed: {

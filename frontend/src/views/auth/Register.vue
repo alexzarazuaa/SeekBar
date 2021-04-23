@@ -24,7 +24,8 @@
             placeholder="Entire Name"
             required
           />
-       
+          <!-- <span v-if="errors.some((error) => error.name === 'username', value)">{{ errors.filter((error) => error.name === "username")[0].value}}</span> -->
+
           <input
             class="inputFieldRegister"
             type="text"
@@ -32,6 +33,7 @@
             placeholder="Username"
             required
           />
+          <span v-if="errors.some((error) => error.name === 'username', value)">{{ errors.filter((error) => error.name === "username")[0].value}}</span>
           <input
             class="inputFieldRegister"
             type="email"
@@ -39,6 +41,7 @@
             placeholder="Email"
             required
           />
+          <span v-if="errors.some((error) => error.name === 'email', value)">{{ errors.filter((error) => error.name === "email")[0].value}}</span>
 
           <input
             class="inputFieldRegister"
@@ -48,25 +51,22 @@
             required
           />
 
-
           <input
             class="inputFieldRegister"
             type="password"
-           v-model="repeatPassword"
+            v-model="repeatPassword"
             placeholder="password"
             required
           />
-          <span v-if="errors.includes('repeat')" >Hola</span>
-      // <span v-if="errors.some(error => error.name === 'repeat', value)" >errors.filter(error => error.name==='repeat')[0].value</span>
+          <span v-if="errors.some((error) => error.name === 'repeat', value)">{{
+            errors.filter((error) => error.name === "repeat")[0].value
+          }}</span>
 
-          
           <article class="sb--register--page-typeUser">
-            
             <button
               v-on:click="webcamSendRequestButton('client')"
               type="button"
               class="sb--register--page--btntype"
-              
             >
               Cliente
             </button>
@@ -74,7 +74,6 @@
               v-on:click="webcamSendRequestButton('worker')"
               type="button"
               class="sb--register--page--btntype"
-              
             >
               Trabajador
             </button>
@@ -97,14 +96,13 @@
 import { mapState } from "vuex";
 import { ActionsType } from "@/store/actions.type";
 import { IonPage, IonTitle, IonButton } from "@ionic/vue";
-import {RegisterFormErrors} from "./utils"
+import { RegisterFormErrors } from "./utils";
 export default {
-  
   components: { IonPage, IonTitle, IonButton },
   name: "SBregister",
   data() {
     return {
-      errors:[],
+      errors: [],
       username: "",
       name: "",
       email: "",
@@ -121,36 +119,37 @@ export default {
     }),
   },
   methods: {
-    
     onSubmit() {
-            this.errors=[]
+      this.errors = [];
       const regexErrors = RegisterFormErrors(this);
-      if (regexErrors.length>0){
-        this.errors=regexErrors
-      }else{
-      this.$store
-        .dispatch(ActionsType.REGISTER, {
-          username: this.username,
-          email: this.email,
-          password: this.password,
-          name: this.name,
-          type: this.type
-        })
-        .then((response) => {
-          console.log(response);
-          this.$router.push({ name: "SBhome" });
-        })
-        .catch((response) => {
-          response.data.errors.email
-            ?  this.errors.push({name: 'mailBack', value:'response.data.errors.username'});
-            : alert(response.data.errors.username);
-        });
+      if (regexErrors.length > 0) {
+        this.errors = regexErrors;
+      } else {
+        this.$store
+          .dispatch(ActionsType.REGISTER, {
+            username: this.username,
+            email: this.email,
+            password: this.password,
+            name: this.name,
+            type: this.type,
+          })
+          .then((response) => {
+            console.log(response);
+            this.$router.push({ name: "SBhome" });
+          })
+          .catch((response) => {
+            response.data.errors.email
+              ? this.errors.push({
+                  name: "mailBack",
+                  value: "response.data.errors.username",
+                })
+              : alert(response.data.errors.username);
+          });
       }
     },
 
-
     webcamSendRequestButton(type) {
-      this.type=type
+      this.type = type;
     },
   },
 };

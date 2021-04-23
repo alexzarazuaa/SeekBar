@@ -43,9 +43,8 @@ const actions = {
 
   // Register
   [ActionsType.REGISTER](context: any, credentials: any) {
-    console.log("ENTAR REGISTER AUTH ", credentials);
+    console.log("ENTAR REGISTER AUTH ", credentials.type);
     return new Promise((resolve, reject) => {
-      console.log(resolve);
       RegisterService.register(credentials.type, { user: credentials })
         .then(({ data }) => {
           console.log(data);

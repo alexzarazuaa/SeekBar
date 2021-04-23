@@ -51,9 +51,8 @@ export const ProfileService = {
 };
 
 export const RegisterService = {
-
   register(type: string,  credentials: any) {
-  
+    console.log(credentials,type)
     return ApiService.post(`user/${type}`,credentials);
   },
 };
