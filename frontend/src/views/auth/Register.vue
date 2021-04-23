@@ -57,6 +57,8 @@
             required
           />
           <span v-if="errors.includes('repeat')" >Hola</span>
+      // <span v-if="errors.some(error => error.name === 'repeat', value)" >errors.filter(error => error.name==='repeat')[0].value</span>
+
           
           <article class="sb--register--page-typeUser">
             
@@ -140,7 +142,7 @@ export default {
         })
         .catch((response) => {
           response.data.errors.email
-            ? alert(response.data.errors.email)
+            ?  this.errors.push({name: 'mailBack', value:'response.data.errors.username'});
             : alert(response.data.errors.username);
         });
       }

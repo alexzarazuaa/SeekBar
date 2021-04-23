@@ -43,7 +43,6 @@ services:
     networks:
     - SeekBar
 
-
   front:
     container_name: FrondtendSeekBar
     build: ./frontend/.
@@ -57,7 +56,6 @@ services:
       - back
     networks:
       - SeekBar
-
 
 networks:
   SeekBar:
