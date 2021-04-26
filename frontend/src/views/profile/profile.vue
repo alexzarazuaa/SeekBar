@@ -64,17 +64,17 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /***************************************
 *             PROFILE  PAGE            *
 ***************************************/
 
 /* VARIABLES */
 
-:root {
+/* :root {
   --align--center: center;
   --margin--auto: auto;
-}
+} */
 
 /* PROFILE PAGE */
 .sb-profile-page {
@@ -89,8 +89,8 @@ export default {
   font-family: "Rubik Mono One", sans-serif;
   font-size: 36px;
   font-weight: bold;
-  text-align: var(--align--center);
-  margin: 20px var(--margin--auto);
+  text-align: center;
+  margin: 20px auto;
 }
 
 /* PROFILE AVATAR */
@@ -113,10 +113,10 @@ export default {
 
 .sb-profile-cards {
   background-color: white;
-  margin: 0px var(--margin--auto);
+  margin: 0px auto;
   display: flex;
-  justify-content: var(--align--center);
-  align-items: var(--align--center);
+  justify-content: center;
+  align-items: center;
   width: 60vw;
   height: 20vh;
 }
@@ -136,7 +136,7 @@ export default {
   font-family: "Rubik Mono One", sans-serif;
   font-size: 24px;
   font-weight: bold;
-  text-align: var(--align--center);
-  margin: 45px var(--margin--auto);
+  text-align: center;
+  margin: 45px auto;
 }
 </style>

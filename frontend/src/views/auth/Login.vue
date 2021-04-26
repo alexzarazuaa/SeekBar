@@ -2,7 +2,7 @@
   <IonPage class="sb-login-page">
     <section>
       <article>
-        <img class="sb-login-page--logo" :src="image" :alt="alt" />
+        <img class="sb-login-page--logo" v-bind:src="'image'" :alt="alt" />
       </article>
       <article>
         <IonTitle class="sb-login-page--title">SIGN IN</IonTitle>
@@ -21,9 +21,12 @@
             placeholder="username"
             required
           />
-          <span v-if="errors.some((error) => error.name === 'log_username', value)">{{
-            errors.filter((error) => error.name === "log_username")[0].value
-          }}</span>
+          <span
+            v-if="errors.some((error) => error.name === 'log_username', value)"
+            >{{
+              errors.filter((error) => error.name === "log_username")[0].value
+            }}</span
+          >
           <input
             class="inputFieldLogin"
             type="password"
@@ -31,9 +34,12 @@
             placeholder="password"
             required
           />
-          <span v-if="errors.some((error) => error.name === 'log_password', value)">{{
-            errors.filter((error) => error.name === "log_password")[0].value
-          }}</span>
+          <span
+            v-if="errors.some((error) => error.name === 'log_password', value)"
+            >{{
+              errors.filter((error) => error.name === "log_password")[0].value
+            }}</span
+          >
           <button class="sb-login-page--loginbtn">Sign In</button>
 
           <IonLabel class="sb-login-page--account">
@@ -52,7 +58,7 @@
 import { IonPage, IonTitle, IonButton } from "@ionic/vue";
 import { mapState } from "vuex";
 import { ActionsType } from "@/store/actions.type";
-import { LoginFormErrors } from "./utils";
+import { LoginFormErrors } from "./utils/utils";
 export default {
   components: { IonPage, IonTitle, IonButton },
   name: "SBlogin",
@@ -61,7 +67,7 @@ export default {
       errors: [],
       username: null,
       password: null,
-      image: "../assets/img/SEEK BAR BLANCO.png",
+      image: "@/assets/img/SEEK_BAR_BLANCO.png",
       alt: "logo_seekbar",
     };
   },
@@ -86,17 +92,17 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /***************************************
 *             LOGIN PAGE               *
 ***************************************/
 
 /* VARIABLES */
 
-:root {
+/* :root {
   --align--center: center;
   --margin--auto: auto;
-}
+} */
 
 /* PAGE  CONTENT */
 .sb-login-page {
@@ -107,10 +113,10 @@ export default {
 
 /* LOGO SEEKBAR */
 .sb-login-page--logo {
-  margin: var(--margin--auto);
+  margin: auto;
   display: flex;
-  justify-content: var(--align--center);
-  align-items: var(--align--center);
+  justify-content: center;
+  align-items: center;
   width: 35%;
 }
 /* PAGE TITLE */
@@ -124,7 +130,7 @@ export default {
   color: #000000;
   display: flex;
   justify-content: center;
-  margin: 75px var(--margin--auto);
+  margin: 75px auto;
 }
 
 /* HOME BTN */
@@ -133,12 +139,13 @@ export default {
   background-color: black;
   color: white;
   width: 10vw;
+  text-decoration: none;
   display: flex;
-  justify-content: var(--align--center);
-  align-items: var(--align--center);
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  text-align: var(--align--center);
-  margin: var(--margin--auto);
+  text-align: center;
+  margin: auto;
 }
 
 /* LOGIN FORM */
@@ -149,11 +156,11 @@ export default {
 .inputFieldLogin {
   background-color: white;
   display: flex;
-  justify-content: var(--align--center);
-  align-items: var(--align--center);
-  text-align: var(--align--center);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   cursor: pointer;
-  margin: 5px var(--margin--auto) 20px;
+  margin: 5px auto 20px;
   width: 20vw;
 }
 
@@ -163,19 +170,19 @@ export default {
   color: white;
   width: 25vw;
   display: flex;
-  justify-content: var(--align--center);
-  align-items: var(--align--center);
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  text-align: var(--align--center);
-  margin: var(--margin--auto);
+  text-align: center;
+  margin: auto;
   margin-top: 15px;
 }
 .sb-login-page--account {
   display: flex;
-  justify-content: var(--align--center);
-  align-items: var(--align--center);
-  text-align: var(--align--center);
-  margin: 25px var(--margin--auto);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 25px auto;
   font-size: 20px;
   font-weight: 500;
 }
@@ -189,11 +196,11 @@ export default {
   .inputFieldLogin {
     background-color: white;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
-    text-align: var(--align--center);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
-    margin: 5px var(--margin--auto) 20px;
+    margin: 5px auto 20px;
     width: 28vw;
   }
 
@@ -203,11 +210,11 @@ export default {
     color: white;
     width: 35vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 15px;
   }
   /* HOME BTN */
@@ -217,19 +224,19 @@ export default {
     color: white;
     width: 10vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 5px;
   }
   /* LOGO SEEKBAR */
   .sb-login-page--logo {
-    margin: var(--margin--auto);
+    margin: auto;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     width: 45%;
   }
 }
@@ -239,11 +246,11 @@ export default {
   .inputFieldLogin {
     background-color: white;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
-    text-align: var(--align--center);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
-    margin: 5px var(--margin--auto) 20px;
+    margin: 5px auto 20px;
     width: 35vw;
   }
   /* LOGIN BTN */
@@ -252,11 +259,11 @@ export default {
     color: white;
     width: 40vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 15px;
   }
 
@@ -267,20 +274,20 @@ export default {
     color: white;
     width: 25vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 5px;
   }
 
   /* LOGO SEEKBAR */
   .sb-login-page--logo {
-    margin: var(--margin--auto);
+    margin: auto;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     width: 50%;
   }
 }
@@ -290,11 +297,11 @@ export default {
   .inputFieldLogin {
     background-color: white;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
-    text-align: var(--align--center);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
-    margin: 5px var(--margin--auto) 20px;
+    margin: 5px auto 20px;
     width: 40vw;
   }
   /* LOGIN BTN */
@@ -303,11 +310,11 @@ export default {
     color: white;
     width: 45vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 15px;
   }
   /* HOME BTN */
@@ -317,19 +324,19 @@ export default {
     color: white;
     width: 15vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 5px;
   }
   /* LOGO SEEKBAR */
   .sb-login-page--logo {
-    margin: var(--margin--auto);
+    margin: auto;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     width: 65%;
   }
 }
@@ -339,11 +346,11 @@ export default {
   .inputFieldLogin {
     background-color: white;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
-    text-align: var(--align--center);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
-    margin: 5px var(--margin--auto) 20px;
+    margin: 5px auto 20px;
     width: 55vw;
   }
   /* LOGIN BTN */
@@ -352,11 +359,11 @@ export default {
     color: white;
     width: 65vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 15px;
   }
   /* HOME BTN */
@@ -366,11 +373,11 @@ export default {
     color: white;
     width: 25vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 5px;
   }
   /* PAGE TITLE */
@@ -378,15 +385,15 @@ export default {
     font-family: "Rubik Mono One", sans-serif;
     font-size: 35px;
     font-weight: bold;
-    text-align: var(--align--center);
-    margin: 75px var(--margin--auto);
+    text-align: center;
+    margin: 75px auto;
   }
   /* LOGO SEEKBAR */
   .sb-login-page--logo {
-    margin: var(--margin--auto);
+    margin: auto;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     width: 70%;
   }
 }
@@ -396,11 +403,11 @@ export default {
   .inputFieldLogin {
     background-color: white;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
-    text-align: var(--align--center);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
-    margin: 5px var(--margin--auto) 20px;
+    margin: 5px auto 20px;
     width: 90vw;
   }
   /* LOGIN BTN */
@@ -409,11 +416,11 @@ export default {
     color: white;
     width: 95vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 15px;
   }
   /* HOME BTN */
@@ -423,11 +430,11 @@ export default {
     color: white;
     width: 35vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 5px;
   }
   /* PAGE TITLE */
@@ -435,16 +442,16 @@ export default {
     font-family: "Rubik Mono One", sans-serif;
     font-size: 30px;
     font-weight: bold;
-    text-align: var(--align--center);
-    margin: 75px var(--margin--auto);
+    text-align: center;
+    margin: 75px auto;
   }
 
   /* LOGO SEEKBAR */
   .sb-login-page--logo {
-    margin: var(--margin--auto);
+    margin: auto;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     width: 85%;
   }
 }

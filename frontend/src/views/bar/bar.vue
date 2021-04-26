@@ -6,7 +6,7 @@
 
     <IonContent>
       <IonCard class="sb-bar-ionCard">
-        <IonTitle>jaj</IonTitle>
+        <IonTitle>{{bar.name}}</IonTitle>
       </IonCard>
 
       <article>
@@ -40,7 +40,9 @@
 import { IonCard, IonLabel, IonTitle, IonContent, IonPage } from "@ionic/vue";
 import SBheader from "@/components/Layout/header.vue";
 import SBfooter from "@/components/Layout/footer.vue";
-
+import store from "@/store";
+import { mapGetters } from "vuex";
+import { ActionsType } from "@/store/actions.type";
 export default {
   components: {
     SBheader,
@@ -51,7 +53,57 @@ export default {
     IonContent,
     IonPage,
   },
-  name: "SBbarsList",
+  name: "SBbar",
+   props: {
+    slug: {
+      type: String,
+      required: true,
+    },
+  },
+  beforeRouteEnter(to, from, next) {
+    Promise.all([store.dispatch(ActionsType.FETCH_BAR, to.params.slug)]).then(
+      (data) => {
+        next();
+        console.log(data);
+      }
+    );
+  },
+  computed: {
+    ...mapGetters(["bar", "currentUser", "isAuthenticated"]),
+  },
+  methods: {
+    toggleFavorite() {
+      if (!this.isAuthenticated) {
+        this.$router.push({ name: "Login" });
+        return;
+      }
+      const action = this.bar.favorited
+        ? ActionsType.FAVORITE_REMOVE
+        : ActionsType.FAVORITE_ADD;
+      this.$store.dispatch(action, this.bar.slug);
+    },
+    Reserva() {
+      if (!this.isAuthenticated) {
+        this.$router.push({ name: "Login" });
+        return;
+      }
+      const action = this.bar.book
+        ? ActionsType.BOOK_REMOVE
+        : ActionsType.BOOK_ADD;
+      this.$store.dispatch(action, this.bar.slug);
+    },
+    profile(username) {
+      this.$router.push({ name: "Profile", params: { username: username } });
+    },
+  },
+  watch: {
+    bar: {
+      deep: true,
+      handler(value) {
+        console.log("watch a bar", value);
+      },
+    },
+  },
 };
 </script>
 
@@ -59,23 +111,18 @@ export default {
 /***************************************
 *             BAR  PAGE                *
 ***************************************/
-
 /* VARIABLES */
-
 :root {
   --align--center: center;
   --margin--auto: auto;
 }
-
 /* PAGE  CONTENT */
 .sb-bar {
   background: rgba(244, 244, 244, 1);
   height: 100%;
   width: 100%;
 }
-
 /* BARS IONCARD */
-
 .sb-bar-ionCard {
   background-color: white;
   margin: 0px var(--margin--auto);
@@ -86,9 +133,7 @@ export default {
   height: 223px;
   border: 3px solid #000000;
 }
-
 /* BAR TABLES */
-
 .sb-bar-tables {
   position: absolute;
   margin-top: -70px;
@@ -101,7 +146,6 @@ export default {
   border-radius: 50%;
   box-sizing: border-box;
 }
-
 /* BAR MAP ASIDE */
 .sb-bar-ionmap {
   position: absolute;
@@ -114,7 +158,6 @@ export default {
   width: 210px;
   height: 200px;
 }
-
 /* BAR REVIEWS  */
 .sb-bar-reviews {
   width: 140px;
@@ -130,7 +173,6 @@ export default {
   line-height: 28px;
   color: #000000;
 }
-
 /* BAR REVIEWS STARS */
 .fa .fa-star {
   bottom: 40px;
@@ -142,5 +184,18 @@ export default {
 }
 .checked {
   color: #fa9950;
+}
+
+.btn-primary {
+  background-color: coral;
+  color: red;
+}
+.btn-outline-primary {
+  background-color: green;
+  color: whitesmokeΰ;
+}
+.ion-heart {
+  font-size: 25px;
+  font-weight: bold;
 }
 </style>

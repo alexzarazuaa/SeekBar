@@ -70,7 +70,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /***************************************
 *             HEADER PAGE              *
 ***************************************/
@@ -117,7 +117,7 @@ export default {
 /* MENU TOGGLE */
 
 .sidenav {
-  height: 94.4%;
+  height: 95.13%;
   width: 0;
   position: fixed;
   z-index: 1;

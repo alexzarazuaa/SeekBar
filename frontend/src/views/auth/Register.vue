@@ -24,8 +24,7 @@
             placeholder="Entire Name"
             required
           />
-          <!-- <span v-if="errors.some((error) => error.name === 'username', value)">{{ errors.filter((error) => error.name === "username")[0].value}}</span> -->
-
+          
           <input
             class="inputFieldRegister"
             type="text"
@@ -33,7 +32,12 @@
             placeholder="Username"
             required
           />
-          <span v-if="errors.some((error) => error.name === 'username', value)">{{ errors.filter((error) => error.name === "username")[0].value}}</span>
+          <span
+            v-if="errors.some((error) => error.name === 'username', value)"
+            >{{
+              errors.filter((error) => error.name === "username")[0].value
+            }}</span
+          >
           <input
             class="inputFieldRegister"
             type="email"
@@ -41,7 +45,9 @@
             placeholder="Email"
             required
           />
-          <span v-if="errors.some((error) => error.name === 'email', value)">{{ errors.filter((error) => error.name === "email")[0].value}}</span>
+          <span v-if="errors.some((error) => error.name === 'email', value)">{{
+            errors.filter((error) => error.name === "email")[0].value
+          }}</span>
 
           <input
             class="inputFieldRegister"
@@ -64,14 +70,14 @@
 
           <article class="sb--register--page-typeUser">
             <button
-              v-on:click="webcamSendRequestButton('client')"
+              v-on:click="userType('client')"
               type="button"
               class="sb--register--page--btntype"
             >
               Cliente
             </button>
             <button
-              v-on:click="webcamSendRequestButton('worker')"
+              v-on:click="userType('worker')"
               type="button"
               class="sb--register--page--btntype"
             >
@@ -80,7 +86,7 @@
           </article>
 
           <button class="sb-register-page--registerbtn">Sign Up</button>
-          <IonLabel class="sb-login-page--account">
+          <IonLabel class="sb-register-page--account">
             Ya tienes una cuenta?
             <IonLabel class="sb-register-page--signin">
               <a :href="'/login'">Inicia Session</a>
@@ -96,7 +102,7 @@
 import { mapState } from "vuex";
 import { ActionsType } from "@/store/actions.type";
 import { IonPage, IonTitle, IonButton } from "@ionic/vue";
-import { RegisterFormErrors } from "./utils";
+import { RegisterFormErrors } from "./utils/utils";
 export default {
   components: { IonPage, IonTitle, IonButton },
   name: "SBregister",
@@ -148,24 +154,26 @@ export default {
       }
     },
 
-    webcamSendRequestButton(type) {
+    userType(type) {
       this.type = type;
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
+
+
 /***************************************
 *             REGISTER PAGE            *
 ***************************************/
 
 /* VARIABLES */
 
-:root {
+/* :root {
   --align--center: center;
   --margin--auto: auto;
-}
+} */
 
 /* PAGE  CONTENT */
 .sb-register-page {
@@ -176,10 +184,10 @@ export default {
 
 /* LOGO SEEKBAR */
 .sb-register-page--logo {
-  margin: var(--margin--auto);
+  margin: auto;
   display: flex;
-  justify-content: var(--align--center);
-  align-items: var(--align--center);
+  justify-content: center;
+  align-items: center;
   width: 35%;
 }
 /* PAGE TITLE */
@@ -193,20 +201,7 @@ export default {
   color: #000000;
   display: flex;
   justify-content: center;
-  margin: 10px var(--margin--auto);
-}
-
-/* SELECT TYPE USER */
-.sb--register--page-typeUser {
-  width: 100%;
-  text-align: center;
-}
-.sb--register--page--btntype {
-  background-color: black;
-  color: white;
-  width: 8vw;
-  cursor: pointer;
-  text-align: var(--align--center);
+  margin: 10px auto;
 }
 
 /* HOME BTN */
@@ -216,12 +211,10 @@ export default {
   color: white;
   width: 10vw;
   display: flex;
-  justify-content: var(--align--center);
-  align-items: var(--align--center);
-  cursor: pointer;
-  text-align: var(--align--center);
-  margin: var(--margin--auto);
-  margin-top: 5px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 5px auto;
 }
 .sb-register-page--homebtn a {
   text-decoration: none;
@@ -236,11 +229,11 @@ export default {
 .inputFieldRegister {
   background-color: white;
   display: flex;
-  justify-content: var(--align--center);
-  align-items: var(--align--center);
-  text-align: var(--align--center);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   cursor: pointer;
-  margin: 5px var(--margin--auto) 20px;
+  margin: 5px auto 20px;
   width: 20vw;
 }
 
@@ -250,21 +243,21 @@ export default {
   color: white;
   width: 20vw;
   display: flex;
-  justify-content: var(--align--center);
-  align-items: var(--align--center);
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  text-align: var(--align--center);
-  margin: var(--margin--auto);
+  text-align: center;
+  margin: auto;
   margin-top: 15px;
 }
 
 /*  ALREADY HAVE AN ACCOUNT */
 .sb-register-page--account {
   display: flex;
-  justify-content: var(--align--center);
-  align-items: var(--align--center);
-  text-align: var(--align--center);
-  margin: 5px var(--margin--auto);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 5px auto;
   font-size: 20px;
   font-weight: 500;
 }
@@ -278,6 +271,30 @@ export default {
   font-weight: bold;
 }
 
+/* SELECT TYPE USER */
+.sb--register--page-typeUser {
+  width: 100%;
+  text-align: center;
+}
+.sb--register--page--btntype {
+  background-color: black;
+  color: white;
+  width: 10%;
+  cursor: pointer;
+  text-align: center;
+}
+
+.sb--register--page--btntype:hover {
+  background-color: #fa9950;
+  color: black;
+}
+
+.sb--register--page--btntype:active {
+  background-color: #fa9950;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 /***************************************
 *         QUERIES RESPONSIVE           *
 ***************************************/
@@ -287,11 +304,11 @@ export default {
   .inputFieldRegister {
     background-color: white;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
-    text-align: var(--align--center);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
-    margin: 5px var(--margin--auto) 20px;
+    margin: 5px auto 20px;
     width: 28vw;
   }
 
@@ -301,11 +318,11 @@ export default {
     color: white;
     width: 35vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 15px;
   }
   /* HOME BTN */
@@ -315,21 +332,35 @@ export default {
     color: white;
     width: 10vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 5px;
   }
 
   /* LOGO SEEKBAR */
   .sb-register-page--logo {
-    margin: var(--margin--auto);
+    margin: auto;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     width: 45%;
+  }
+
+  /* SELECT TYPE USER */
+  .sb--register--page-typeUser {
+    width: 100%;
+    text-align: center;
+  }
+
+  .sb--register--page--btntype {
+    background-color: black;
+    color: white;
+    width: 10%;
+    cursor: pointer;
+    text-align: center;
   }
 }
 
@@ -338,11 +369,11 @@ export default {
   .inputFieldRegister {
     background-color: white;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
-    text-align: var(--align--center);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
-    margin: 5px var(--margin--auto) 20px;
+    margin: 5px auto 20px;
     width: 35vw;
   }
   /* REGISTER BTN */
@@ -351,11 +382,11 @@ export default {
     color: white;
     width: 40vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 15px;
   }
 
@@ -366,20 +397,34 @@ export default {
     color: white;
     width: 25vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 5px;
   }
   /* LOGO SEEKBAR */
   .sb-register-page--logo {
-    margin: var(--margin--auto);
+    margin: auto;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     width: 50%;
+  }
+
+  /* SELECT TYPE USER */
+  .sb--register--page-typeUser {
+    width: 100%;
+    text-align: center;
+  }
+
+  .sb--register--page--btntype {
+    background-color: black;
+    color: white;
+    width: 20%;
+    cursor: pointer;
+    text-align: center;
   }
 }
 
@@ -388,11 +433,11 @@ export default {
   .inputFieldRegister {
     background-color: white;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
-    text-align: var(--align--center);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
-    margin: 5px var(--margin--auto) 20px;
+    margin: 5px auto 20px;
     width: 40vw;
   }
   /* REGISTER BTN */
@@ -401,11 +446,11 @@ export default {
     color: white;
     width: 45vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 15px;
   }
   /* HOME BTN */
@@ -415,20 +460,33 @@ export default {
     color: white;
     width: 15vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 5px;
   }
   /* LOGO SEEKBAR */
   .sb-register-page--logo {
-    margin: var(--margin--auto);
+    margin: auto;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     width: 65%;
+  }
+
+  /* SELECT TYPE USER */
+  .sb--register--page-typeUser {
+    width: 100%;
+    text-align: center;
+  }
+  .sb--register--page--btntype {
+    background-color: black;
+    color: white;
+    width: 30%;
+    cursor: pointer;
+    text-align: center;
   }
 }
 
@@ -437,11 +495,11 @@ export default {
   .inputFieldRegister {
     background-color: white;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
-    text-align: var(--align--center);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
-    margin: 5px var(--margin--auto) 20px;
+    margin: 5px auto 20px;
     width: 55vw;
   }
   /* REGISTER BTN */
@@ -450,11 +508,11 @@ export default {
     color: white;
     width: 65vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 15px;
   }
   /* HOME BTN */
@@ -464,11 +522,11 @@ export default {
     color: white;
     width: 25vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 5px;
   }
   /* PAGE TITLE */
@@ -476,16 +534,28 @@ export default {
     font-family: "Rubik Mono One", sans-serif;
     font-size: 35px;
     font-weight: bold;
-    text-align: var(--align--center);
-    margin: 45px var(--margin--auto);
+    text-align: center;
+    margin: 45px auto;
   }
   /* LOGO SEEKBAR */
   .sb-register-page--logo {
-    margin: var(--margin--auto);
+    margin: auto;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     width: 70%;
+  }
+  /* SELECT TYPE USER */
+  .sb--register--page-typeUser {
+    width: 100%;
+    text-align: center;
+  }
+  .sb--register--page--btntype {
+    background-color: black;
+    color: white;
+    width: 25%;
+    cursor: pointer;
+    text-align: center;
   }
 }
 
@@ -494,11 +564,11 @@ export default {
   .inputFieldRegister {
     background-color: white;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
-    text-align: var(--align--center);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
-    margin: 5px var(--margin--auto) 20px;
+    margin: 5px auto 20px;
     width: 90vw;
   }
   /* REGISTER BTN */
@@ -507,11 +577,11 @@ export default {
     color: white;
     width: 95vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 15px;
   }
   /* HOME BTN */
@@ -521,11 +591,11 @@ export default {
     color: white;
     width: 35vw;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    text-align: var(--align--center);
-    margin: var(--margin--auto);
+    text-align: center;
+    margin: auto;
     margin-top: 5px;
   }
   /* PAGE TITLE */
@@ -533,15 +603,15 @@ export default {
     font-family: "Rubik Mono One", sans-serif;
     font-size: 30px;
     font-weight: bold;
-    text-align: var(--align--center);
-    margin: 45px var(--margin--auto);
+    text-align: center;
+    margin: 45px auto;
   }
   /* LOGO SEEKBAR */
   .sb-register-page--logo {
-    margin: var(--margin--auto);
+    margin: auto;
     display: flex;
-    justify-content: var(--align--center);
-    align-items: var(--align--center);
+    justify-content: center;
+    align-items: center;
     width: 85%;
   }
   /* SIGN IN LABEL LINK*/
@@ -552,6 +622,18 @@ export default {
     margin-right: 25px;
     font-size: 16px;
     font-weight: bold;
+  }
+  /* SELECT TYPE USER */
+  .sb--register--page-typeUser {
+    width: 100%;
+    text-align: center;
+  }
+  .sb--register--page--btntype {
+    background-color: black;
+    color: white;
+    width: 50%;
+    cursor: pointer;
+    text-align: center;
   }
 }
 </style>

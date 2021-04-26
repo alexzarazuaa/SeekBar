@@ -23,8 +23,8 @@ const ApiService = {
   },
 
   post(resource: string, params: any) {
-    console.log("entra")
-    console.log(params)
+    console.log("entra");
+    console.log(params);
     return axios.post(`${API_URL}/${resource}`, params);
   },
 
@@ -40,6 +40,7 @@ const ApiService = {
   },
 };
 
+/* PROFILE SERVICE  */
 
 export const ProfileService = {
   getProfile(resource: string, username: any) {
@@ -50,18 +51,36 @@ export const ProfileService = {
   },
 };
 
+/* REGISTER SERVICE */
+
 export const RegisterService = {
-  register(type: string,  credentials: any) {
-    console.log(credentials,type)
-    return ApiService.post(`user/${type}`,credentials);
+  register(type: string, credentials: any) {
+    console.log(credentials, type);
+    return ApiService.post(`user/${type}`, credentials);
   },
 };
 
+/* BARS SERVICE */
 
+export const BarsService = {
+  getBars() {
+    //GET ALLS
+    return ApiService.get(`${API_URL}/bars`);
+  },
 
+  getBar(slug: string) {
+    //GET ONE BAR
+    return ApiService.get(`${API_URL}/bars/${slug}`);
+  },
 
-
-
-
+  addBarFavorite(slug: string) {
+    //FAVORITE BAR
+    return ApiService.post(`bars/${slug}/favorite`, "");
+  },
+  removeBarFavorite(slug: string) {
+    // UNFAVORITE BAR
+    return ApiService.delete(`bars/${slug}/favorite`);
+  },
+};
 
 export default ApiService;

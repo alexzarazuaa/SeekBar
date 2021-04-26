@@ -9,7 +9,7 @@
 
       <IonSegment class="sb-barsList-segments">
         <IonSegmentButton value="recent">
-          <IonLabel class="sb-barsList-segments-titles" >
+          <IonLabel class="sb-barsList-segments-titles">
             ALLS
           </IonLabel>
         </IonSegmentButton>
@@ -62,17 +62,17 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /***************************************
 *             BARS LIST  PAGE          *
 ***************************************/
 
 /* VARIABLES */
 
-:root {
+/* :root {
   --align--center: center;
   --margin--auto: auto;
-}
+} */
 
 /* PAGE  CONTENT */
 .sb-barsList {
@@ -86,18 +86,18 @@ export default {
   font-size: 68px;
   font-weight: bold;
   display: flex;
-  justify-content: var(--align--center);
-  align-content: var(--align--center);
+  justify-content: center;
+  align-content: center;
 }
 
 /* BARS IONCARD */
 
 .sb-barsList-ionCard {
   background-color: white;
-  margin: 15px var(--margin--auto);
+  margin: 15px auto;
   display: flex;
-  justify-content: var(--align--center);
-  align-items: var(--align--center);
+  justify-content: center;
+  align-items: center;
   width: 60vw;
   height: 20vh;
 }
@@ -117,11 +117,20 @@ export default {
   font-family: "Rubik Mono One", sans-serif;
   font-size: 24px;
   font-weight: bold;
-  text-align: var(--align--center);
-  margin: 0px 200px var(--margin--auto);
+  text-align: center;
+  margin: 0px 200px auto;
 }
 .sb-barsList-segments-titles:checked {
   text-decoration: underline;
 }
 
+.sb-barsList-segments-titles:hover {
+
+  text-decoration: underline;
+}
+
+.sb-barsList-segments-titles:active {
+
+  text-decoration: underline;
+}
 </style>

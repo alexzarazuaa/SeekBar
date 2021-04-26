@@ -2,9 +2,9 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import SBhome from "../views/Home.vue";
 import SBlogin from "../views/auth/Login.vue";
 import SBregister from "../views/auth/Register.vue";
-import SBbarsList from "../pages/barsList/barsList.vue";
-import SBbar from "../pages/bar/bar.vue";
-import SBprofile from "../pages/profile/profile.vue";
+import SBbarsList from "../views/barsList/barsList.vue";
+import SBbar from "../views/bar/bar.vue";
+import SBprofile from "../views/profile/profile.vue";
 
 const noAuthGuard = (to: any, from: any, next: any) => {
   (localStorage.getItem("token")) ? next("/") : next()
@@ -40,8 +40,9 @@ const routes: Array<RouteRecordRaw> = [
     component: SBbarsList,
   },
   {
-    path: "/bar",
+    path: "/bar/:slug",
     name: "SBbar",
+    props:true,
     component: SBbar,
   },
   {
