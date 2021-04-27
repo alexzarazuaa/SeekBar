@@ -27,6 +27,13 @@
               errors.filter((error) => error.name === "log_username")[0].value
             }}</span
           >
+             <span
+            v-if="errors.some((error) => error.name === 'logUserBack', value)"
+            >{{
+              errors.filter((error) => error.name === "logUserBack")[0].value
+            }}</span
+          >
+
           <input
             class="inputFieldLogin"
             type="password"
@@ -80,7 +87,18 @@ export default {
       } else {
         this.$store
           .dispatch(ActionsType.LOGIN, { username, password })
-          .then(() => this.$router.push({ name: "SBhome" }));
+          .then(() => this.$router.push({ name: "SBhome" }))
+          .catch((response) => {
+            console.log(response.data.errors.error[0])
+
+            response.data.errors.error
+              ? this.errors.push({name: 'logUserBack', value: response.data.errors.error[0]})
+              : alert(response.data.errors.error[0])
+
+              //     response.data.errors.email
+              // ? this.errors.push({name: 'userBack', value: response.data.errors.email[0]})
+              // : alert(response.data.errors.email[0])
+          });
       }
     },
   },

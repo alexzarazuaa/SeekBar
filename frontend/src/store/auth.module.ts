@@ -22,7 +22,7 @@ const actions = {
   // Login
   [ActionsType.LOGIN](context: any, credentials: any) {
     console.log("ENTRA ACTIOIN LOGIN");
-    return new Promise((resolve) => {
+    return new Promise((resolve,reject) => {
       ApiService.post("users/login", { user: credentials })
         .then(({ data }) => {
           console.log(data);
@@ -30,7 +30,9 @@ const actions = {
           resolve(data);
         })
         .catch(({ response }) => {
+          console.log(response);
           context.commit(MutationsType.SET_ERROR, response.data.errors);
+          reject(response);
         });
     });
   },
