@@ -24,7 +24,7 @@
             placeholder="Entire Name"
             required
           />
-          
+
           <input
             class="inputFieldRegister"
             type="text"
@@ -36,6 +36,12 @@
             v-if="errors.some((error) => error.name === 'username', value)"
             >{{
               errors.filter((error) => error.name === "username")[0].value
+            }}</span
+          >
+          <span
+            v-if="errors.some((error) => error.name === 'userBack', value)"
+            >{{
+              errors.filter((error) => error.name === "userBack")[0].value
             }}</span
           >
           <input
@@ -144,12 +150,15 @@ export default {
             this.$router.push({ name: "SBhome" });
           })
           .catch((response) => {
-            response.data.errors.email
-              ? this.errors.push({
-                  name: "mailBack",
-                  value: "response.data.errors.username",
-                })
-              : alert(response.data.errors.username);
+            console.log(response.data.errors)
+
+            response.data.errors.username
+              ? this.errors.push({name: 'userBack', value: response.data.errors.username[0]})
+              : alert(response.data.errors.username[0])
+
+                  response.data.errors.email
+              ? this.errors.push({name: 'userBack', value: response.data.errors.email[0]})
+              : alert(response.data.errors.email[0])
           });
       }
     },
@@ -162,8 +171,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 /***************************************
 *             REGISTER PAGE            *
 ***************************************/
