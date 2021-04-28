@@ -15,15 +15,15 @@
       </article>
 
       <article class="navbar">
-        <a v-if="!isAuthenticated" :href="'/login'" class="header--login"
-          >Login</a
+        <a v-if="!isAuthenticated" :href="'/login'" class="login"
+          ><i class="fa fa-user" aria-hidden="true"></i></a
         >
 
-        <a @click="profile(currentUser.username)">
+        <a @click="profile(currentUser.check,currentUser.username)">
           {{ currentUser.username }}
         </a>
 
-        <a class="Btn-logout" v-if="isAuthenticated" @click="logout">LogOut</a>
+        <a class="Btn-logout" v-if="isAuthenticated" @click="logout"><i class="fas fa-sign-out-alt"></i></a>
       </article>
     </nav>
   </section>
@@ -48,8 +48,8 @@ export default {
     VAL_TOKEN() {
       this.$store.dispatch(ActionsType.CHECK_AUTH);
     },
-    profile(username) {
-      this.$router.push({ name: "Profile", params: { username: username } });
+    profile(check,username) {
+      this.$router.push({ name: "Profile", params: { check :check ,username: username } });
     },
     openNav() {
       document.getElementById("mySidenav").style.width = "250px";
@@ -59,14 +59,14 @@ export default {
     },
   },
 
-  //    watch: {
-  //       currentUser: {
-  //         deep: true,
-  //         handler (value) {
-  //           console.log('watch currentUser' , value)
-  //         }
-  //   }
-  // }
+     watch: {
+        currentUser: {
+          deep: true,
+          handler (value) {
+            console.log('watch currentUser' , value)
+          }
+    }
+  }
 };
 </script>
 
@@ -89,7 +89,7 @@ export default {
 }
 
 /* LOGIN BTN */
-.header--login {
+.login {
   font-family: Ruluko;
   font-style: normal;
   font-weight: normal;
@@ -156,7 +156,7 @@ export default {
 }
 .header a:hover {
   
-  color: white;
+  color:#fa9950;
 }
 .header__nav {
   width: 100%;
@@ -195,5 +195,8 @@ a:visited,
 .Btn-logout a:hover {
   background-color: red;
   color: red;
+}
+.fa-user{
+  font-size: 34px;
 }
 </style>

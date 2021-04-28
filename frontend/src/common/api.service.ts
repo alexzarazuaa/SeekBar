@@ -43,9 +43,9 @@ const ApiService = {
 /* PROFILE SERVICE  */
 
 export const ProfileService = {
-  getProfile(resource: string, username: any) {
-    console.log("entra profile", resource);
-    return axios.get(`${API_URL}/${resource}${username}`).catch((error) => {
+  getProfile(check: string, username: any) {
+    console.log("entra profile", check);
+    return axios.get(`${API_URL}/${check}${username}`).catch((error) => {
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },

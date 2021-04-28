@@ -46,9 +46,12 @@ const routes: Array<RouteRecordRaw> = [
     component: SBbar,
   },
   {
-    path: "/profile",
+    path: "/profile/:check/:username",
     name: "SBprofile",
+    props: true,
+    beforeEnter: authGuard,
     component: SBprofile,
+
   },
   {
     path: "/:catchAll(.*)",

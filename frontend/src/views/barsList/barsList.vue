@@ -3,60 +3,40 @@
     <section>
       <SBheader />
     </section>
+    <main>
+      <IonContent>
+        <IonTitle class="sb-barsList-title">SEEKBAR</IonTitle>
 
-    <IonContent>
-      <IonTitle class="sb-barsList-title">SEEKBAR</IonTitle>
+        <BarsList />
+      </IonContent>
+    </main>
 
-      <IonSegment class="sb-barsList-segments">
-        <IonSegmentButton value="recent">
-          <IonLabel class="sb-barsList-segments-titles">
-            ALLS
-          </IonLabel>
-        </IonSegmentButton>
-
-        <IonSegmentButton value="yours" checked>
-          <IonLabel class="sb-barsList-segments-titles">
-            YOURS
-          </IonLabel>
-        </IonSegmentButton>
-      </IonSegment>
-
-      <IonCard class="sb-barsList-ionCard">
-        <h1>jaj</h1>
-      </IonCard>
-
-      <IonCard class="sb-barsList-ionCard">
-        <h1>jaj</h1>
-      </IonCard>
-    </IonContent>
     <SBfooter />
   </IonPage>
 </template>
 
+
+
 <script>
 import {
-  IonCard,
-  IonSegment,
-  IonLabel,
-  IonSegmentButton,
+
   IonTitle,
   IonContent,
   IonPage,
 } from "@ionic/vue";
 import SBheader from "@/components/Layout/header.vue";
 import SBfooter from "@/components/Layout/footer.vue";
+import BarsList from "@/components/BarsComponent/BarsList";
 
 export default {
   components: {
     SBheader,
     SBfooter,
-    IonLabel,
-    IonSegmentButton,
-    IonSegment,
-    IonCard,
+
     IonTitle,
     IonContent,
     IonPage,
+    BarsList,
   },
   name: "SBbarsList",
 };
@@ -80,7 +60,6 @@ export default {
   height: 100vh;
   width: 100vw;
 }
-
 .sb-barsList-title {
   font-family: "Roboto", sans-serif;
   font-size: 68px;
@@ -125,12 +104,12 @@ export default {
 }
 
 .sb-barsList-segments-titles:hover {
-
   text-decoration: underline;
 }
 
 .sb-barsList-segments-titles:active {
-
   text-decoration: underline;
 }
+
+
 </style>

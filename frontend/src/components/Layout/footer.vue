@@ -1,7 +1,20 @@
 <template>
   <footer class="footer">
     <section class="icons">
-      <a :href="'/home'"><i class="fa fa-home" to="/home"></i></a>
+      <div class="tab">
+        <button
+          class="tablinks"
+       @click="$router.push('/home')"
+        >
+          HOME
+        </button>
+        <button class="tablinks" @click="$router.push('/bares')">
+          BARES
+        </button>
+        <button class="tablinks" @click="$router.push('/profile')">
+          PROFILE
+        </button>
+      </div>
     </section>
   </footer>
 </template>
@@ -30,10 +43,35 @@ export default {
 /* ICONS */
 .icons {
   display: inline-block;
+  width: 100%;
 }
 
-.fa-home {
-  font-size: 36px;
+/* Style the tab */
+.tab {
+  background-color: black;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
   margin: auto;
+  color: #fa9950;
 }
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  background-color: black;
+  color: #fa9950;
+}
+
 </style>

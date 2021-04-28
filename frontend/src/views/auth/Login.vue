@@ -94,10 +94,6 @@ export default {
             response.data.errors.error
               ? this.errors.push({name: 'logUserBack', value: response.data.errors.error[0]})
               : alert(response.data.errors.error[0])
-
-              //     response.data.errors.email
-              // ? this.errors.push({name: 'userBack', value: response.data.errors.email[0]})
-              // : alert(response.data.errors.email[0])
           });
       }
     },

@@ -155,10 +155,6 @@ export default {
             response.data.errors.username
               ? this.errors.push({name: 'userBack', value: response.data.errors.username[0]})
               : alert(response.data.errors.username[0])
-
-              //     response.data.errors.email
-              // ? this.errors.push({name: 'userBack', value: response.data.errors.email[0]})
-              // : alert(response.data.errors.email[0])
           });
       }
     },
