@@ -1,4 +1,5 @@
 export enum MutationsType {
+    AD_BAR = "adBar",
     FETCH_END = "setBars",
     FETCH_START = "setLoading",
     PURGE_AUTH = "logOut",

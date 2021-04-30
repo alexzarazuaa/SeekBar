@@ -7,15 +7,22 @@ export interface State {
 }
 
 export const InitialState: State = {
-  Bar : {}
+  Bar: {},
 };
 
 export const actions = {
-
+  
+  async [ActionsType.ADD_BAR](context: any , credentials: string) {
+    console.log("enytra module",credentials)
+    const { data } = await BarsService.createBar(credentials);
+    console.log(data);
+    context.commit(MutationsType.AD_BAR, data);
+    return data;
+  },
   async [ActionsType.FETCH_BAR](context: any, barSlug: any) {
-    console.log(barSlug)
+    console.log(barSlug);
     const { data } = await BarsService.getBar(barSlug);
-    console.log(data)
+    console.log(data);
     context.commit(MutationsType.SET_BAR, data);
     return data;
   },
@@ -31,7 +38,6 @@ export const actions = {
     //console.log(data);
     context.commit(MutationsType.SET_BAR, data.bar);
   },
-
 };
 
 export const mutations = {

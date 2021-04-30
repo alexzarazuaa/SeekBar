@@ -6,7 +6,7 @@
 
     <section>
       <article>
-        <h1 class="sb-profile-username">WELCOME,USERNAME</h1>
+        <h1 class="sb-profile-username">WELCOME,{{profile.username}}</h1>
       </article>
       <article class="sb-profile-avatar"></article>
     </section>
@@ -49,6 +49,11 @@ import {
 } from "@ionic/vue";
 import SBheader from "@/components/Layout/header.vue";
 import SBfooter from "@/components/Layout/footer.vue";
+import store from "@/store";
+import { mapGetters } from "vuex";
+//import BarsList from '@/components/BarsListComponent/BarsList'
+import { ActionsType } from "@/store/actions.type";
+
 
 export default {
   components: {
@@ -61,6 +66,25 @@ export default {
     IonPage,
   },
   name: "SBprofile",
+ // components:{BarsList},
+  mounted() {
+    this.$store.dispatch(ActionsType.FETCH_PROFILE, this.$route.params);
+  },
+  beforeRouteEnter(to, from, next) {
+    store.dispatch(ActionsType.FETCH_PROFILE, to.params.username);
+    next();
+  },
+  computed: {
+    ...mapGetters(["profile"]),
+  },
+  watch: {
+    profile: {
+      deep: true,
+      handler(value) {
+        console.log("watch profile", value);
+      },
+    },
+  },
 };
 </script>
 

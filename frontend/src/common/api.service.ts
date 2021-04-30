@@ -63,6 +63,13 @@ export const RegisterService = {
 /* BARS SERVICE */
 
 export const BarsService = {
+
+
+  createBar(info: any){
+    //CREATE BAR
+    console.log(info)
+    return ApiService.post(`bars/`,info);
+  },
   getBars() {
     //GET ALLS
     return ApiService.get(`${API_URL}/bars`);

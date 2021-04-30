@@ -19,6 +19,8 @@
           ><i class="fa fa-user" aria-hidden="true"></i></a
         >
 
+          <a v-if='currentUser.check==="Worker"' :href="'/create'" >Create Bar</a>
+
         <a @click="profile(currentUser.check,currentUser.username)">
           {{ currentUser.username }}
         </a>
