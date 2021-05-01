@@ -13,7 +13,20 @@
         </button>
         <button class="tablinks" @click="$router.push('/profile')">
           PROFILE
+        </button>      <div class="tab">
+        <button
+          class="tablinks"
+       @click="$router.push('/home')"
+        >
+          HOME
         </button>
+        <button class="tablinks" @click="$router.push('/bares')">
+          BARES
+        </button>
+        <button class="tablinks" @click="$router.push('/profile')">
+          PROFILE
+        </button>
+      </div>
       </div>
     </section>
   </footer>

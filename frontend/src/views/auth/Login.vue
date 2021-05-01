@@ -1,14 +1,14 @@
 <template>
-  <IonPage class="sb-login-page">
+  <ion-page class="sb-login-page">
     <section>
       <article>
-        <img class="sb-login-page--logo" v-bind:src="'image'" :alt="alt" />
+        <img class="sb-login-page--logo" v-bind:src="imageSrc" :alt="'logo seekBar'" :content="'Logo blanco SeekBAR'"/>
       </article>
       <article>
-        <IonTitle class="sb-login-page--title">SIGN IN</IonTitle>
-        <IonButton color="dark" className="sb-login-page--homebtn">
+        <ion-title class="sb-login-page--title">SIGN IN</ion-title>
+        <ion-button color="dark" className="sb-login-page--homebtn">
           <a :href="'/home'">HOME</a>
-        </IonButton>
+        </ion-button>
       </article>
     </section>
     <section>
@@ -27,7 +27,7 @@
               errors.filter((error) => error.name === "log_username")[0].value
             }}</span
           >
-             <span
+          <span
             v-if="errors.some((error) => error.name === 'logUserBack', value)"
             >{{
               errors.filter((error) => error.name === "logUserBack")[0].value
@@ -49,23 +49,23 @@
           >
           <button class="sb-login-page--loginbtn">Sign In</button>
 
-          <IonLabel class="sb-login-page--account">
+          <ion-label class="sb-login-page--account">
             Aún no tienes una cuenta?
-            <IonLabel class="sb-register-page--signin">
+            <ion-label class="sb-register-page--signin">
               <a :href="'/register'">Resgistrate</a>
-            </IonLabel>
-          </IonLabel>
+            </ion-label>
+          </ion-label>
         </form>
       </article>
     </section>
-  </IonPage>
+  </ion-page>
 </template>
 
 <script>
 import { IonPage, IonTitle, IonButton } from "@ionic/vue";
 import { mapState } from "vuex";
 import { ActionsType } from "@/store/actions.type";
-import { LoginFormErrors } from "./utils/utils";
+import { LoginFormErrors } from "../../utils/utils";
 export default {
   components: { IonPage, IonTitle, IonButton },
   name: "SBlogin",
@@ -74,8 +74,7 @@ export default {
       errors: [],
       username: null,
       password: null,
-      image: "@/assets/img/SEEK_BAR_BLANCO.png",
-      alt: "logo_seekbar",
+
     };
   },
   methods: {
@@ -89,11 +88,14 @@ export default {
           .dispatch(ActionsType.LOGIN, { username, password })
           .then(() => this.$router.push({ name: "SBhome" }))
           .catch((response) => {
-            console.log(response.data.errors.error[0])
+            console.log(response.data.errors.error[0]);
 
             response.data.errors.error
-              ? this.errors.push({name: 'logUserBack', value: response.data.errors.error[0]})
-              : alert(response.data.errors.error[0])
+              ? this.errors.push({
+                  name: "logUserBack",
+                  value: response.data.errors.error[0],
+                })
+              : alert(response.data.errors.error[0]);
           });
       }
     },
@@ -102,6 +104,9 @@ export default {
     ...mapState({
       errors: (state) => state.auth.errors,
     }),
+    imageSrc: function() {
+      return `https://raw.githubusercontent.com/alexzarazuaa/SeekBar/main/frontend/src/assets/img/SEEK_BAR_BLANCO.png`;
+    },
   },
 };
 </script>

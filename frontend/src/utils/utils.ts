@@ -37,3 +37,32 @@ export const LoginFormErrors = (values: any) => {
 
   return typesErrors ;
 };
+
+
+export const CreateBarFormErrors = (values: any) => {
+  console.log(values)
+  const typesErrors: any[] = [];
+
+  if (!CheckRegex(/^[a-zA-Z0-9]{3,16}$/, values.name)) {
+    typesErrors.push({name: 'BarName', value:'El name es incorrecto'});
+  }
+
+  if (!CheckRegex(/^[a-zA-Z]{3,26}$/, values.description)) {
+    typesErrors.push({name: 'BarDescription', value:'El description es incorrecto'});
+  }
+
+  if (!CheckRegex(/^[0-9]{9}$/, values.phoneNumber)) {
+    typesErrors.push({name: 'BarPhoneNumber', value:'El phoneNumber es incorrecto'});
+  }
+
+  if (!CheckRegex(/^[a-zA-Z]{3,16}$/, values.location)) {
+    typesErrors.push({name: 'BarLocation', value:'La localidad  es incorrecta'});
+  }
+
+
+
+
+  return typesErrors ;
+
+
+};

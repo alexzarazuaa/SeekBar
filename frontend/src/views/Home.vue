@@ -1,18 +1,18 @@
 <template>
-  <IonPage class="sb-home">
+  <ion-page class="sb-home">
     <section>
       <SBheader />
     </section>
     <main>
-      <IonContent>
-        <IonTitle class="sb-home-title">SEEKBAR</IonTitle>
+      <ion-content>
+        <ion-title class="sb-home-title">SEEKBAR</ion-title>
 
         <BarsList />
-      </IonContent>
+      </ion-content>
     </main>
 
     <SBfooter />
-  </IonPage>
+  </ion-page>
 </template>
 
 <script>
@@ -35,7 +35,7 @@ export default {
 
 <style scoped>
 /***************************************
-*             HOME PAGE                *
+*             HOME PAGE                                           *
 ***************************************/
 
 /* VARIABLES */

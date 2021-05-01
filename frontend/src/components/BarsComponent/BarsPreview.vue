@@ -1,19 +1,18 @@
 <template>
 
 
-    <IonPage class="sb-bar">
-
+    <ion-page class="sb-bar">
     <main>
-      <IonContent>
-        <IonCard @click="details(bar.slug)" class="sb-bar-ionCard">
-            <img v-bind:src="bar.image" class="bar-title"/>
-        </IonCard>
+      <ion-content>
+        <ion-card @click="details(bar.slug)" class="sb-bar-ionCard">
+            <img v-bind:src="bar.image" class="bar-title" :alt="''"  :content="'bar.description'"/>
+        </ion-card>
 
-      </IonContent>
+      </ion-content>
     </main>
 
 
-  </IonPage>
+  </ion-page>
 </template>
 
 <script>
@@ -43,26 +42,13 @@ components: { IonCard,  IonContent, IonPage },
   --margin--auto: auto;
 } */
 
-/*  BAR TITLE */
 
-.sb-bar-title {
-  font-family: "Roboto", sans-serif;
-  font-size: 48px;
-  font-weight: bold;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: -10px;
-
-}
 
 /* BARS IONCARD */
 
 .sb-bar-ionCard {
   background-color: white;
-  margin: 15px auto;
- 
+  margin: 5px auto;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -56,6 +56,7 @@ export default {
   justify-content: center;
   align-items: center;
   margin: auto;
+  flex-direction: column;
 }
 .previous {
   display: flex;

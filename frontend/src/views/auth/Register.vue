@@ -1,17 +1,17 @@
 <template>
-  <IonPage class="sb-register-page">
+  <ion-page class="sb-register-page">
     <section>
       <article>
-        <img class="sb-login-page--logo" :src="image" :alt="alt" />
+        <img class="sb-register-page--logo" v-bind:src="imageSrc" :alt="'logo seekBar'" :content="'Logo blanco SeekBAR'"/>
       </article>
       <article>
-        <IonTitle class="sb-register-page--title">
+        <ion-title class="sb-register-page--title">
           SIGN UP
-        </IonTitle>
+        </ion-title>
 
-        <IonButton color="dark" className="sb-register-page--homebtn">
+        <ion-button color="dark" className="sb-register-page--homebtn">
           <a :href="'/home'">HOME</a>
-        </IonButton>
+        </ion-button>
       </article>
     </section>
     <section>
@@ -92,23 +92,23 @@
           </article>
 
           <button class="sb-register-page--registerbtn">Sign Up</button>
-          <IonLabel class="sb-register-page--account">
+          <ion-label class="sb-register-page--account">
             Ya tienes una cuenta?
-            <IonLabel class="sb-register-page--signin">
+            <ion-label class="sb-register-page--signin">
               <a :href="'/login'">Inicia Session</a>
-            </IonLabel>
-          </IonLabel>
+            </ion-label>
+          </ion-label>
         </form>
       </article>
     </section>
-  </IonPage>
+  </ion-page>
 </template>
 
 <script>
 import { mapState } from "vuex";
 import { ActionsType } from "@/store/actions.type";
 import { IonPage, IonTitle, IonButton } from "@ionic/vue";
-import { RegisterFormErrors } from "./utils/utils";
+import { RegisterFormErrors } from "../../utils/utils";
 export default {
   components: { IonPage, IonTitle, IonButton },
   name: "SBregister",
@@ -129,6 +129,9 @@ export default {
     ...mapState({
       errors: (state) => state.auth.errors,
     }),
+    imageSrc: function() {
+      return `https://raw.githubusercontent.com/alexzarazuaa/SeekBar/main/frontend/src/assets/img/SEEK_BAR_BLANCO.png`;
+    },
   },
   methods: {
     onSubmit() {
@@ -150,11 +153,14 @@ export default {
             this.$router.push({ name: "SBhome" });
           })
           .catch((response) => {
-            console.log(response.data.errors)
+            console.log(response.data.errors);
 
             response.data.errors.username
-              ? this.errors.push({name: 'userBack', value: response.data.errors.username[0]})
-              : alert(response.data.errors.username[0])
+              ? this.errors.push({
+                  name: "userBack",
+                  value: response.data.errors.username[0],
+                })
+              : alert(response.data.errors.username[0]);
           });
       }
     },

@@ -1,18 +1,17 @@
 <template>
-  <IonPage class="sb-barsList">
+  <ion-page class="sb-barsList">
     <section>
       <SBheader />
     </section>
     <main>
-      <IonContent>
-        <IonTitle class="sb-barsList-title">SEEKBAR</IonTitle>
-
+      <ion-content>
+        <ion-title class="sb-barsList-title">SEEKBAR</ion-title>
         <BarsList />
-      </IonContent>
+      </ion-content>
     </main>
 
     <SBfooter />
-  </IonPage>
+  </ion-page>
 </template>
 
 
@@ -73,10 +72,11 @@ export default {
 
 .sb-barsList-ionCard {
   background-color: white;
-  margin: 15px auto;
+  margin: 0px auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 60vw;
   height: 20vh;
 }

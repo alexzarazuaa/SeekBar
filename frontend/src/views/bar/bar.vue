@@ -1,13 +1,13 @@
 <template>
-  <IonPage class="sb-barsList">
+  <ion-page class="sb-barsList">
     <section>
       <SBheader />
     </section>
 
-    <IonContent>
-      <IonCard class="sb-bar-ionCard">
-        <IonTitle>{{bar.name}}</IonTitle>
-      </IonCard>
+    <ion-content>
+      <ion-card class="sb-bar-ionCard">
+        <ion-title>{{bar.name}}</ion-title>
+      </ion-card>
 
       <article>
         <span class="sb-bar-tables"></span>
@@ -17,23 +17,23 @@
       </article>
 
       <article>
-        <IonCard class="sb-bar-ionmap">
-          <IonTitle>jaj</IonTitle>
-        </IonCard>
+        <ion-card class="sb-bar-ionmap">
+          <ion-title>jaj</ion-title>
+        </ion-card>
       </article>
       <article>
-        <IonLabel class="sb-bar-reviews">REVIEWS 
+        <ion-label class="sb-bar-reviews">REVIEWS 
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star "></span>
           <span class="fa fa-star "></span>
           <span class="fa fa-star "></span>
           <span class="fa fa-star "></span
-        ></IonLabel>
+        ></ion-label>
       </article>
-    </IonContent>
+    </ion-content>
     <SBfooter />
-  </IonPage>
+  </ion-page>
 </template>
 
 <script>

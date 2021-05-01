@@ -1,14 +1,14 @@
 <template>
-  <IonPage class="sb-createBar-page">
+  <ion-page class="sb-createBar-page">
     <section>
       <article>
         <img class="sb-createBar-page--logo" v-bind:src="'image'" :alt="alt" />
       </article>
       <article>
-        <IonTitle class="sb-createBar-page--title">CREATE YOUR BAR</IonTitle>
-        <IonButton color="dark" className="sb-createBar-page--homebtn">
+        <ion-title class="sb-createBar-page--title">CREATE YOUR BAR</ion-title>
+        <ion-button color="dark" className="sb-createBar-page--homebtn">
           <a :href="'/home'">HOME</a>
-        </IonButton>
+        </ion-button>
       </article>
     </section>
     <section>
@@ -25,12 +25,26 @@
             placeholder="Name"
             required
           />
+          <span
+            v-if="errors.some((error) => error.name === 'BarName', value)"
+            >{{
+              errors.filter((error) => error.name === "BarName")[0].value
+            }}</span
+          >
           <input
             class="inputFieldCreateBar"
             type="text"
             v-model="description"
             placeholder="Description"
           />
+          <span
+            v-if="
+              errors.some((error) => error.name === 'BarDescription', value)
+            "
+            >{{
+              errors.filter((error) => error.name === "BarDescription")[0].value
+            }}</span
+          >
 
           <input
             class="inputFieldCreateBar"
@@ -38,12 +52,26 @@
             v-model="phoneNumber"
             placeholder="PhoneNumber"
           />
+          <span
+            v-if="
+              errors.some((error) => error.name === 'BarPhoneNumber', value)
+            "
+            >{{
+              errors.filter((error) => error.name === "BarPhoneNumber")[0].value
+            }}</span
+          >
           <input
             class="inputFieldCreateBar"
             type="text"
             v-model="location"
             placeholder="Location"
           />
+          <span
+            v-if="errors.some((error) => error.name === 'BarLocation', value)"
+            >{{
+              errors.filter((error) => error.name === "BarLocation")[0].value
+            }}</span
+          >
           <input
             class="inputFieldCreateBar"
             type="number"
@@ -52,7 +80,12 @@
             min="1"
             max="5"
           />
-          <label class="inputFieldCreateBar labelBannerBar" for="bannerBar" style="  background-color: #fa9950;" >Choose a banner picture:</label>
+          <label
+            class="inputFieldCreateBar labelBannerBar"
+            for="bannerBar"
+            style="  background-color: #fa9950;"
+            >Choose a banner picture:</label
+          >
           <input
             class="inputFieldCreateBar selectImg"
             type="file"
@@ -65,18 +98,20 @@
         </form>
       </article>
     </section>
-  </IonPage>
+  </ion-page>
 </template>
 
 <script>
 import { IonPage, IonTitle, IonButton } from "@ionic/vue";
 import { mapState } from "vuex";
 import { ActionsType } from "@/store/actions.type";
+import { CreateBarFormErrors } from "../../utils/utils";
 export default {
   components: { IonPage, IonTitle, IonButton },
   name: "SBcreateBar",
   data() {
     return {
+      errors: [],
       name: "",
       description: "",
       phoneNumber: "",
@@ -87,21 +122,27 @@ export default {
   methods: {
     onSubmit(name, description, phoneNumber, location, valoration) {
       console.log(name, description, phoneNumber, location, valoration);
-      this.$store
-        .dispatch(ActionsType.ADD_BAR, {
-          name: this.name,
-          description: this.description,
-          phoneNumber: this.phoneNumber,
-          location: this.location,
-          Valoration: this.Valoration,
-        })
-        .then((response) => {
-          console.log(response);
-          this.$router.push({ name: "SBhome" });
-        })
-        .catch((response) => {
-          console.log(response);
-        });
+      this.errors = [];
+      const regexErrors = CreateBarFormErrors(this);
+      if (regexErrors.length > 0) {
+        this.errors = regexErrors;
+      } else {
+        this.$store
+          .dispatch(ActionsType.ADD_BAR, {
+            name: this.name,
+            description: this.description,
+            phoneNumber: this.phoneNumber,
+            location: this.location,
+            Valoration: this.Valoration,
+          })
+          .then((response) => {
+            console.log(response);
+            this.$router.push({ name: "SBhome" });
+          })
+          .catch((response) => {
+            console.log(response);
+          });
+      }
     },
   },
   computed: {
@@ -207,8 +248,6 @@ export default {
   font-weight: 500;
 }
 
-
-
 /***************************************
 *         QUERIES RESPONSIVE           *
 ***************************************/
@@ -262,7 +301,7 @@ export default {
     width: 45%;
   }
 
-  .selectImg{
+  .selectImg {
     width: 50%;
   }
 }
@@ -316,7 +355,7 @@ export default {
     align-items: center;
     width: 50%;
   }
-    .selectImg{
+  .selectImg {
     width: 53%;
   }
 }

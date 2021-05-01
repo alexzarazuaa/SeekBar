@@ -1,5 +1,5 @@
 <template>
-  <IonPage class="sb-profile-page">
+  <ion-page class="sb-profile-page">
     <section>
       <SBheader />
     </section>
@@ -12,31 +12,31 @@
     </section>
     <section>
       
-      <IonSegment class="sb-profile-segments">
-        <IonSegmentButton value="recent">
-          <IonLabel class="sb-profile-segments-titles"
-            >UPDATE</IonLabel
+      <ion-segment class="sb-profile-segments">
+        <ion-segment-button value="recent">
+          <ion-label class="sb-profile-segments-titles"
+            >UPDATE</ion-label
           >
-        </IonSegmentButton>
+        </ion-segment-button>
 
-        <IonSegmentButton value="yours" checked>
-          <IonLabel class="sb-profile-segments-titles"
-            >FAVOURITES</IonLabel
+        <ion-segment-button value="yours" checked>
+          <ion-label class="sb-profile-segments-titles"
+            >FAVOURITES</ion-label
           >
-        </IonSegmentButton>
+        </ion-segment-button>
 
-        <IonSegmentButton value="favorited">
-          <IonLabel class="sb-profile-segments-titles"
-            >BOOKINGS</IonLabel
+        <ion-segment-button value="favorited">
+          <ion-label class="sb-profile-segments-titles"
+            >BOOKINGS</ion-label
           >
-        </IonSegmentButton>
-      </IonSegment>
-      <IonCard class="sb-profile-cards">
+        </ion-segment-button>
+      </ion-segment>
+      <ion-card class="sb-profile-cards">
         <h1>PROFILE</h1>
-      </IonCard>
+      </ion-card>
       <SBfooter />
     </section>
-  </IonPage>
+  </ion-page>
 </template>
 
 <script>
