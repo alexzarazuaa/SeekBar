@@ -3,7 +3,7 @@
 <p align="center">
 
   <a>
-    <img src="assets/SEEK_BAR_BLANCO.png" alt="Seekbar_logo">
+    <img src="assets/LOGOTIPO_NEGRO.png" alt="Seekbar_logo">
   </a>
 
 </p>
