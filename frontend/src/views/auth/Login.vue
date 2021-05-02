@@ -2,7 +2,12 @@
   <ion-page class="sb-login-page">
     <section>
       <article>
-        <img class="sb-login-page--logo" v-bind:src="imageSrc" :alt="'logo seekBar'" :content="'Logo blanco SeekBAR'"/>
+        <img
+          class="sb-login-page--logo"
+          v-bind:src="imageSrc"
+          :alt="'logo seekBar'"
+          :content="'Logo blanco SeekBAR'"
+        />
       </article>
       <article>
         <ion-title class="sb-login-page--title">SIGN IN</ion-title>
@@ -74,7 +79,6 @@ export default {
       errors: [],
       username: null,
       password: null,
-
     };
   },
   methods: {
@@ -104,7 +108,7 @@ export default {
     ...mapState({
       errors: (state) => state.auth.errors,
     }),
-    imageSrc: function() {
+    imageSrc: function () {
       return `https://raw.githubusercontent.com/alexzarazuaa/SeekBar/main/frontend/src/assets/img/SEEK_BAR_BLANCO.png`;
     },
   },

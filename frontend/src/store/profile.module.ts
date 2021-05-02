@@ -16,7 +16,7 @@ const getters = {
 const actions = {
   [ActionsType.FETCH_PROFILE](context: any , username: any) {
     console.log(context,username)
-    return ProfileService.getProfile("profiles/", username)
+    return ProfileService.getProfile(`profile/${context}/${username}`,"")
       .then(({ data }) => {
          console.log(data)
         context.commit(MutationsType.SET_PROFILE, data.profile);

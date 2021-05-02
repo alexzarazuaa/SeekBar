@@ -40,12 +40,14 @@ const ApiService = {
   },
 };
 
+
+
 /* PROFILE SERVICE  */
 
 export const ProfileService = {
-  getProfile(check: string, username: any) {
-    console.log("entra profile", check);
-    return axios.get(`${API_URL}/${check}${username}`).catch((error) => {
+  getProfile(check: any, username: any) {
+    console.log(check,username)
+    return axios.get(`${API_URL}/${check}/${username}`).catch((error) => {
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },
@@ -59,7 +61,6 @@ export const RegisterService = {
     return ApiService.post(`user/${type}`, credentials);
   },
 };
-
 /* BARS SERVICE */
 
 export const BarsService = {
@@ -89,5 +90,6 @@ export const BarsService = {
     return ApiService.delete(`bars/${slug}/favorite`);
   },
 };
+
 
 export default ApiService;

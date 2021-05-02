@@ -19,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "SBhome",
-    component: SBhome,
+    component: SBhome
   },
 
   {
@@ -49,7 +49,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path:"/create",
     name:"SBcreateBar",
-    component:SBcreateBar
+    component:SBcreateBar,
+    beforeEnter:authGuard
   },
   {
     path: "/profile/:check/:username",

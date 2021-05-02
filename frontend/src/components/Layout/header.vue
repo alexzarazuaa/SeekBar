@@ -25,7 +25,7 @@
           {{ currentUser.username }}
         </a>
 
-        <a class="Btn-logout" v-if="isAuthenticated" @click="logout"><i class="fas fa-sign-out-alt"></i></a>
+        <a class="Btn-logout" v-if='isAuthenticated' @click="logout">LogOut</a>
       </article>
     </nav>
   </section>
@@ -51,7 +51,15 @@ export default {
       this.$store.dispatch(ActionsType.CHECK_AUTH);
     },
     profile(check,username) {
-      this.$router.push({ name: "Profile", params: { check :check ,username: username } });
+      console.log(check, username)
+      let type = "";
+      if(check==="Client"){
+          type="client"
+      }else if(check==="Worker"){
+          type="worker"
+      }
+      console.log(type)
+      this.$router.push({ name: "SBprofile", params: { check :type ,username: username } });
     },
     openNav() {
       document.getElementById("mySidenav").style.width = "250px";
