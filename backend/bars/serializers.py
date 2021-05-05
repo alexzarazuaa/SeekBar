@@ -9,7 +9,7 @@ class BarSerializer(serializers.ModelSerializer):#Retrieve & List & Create Bar
     phone_number = serializers.CharField(required=False)
     location = serializers.CharField(required=False)
     valoration = serializers.DecimalField(required=False, max_digits=2, decimal_places=1)
-    image = serializers.ImageField(required=False)
+    image = serializers.CharField(required=False)
 
     owner= WorkerSerializer(read_only=True)
     createdAt = serializers.SerializerMethodField(method_name='get_created_at')
