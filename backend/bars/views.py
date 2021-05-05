@@ -14,6 +14,18 @@ class BarViewSet(viewsets.ModelViewSet): #Retrieve & List & Create Bar
     serializer_class = BarSerializer
     lookup_field = 'slug'
 
+    def get_queryset(self):
+        queryset= self.queryset
+        
+        favorited_by = self.request.query_params.get('favorited', "")
+        if favorited_by is not "":
+            queryset = queryset.filter(
+                favorited_by__user__username=favorited_by
+            )
+
+        return queryset
+
+
     def get_permissions(self):
         if self.request.method == 'POST':
             self.permission_classes = [IsWorker,]
