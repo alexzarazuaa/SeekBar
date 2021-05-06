@@ -30,11 +30,9 @@ export default {
   },
   methods: {
     next() {
-      console.log("dfrf next");
       this.$store.dispatch(ActionsType.FETCH_PAGINATION, this.next);
     },
     previous() {
-      console.log("dfrf PRE");
       this.$store.dispatch(ActionsType.FETCH_PAGINATION, this.previous);
     },
   },

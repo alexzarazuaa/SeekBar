@@ -16,15 +16,12 @@ const ApiService = {
   },
 
   get(resource: string, params = "") {
-    // console.log('entra',resource)
     return axios.get(`${resource}/${params}`).catch((error) => {
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },
 
   post(resource: string, params: any) {
-    console.log("entra");
-    console.log(params);
     return axios.post(`${API_URL}/${resource}`, params);
   },
 
@@ -32,12 +29,12 @@ const ApiService = {
     return axios.put(`${resource}/${slug}`, params);
   },
 
-  delete(resource: string) {
-    //console.log(resource, "delete bar");
-    return axios.delete(`${API_URL}/${resource}`).catch((error: any) => {
+  delete(resource: string, params: any) {
+    return axios.delete(`${API_URL}/${resource}`,params).catch((error: any) => {
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },
+  
 };
 
 
@@ -56,7 +53,6 @@ export const ProfileService = {
 
 export const RegisterService = {
   register(type: string, credentials: any) {
-    console.log(credentials, type);
     return ApiService.post(`user/${type}`, credentials);
   },
 };
@@ -65,8 +61,6 @@ export const RegisterService = {
 
 export const UserService = {
   getUser(resource: string) {
-     console.log('entra',resource)
-     console.log(`${API_URL}/${resource}`)
     return axios.get(`${API_URL}/${resource}`).catch((error) => {
       throw new Error(`[RWV] ApiService ${error}`);
     });
@@ -83,7 +77,6 @@ export const BarsService = {
 
   createBar(info: any){
     //CREATE BAR
-    console.log(info)
     return ApiService.post(`bars/`,info);
   },
   getBars() {
@@ -97,13 +90,12 @@ export const BarsService = {
   },
 
   addBarFavorite(slug: string) {
-    console.log("api",slug)
     //FAVORITE BAR
-    return ApiService.post(`bars/${slug}/favorite`, "");
+    return ApiService.post(`bars/${slug}/favorite`, null);
   },
   removeBarFavorite(slug: string) {
     // UNFAVORITE BAR
-    return ApiService.delete(`bars/${slug}/favorite`);
+    return ApiService.delete(`bars/${slug}/favorite`,null);
   },
 };
 

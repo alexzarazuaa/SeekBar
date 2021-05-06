@@ -14,38 +14,23 @@ export const InitialState: State = {
 export const actions = {
 
 
-  [ActionsType.ADD_BAR](context: any, credentials: string) {
-    if (JwtService.getToken()) {
-      ApiService.setHeader();
-      BarsService.createBar(credentials)
-        .then(({ data }) => {
-          console.log(data);
-          context.commit(MutationsType.AD_BAR, data);
-        })
-        .catch(({ response }) => {
-          context.commit(MutationsType.SET_ERROR, response.data.errors);
-        });
-    } else {
-      context.commit(MutationsType.PURGE_AUTH);
-    }
+  async [ActionsType.ADD_BAR](context: any, credentials: string) {
+    ApiService.setHeader();
+    const { data } = await BarsService.createBar(credentials)
+    context.commit(MutationsType.SET_BAR, data.bar);
   },
   async [ActionsType.FETCH_BAR](context: any, barSlug: any) {
-    console.log(barSlug);
-    const { data } = await BarsService.getBar(barSlug);
-    console.log(data);
+    const { data } = await BarsService.getBar(barSlug);;
     context.commit(MutationsType.SET_BAR, data);
     return data;
   },
   async [ActionsType.FAVORITE_ADD](context: any, barSlug: any) {
-    console.log("lo hara favorito");
-    const { data } = await BarsService.addBarFavorite(barSlug);
-    console.log(data);
+
+    const { data } = await BarsService.addBarFavorite(barSlug);;
     context.commit(MutationsType.SET_BAR, data.bar);
   },
   async [ActionsType.FAVORITE_REMOVE](context: any, barSlug: any) {
-    console.log("entra borra fav");
     const { data } = await BarsService.removeBarFavorite(barSlug);
-    //console.log(data);
     context.commit(MutationsType.SET_BAR, data.bar);
   },
 };

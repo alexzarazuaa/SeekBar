@@ -10,7 +10,6 @@ export const RegisterFormErrors = (values: any) => {
   }
 
   if (!CheckRegex(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,values.email)) {
-    console.log("EMAIL ERROR", values.email);
     typesErrors.push({name: 'email', value:'El email es incorrecto'});
   }
 
@@ -40,7 +39,6 @@ export const LoginFormErrors = (values: any) => {
 
 
 export const CreateBarFormErrors = (values: any) => {
-  console.log(values)
   const typesErrors: any[] = [];
 
   if (!CheckRegex(/^[a-zA-Z0-9]{3,16}$/, values.name)) {

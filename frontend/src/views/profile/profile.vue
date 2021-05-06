@@ -10,7 +10,7 @@
         <!-- -->
 
         <label class="switch">
-          <input type="checkbox" @click="toggleActivate" />
+          <input type="checkbox" @click="toggleActivate"  checked/>
           <span class="slider round"></span>
         </label>
       </article>
@@ -68,13 +68,9 @@ export default {
   name: "SBprofile",
   // components:{BarsList},
   mounted() {
-    console.log("MOUNTED");
     this.$store.dispatch(ActionsType.FETCH_PROFILE, this.$route.params);
   },
   beforeRouteEnter(to, from, next) {
-    console.log("BEFORE");
-    console.log(to.params);
-
     store.dispatch(ActionsType.FETCH_PROFILE, to.params);
     next();
   },
@@ -83,7 +79,6 @@ export default {
   },
   methods: {
     toggleActivate() {
-      console.log("delete");
       ApiService.desactivateUser();
     },
   },
