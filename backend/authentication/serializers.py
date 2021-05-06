@@ -55,12 +55,6 @@ class LoginSerializer(serializers.Serializer): #Login & Deactive & Reactivate Us
                 'This user has been deactivated.'
             )
 
-        try:
-            user.worker
-            value='Worker'
-        except: 
-            value='Client'
-
         return {
             'email': user.email,
             'username': user.username,
@@ -68,7 +62,7 @@ class LoginSerializer(serializers.Serializer): #Login & Deactive & Reactivate Us
             'name': user.name,
             'phone_number': user.phone_number,
             'image': user.image,
-            'checkType': value
+            'checkType': user.checkType
         }
 
     def deactivate(data): #Deactive User

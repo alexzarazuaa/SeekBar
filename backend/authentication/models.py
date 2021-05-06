@@ -30,12 +30,6 @@ class UserManager(BaseUserManager):
         user.set_password(password)
         user.save()
 
-        # try:
-        #     user.worker
-        #     user.checkType='Worker'
-        # except: 
-        #     user.checkType='Client'
-
         return user
 
     def create_superuser(self, username, email, password):
