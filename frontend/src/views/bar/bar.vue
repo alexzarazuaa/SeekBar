@@ -6,7 +6,23 @@
 
     <ion-content>
       <ion-card class="sb-bar-ionCard">
-        <ion-title>{{bar.name}}</ion-title>
+        <ion-title>{{ bar.name }}</ion-title>
+
+        <article class="bar-buttons">
+          <button
+            class="btn-primary"
+            v-if="bar.favorited"
+            @click="toggleFavorite"
+          >
+            <i class="ion-heart"></i>&nbsp; &nbsp; &nbsp;
+            <span class="counter"> {{ bar.favoritesCount }} </span>
+          </button>
+
+          <button class="btn-outline-primary" v-else @click="toggleFavorite">
+            <i class="ion-heart"></i>&nbsp; &nbsp; &nbsp;
+            <span class="counter"> {{ bar.favoritesCount }} </span>
+          </button>
+        </article>
       </ion-card>
 
       <article>
@@ -22,13 +38,14 @@
         </ion-card>
       </article>
       <article>
-        <ion-label class="sb-bar-reviews">REVIEWS 
+        <ion-label class="sb-bar-reviews"
+          >REVIEWS
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
-          <span class="fa fa-star "></span>
-          <span class="fa fa-star "></span>
-          <span class="fa fa-star "></span>
-          <span class="fa fa-star "></span
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span
         ></ion-label>
       </article>
     </ion-content>
@@ -54,7 +71,7 @@ export default {
     IonPage,
   },
   name: "SBbar",
-   props: {
+  props: {
     slug: {
       type: String,
       required: true,
@@ -74,7 +91,7 @@ export default {
   methods: {
     toggleFavorite() {
       if (!this.isAuthenticated) {
-        this.$router.push({ name: "Login" });
+        this.$router.push({ name: "SBlogin" });
         return;
       }
       const action = this.bar.favorited
@@ -191,7 +208,7 @@ export default {
   color: red;
 }
 .btn-outline-primary {
-  background-color: green;
+  background-color: transparent;
   color: whitesmokeΰ;
 }
 .ion-heart {

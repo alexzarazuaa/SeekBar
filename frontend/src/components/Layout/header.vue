@@ -52,12 +52,10 @@ export default {
     },
     profile(check,username) {
       console.log(check, username)
-      let type = "";
-      if(check==="Client"){
-          type="client"
-      }else if(check==="Worker"){
-          type="worker"
-      }
+
+
+     const type= check==="Worker"? "workers" : "clients" 
+      console.log("HEADER")
       console.log(type)
       this.$router.push({ name: "SBprofile", params: { check :type ,username: username } });
     },

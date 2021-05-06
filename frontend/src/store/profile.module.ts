@@ -14,12 +14,12 @@ const getters = {
 };
 
 const actions = {
-  [ActionsType.FETCH_PROFILE](context: any , username: any) {
-    console.log(context,username)
-    return ProfileService.getProfile(`profile/${context}/${username}`,"")
+  [ActionsType.FETCH_PROFILE](context: any , params: any) {
+
+    return ProfileService.getProfile(`${params.check}/${params.username}`,"")
       .then(({ data }) => {
-         console.log(data)
-        context.commit(MutationsType.SET_PROFILE, data.profile);
+
+        context.commit(MutationsType.SET_PROFILE, data);
         return data;
       })
       .catch((response) => {

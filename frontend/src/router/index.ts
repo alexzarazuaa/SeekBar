@@ -50,10 +50,11 @@ const routes: Array<RouteRecordRaw> = [
     path:"/create",
     name:"SBcreateBar",
     component:SBcreateBar,
-    beforeEnter:authGuard
+
+  
   },
   {
-    path: "/profile/:check/:username",
+    path: "/:check/:username",
     name: "SBprofile",
     props: true,
     beforeEnter: authGuard,

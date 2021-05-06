@@ -60,7 +60,28 @@ const actions = {
         });
     });
   },
+  
+  // Check auth
+  // [ActionsType.CHECK_AUTH](context: any) {
+  //   if (JwtService.getToken()) {
+  //     ApiService.setHeader();
+  //     UserService.getUser("user")
+  //       .then(({ data }) => {
+  //         // console.log(data,'USER')
+  //         context.commit(MutationsType.SET_AUTH, data.user);
+  //       })
+  //       .catch(({ response }) => {
+  //         context.commit(MutationsType.SET_ERROR, response.data.errors);
+  //       });
+  //   } else {
+  //     context.commit(MutationsType.PURGE_AUTH);
+  //   }
+  // }
+  
+
+
 };
+
 
 const mutations = {
   // Set error

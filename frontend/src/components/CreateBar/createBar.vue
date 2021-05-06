@@ -83,7 +83,7 @@
           <label
             class="inputFieldCreateBar labelBannerBar"
             for="bannerBar"
-            style="  background-color: #fa9950;"
+            style="background-color: #fa9950"
             >Choose a banner picture:</label
           >
           <input
@@ -103,7 +103,7 @@
 
 <script>
 import { IonPage, IonTitle, IonButton } from "@ionic/vue";
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import { ActionsType } from "@/store/actions.type";
 import { CreateBarFormErrors } from "../../utils/utils";
 export default {
@@ -119,6 +119,12 @@ export default {
       Valoration: "",
     };
   },
+    computed: {
+    ...mapState({
+      errors: (state) => state.auth.errors,
+    }),
+    ...mapGetters(["bar", "currentUser", "isAuthenticated"]),
+  },
   methods: {
     onSubmit(name, description, phoneNumber, location, valoration) {
       console.log(name, description, phoneNumber, location, valoration);
@@ -127,29 +133,27 @@ export default {
       if (regexErrors.length > 0) {
         this.errors = regexErrors;
       } else {
-        this.$store
-          .dispatch(ActionsType.ADD_BAR, {
-            name: this.name,
-            description: this.description,
-            phoneNumber: this.phoneNumber,
-            location: this.location,
-            Valoration: this.Valoration,
-          })
-          .then((response) => {
-            console.log(response);
-            this.$router.push({ name: "SBhome" });
-          })
-          .catch((response) => {
-            console.log(response);
-          });
+        if (this.isAuthenticated) {
+          this.$store
+            .dispatch(ActionsType.ADD_BAR, {
+              name: this.name,
+              description: this.description,
+              phoneNumber: this.phoneNumber,
+              location: this.location,
+              Valoration: this.Valoration
+            })
+            .then((response) => {
+              console.log(response);
+              this.$router.push({ name: "SBhome" });
+            })
+            .catch((response) => {
+              console.log(response);
+            });
+        }
       }
     },
   },
-  computed: {
-    ...mapState({
-      errors: (state) => state.auth.errors,
-    }),
-  },
+
 };
 </script>
 
