@@ -71,7 +71,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     @property
     def checkType(self):
         try:
-            user.worker
+            self.worker
             return 'Worker'
         except: 
             return 'Client'

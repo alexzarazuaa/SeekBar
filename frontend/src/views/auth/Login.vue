@@ -92,8 +92,6 @@ export default {
           .dispatch(ActionsType.LOGIN, { username, password })
           .then(() => this.$router.push({ name: "SBhome" }))
           .catch((response) => {
-            console.log(response.data.errors.error[0]);
-
             response.data.errors.error
               ? this.errors.push({
                   name: "logUserBack",

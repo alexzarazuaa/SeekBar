@@ -26,6 +26,7 @@ const actions = {
         //  context.commit(MutationsType.SET_ERROR, response.data.errors)
       });
   },
+
 };
 
 const mutations = {

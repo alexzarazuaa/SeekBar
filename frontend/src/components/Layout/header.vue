@@ -19,9 +19,9 @@
           ><i class="fa fa-user" aria-hidden="true"></i></a
         >
 
-          <a v-if='currentUser.check==="Worker"' :href="'/create'" >Create Bar</a>
+          <a v-if='currentUser.checkType==="Worker"' :href="'/create'" >Create Bar</a>
 
-        <a @click="profile(currentUser.check,currentUser.username)">
+        <a @click="profile(currentUser.checkType,currentUser.username)">
           {{ currentUser.username }}
         </a>
 
@@ -50,14 +50,11 @@ export default {
     VAL_TOKEN() {
       this.$store.dispatch(ActionsType.CHECK_AUTH);
     },
-    profile(check,username) {
-      console.log(check, username)
+    profile(checkType,username) {
 
 
-     const type= check==="Worker"? "workers" : "clients" 
-      console.log("HEADER")
-      console.log(type)
-      this.$router.push({ name: "SBprofile", params: { check :type ,username: username } });
+     const type= checkType==="Worker"? "workers" : "clients" 
+      this.$router.push({ name: "SBprofile", params: { checkType :type ,username: username } });
     },
     openNav() {
       document.getElementById("mySidenav").style.width = "250px";

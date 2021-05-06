@@ -81,7 +81,7 @@ export default {
     Promise.all([store.dispatch(ActionsType.FETCH_BAR, to.params.slug)]).then(
       (data) => {
         next();
-        console.log(data);
+  
       }
     );
   },

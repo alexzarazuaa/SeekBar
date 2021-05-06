@@ -149,7 +149,6 @@ export default {
             type: this.type,
           })
           .then((response) => {
-            console.log(response);
             this.$router.push({ name: "SBhome" });
           })
           .catch((response) => {

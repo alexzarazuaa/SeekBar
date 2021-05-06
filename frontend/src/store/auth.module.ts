@@ -21,16 +21,13 @@ const getters = {
 const actions = {
   // Login
   [ActionsType.LOGIN](context: any, credentials: any) {
-    console.log("ENTRA ACTIOIN LOGIN");
     return new Promise((resolve,reject) => {
       ApiService.post("users/login", { user: credentials })
         .then(({ data }) => {
-          console.log(data);
           context.commit(MutationsType.SET_AUTH, data.user);
           resolve(data);
         })
         .catch(({ response }) => {
-          console.log(response);
           context.commit(MutationsType.SET_ERROR, response.data.errors);
           reject(response);
         });
@@ -39,22 +36,18 @@ const actions = {
 
   // Logout
   [ActionsType.LOGOUT](context: any) {
-    //console.log("ENTRA ACTIOIN LOGOUT");
     context.commit(MutationsType.PURGE_AUTH);
   },
 
   // Register
   [ActionsType.REGISTER](context: any, credentials: any) {
-    console.log("ENTAR REGISTER AUTH ", credentials.type);
     return new Promise((resolve, reject) => {
       RegisterService.register(credentials.type, { user: credentials })
         .then(({ data }) => {
-          console.log(data);
           context.commit(MutationsType.SET_AUTH, data.user);
           resolve(data);
         })
         .catch(({ response }) => {
-          console.log(response);
           context.commit(MutationsType.SET_ERROR, response.data);
           reject(response);
         });
@@ -67,7 +60,6 @@ const actions = {
       ApiService.setHeader();
       UserService.getUser("user")
         .then(({ data }) => {
-          // console.log(data,'USER')
           context.commit(MutationsType.SET_AUTH, data.user);
         })
         .catch(({ response }) => {

@@ -127,7 +127,6 @@ export default {
   },
   methods: {
     onSubmit(name, description, phoneNumber, location, valoration) {
-      console.log(name, description, phoneNumber, location, valoration);
       this.errors = [];
       const regexErrors = CreateBarFormErrors(this);
       if (regexErrors.length > 0) {
@@ -135,13 +134,13 @@ export default {
       } else {
         if (this.isAuthenticated) {
           this.$store
-            .dispatch(ActionsType.ADD_BAR, {
+            .dispatch(ActionsType.ADD_BAR, {'bar':{
               name: this.name,
               description: this.description,
-              phoneNumber: this.phoneNumber,
+              'phone_number': this.phoneNumber,
               location: this.location,
               Valoration: this.Valoration
-            })
+            }})
             .then((response) => {
               console.log(response);
               this.$router.push({ name: "SBhome" });

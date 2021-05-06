@@ -20,7 +20,7 @@ class BarViewSet(viewsets.ModelViewSet): #Retrieve & List & Create Bar
         queryset= self.queryset
         
         favorited_by = self.request.query_params.get('favorited', None)
-        if favorited_by is not None and favorited_by is not "":
+        if favorited_by is not None and favorited_by is not "" :
             queryset = queryset.filter(
                 favorited_by__user__username=favorited_by
             )
@@ -29,20 +29,18 @@ class BarViewSet(viewsets.ModelViewSet): #Retrieve & List & Create Bar
 
 
     def get_permissions(self):
-        if self.request.method == 'POST':
-            self.permission_classes = [IsWorker,]
+        # if self.request.method == 'POST':
+        #     self.permission_classes = [IsWorker,]
 
         return super(BarViewSet, self).get_permissions()
 
     def create(self, request):   #Create Bar
         self.check_object_permissions(request,"")
-
         serializer_context = {
             'owner': request.user.worker,
             'request': request
         }
         serializer_data = request.data.get('bar', {})
-
         serializer = self.serializer_class(
         data=serializer_data, context=serializer_context
         )
