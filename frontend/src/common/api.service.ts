@@ -64,9 +64,10 @@ export const RegisterService = {
 /* USER SERVICE */
 
 export const UserService = {
-  getUser(resource: string, slug = "") {
-    // console.log('entra',resource)
-    return axios.get(`${API_URL}/${resource}/${slug}`).catch((error) => {
+  getUser(resource: string) {
+     console.log('entra',resource)
+     console.log(`${API_URL}/${resource}`)
+    return axios.get(`${API_URL}/${resource}`).catch((error) => {
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },

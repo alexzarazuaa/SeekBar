@@ -30,11 +30,11 @@ class UserManager(BaseUserManager):
         user.set_password(password)
         user.save()
 
-        try:
-            user.worker
-            user.check='Worker'
-        except: 
-            user.check='Client'
+        # try:
+        #     user.worker
+        #     user.checkType='Worker'
+        # except: 
+        #     user.checkType='Client'
 
         return user
 
@@ -73,6 +73,14 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     @property
     def token(self):
         return self._generate_jwt_token()
+
+    @property
+    def checkType(self):
+        try:
+            user.worker
+            return 'Worker'
+        except: 
+            return 'Client'
 
     def get_full_name(self):
       return self.username

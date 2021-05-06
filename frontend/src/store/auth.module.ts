@@ -1,4 +1,4 @@
-import ApiService, { RegisterService } from "@/common/api.service";
+import ApiService, { RegisterService ,UserService} from "@/common/api.service";
 import JwtService from "@/common/jwt.service";
 import { ActionsType } from "./actions.type";
 import { MutationsType } from "./mutations.type";
@@ -62,21 +62,21 @@ const actions = {
   },
   
   // Check auth
-  // [ActionsType.CHECK_AUTH](context: any) {
-  //   if (JwtService.getToken()) {
-  //     ApiService.setHeader();
-  //     UserService.getUser("user")
-  //       .then(({ data }) => {
-  //         // console.log(data,'USER')
-  //         context.commit(MutationsType.SET_AUTH, data.user);
-  //       })
-  //       .catch(({ response }) => {
-  //         context.commit(MutationsType.SET_ERROR, response.data.errors);
-  //       });
-  //   } else {
-  //     context.commit(MutationsType.PURGE_AUTH);
-  //   }
-  // }
+  [ActionsType.CHECK_AUTH](context: any) {
+    if (JwtService.getToken()) {
+      ApiService.setHeader();
+      UserService.getUser("user")
+        .then(({ data }) => {
+          // console.log(data,'USER')
+          context.commit(MutationsType.SET_AUTH, data.user);
+        })
+        .catch(({ response }) => {
+          context.commit(MutationsType.SET_ERROR, response.data.errors);
+        });
+    } else {
+      context.commit(MutationsType.PURGE_AUTH);
+    }
+  }
   
 
 

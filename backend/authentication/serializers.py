@@ -17,11 +17,10 @@ class RegistrationSerializer(serializers.ModelSerializer): #Register
     token = serializers.CharField(max_length=255, read_only=True)
     phone_number= serializers.CharField(required=False)
     image= serializers.CharField(required=False)
-    check = serializers.CharField(max_length=255, read_only=True)
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'token', 'name', 'phone_number', 'image', 'check']
+        fields = ['username', 'email', 'password', 'token', 'name', 'phone_number', 'image', 'checkType']
 
     def create(self, validated_data):
         type = self.context.get('type', None)
@@ -38,11 +37,12 @@ class LoginSerializer(serializers.Serializer): #Login & Deactive & Reactivate Us
     phone_number = serializers.CharField(read_only=True)
     image = serializers.CharField(read_only=True)
     info  = serializers.CharField(read_only=True)
-    check  = serializers.CharField(read_only=True)
+    checkType  = serializers.CharField(read_only=True)
 
     def validate(self, data): #Login
         username = data.get('username')
         password = data.get('password')
+
         user = JWTAuthentication.login(username=username, password=password)
 
         if user is None:
@@ -68,7 +68,7 @@ class LoginSerializer(serializers.Serializer): #Login & Deactive & Reactivate Us
             'name': user.name,
             'phone_number': user.phone_number,
             'image': user.image,
-            'check': value
+            'checkType': value
         }
 
     def deactivate(data): #Deactive User
@@ -134,7 +134,7 @@ class UserSerializer(serializers.ModelSerializer): #Retrieve & Update User
     class Meta:
         model = User
         fields = (
-            'username', 'email', 'password', 'token', 'name', 'phone_number', 'image'
+            'username', 'email', 'password', 'token', 'name', 'phone_number', 'image', 'checkType'
         )
     
         read_only_fields = ('token',)

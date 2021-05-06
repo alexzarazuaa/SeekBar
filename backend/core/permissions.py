@@ -20,7 +20,7 @@ class IsOwnerOrAdmin(permissions.BasePermission):
 
         try:
             bar_id =request.user.worker.referenceWorker.filter(slug=slug).values_list('id', flat=True)[0]
-            check = Work.objects.filter(worker_id=request.user.worker.id, bar_id=bar_id, isBoss=True).values_list('worker_id', flat=True)[0]
+            checkType = Work.objects.filter(worker_id=request.user.worker.id, bar_id=bar_id, isBoss=True).values_list('worker_id', flat=True)[0]
         except:
             return False
         

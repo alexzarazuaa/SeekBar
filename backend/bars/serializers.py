@@ -35,7 +35,6 @@ class BarSerializer(serializers.ModelSerializer):#Retrieve & List & Create Bar
             'owner',
             'favorited',
             'favoritesCount'
-
         )
 
     def create(self, validated_data):   #Create Bar
