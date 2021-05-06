@@ -19,8 +19,8 @@ class BarViewSet(viewsets.ModelViewSet): #Retrieve & List & Create Bar
     def get_queryset(self):
         queryset= self.queryset
         
-        favorited_by = self.request.query_params.get('favorited', "")
-        if favorited_by is not "":
+        favorited_by = self.request.query_params.get('favorited', None)
+        if favorited_by is not None and favorited_by is not "":
             queryset = queryset.filter(
                 favorited_by__user__username=favorited_by
             )
