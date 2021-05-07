@@ -6,6 +6,7 @@ import SBbarsList from "../views/barsList/barsList.vue";
 import SBbar from "../views/bar/bar.vue";
 import SBprofile from "../views/profile/profile.vue";
 import SBcreateBar from "../components/CreateBar/createBar.vue";
+import SBdesactivateUser from "../components/UserActions/DesactivateUser.vue";
 
 const noAuthGuard = (to: any, from: any, next: any) => {
   (localStorage.getItem("token")) ? next("/") : next()
@@ -27,6 +28,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "SBlogin",
     component: SBlogin,
     beforeEnter: noAuthGuard
+  },
+  {
+    path: "/desactivate",
+    name: "SBdesactivateUser",
+    component: SBdesactivateUser
   },
 
   {
@@ -54,7 +60,7 @@ const routes: Array<RouteRecordRaw> = [
   
   },
   {
-    path: "/:check/:username",
+    path: "/:checkType/:username",
     name: "SBprofile",
     props: true,
     beforeEnter: authGuard,

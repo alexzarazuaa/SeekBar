@@ -64,3 +64,18 @@ export const CreateBarFormErrors = (values: any) => {
 
 
 };
+
+
+export const DesactivateFormErrors = (values: any) => {
+  const typesErrors: any[] = [];
+
+  if (!CheckRegex(/^[a-zA-Z0-9]{3,16}$/, values.username)) {
+    typesErrors.push({name: 'des_username', value:'El username es incorrecto'});
+  }
+
+  if (!CheckRegex(/^[a-zA-Z0-9]{3,16}$/, values.password)) {
+    typesErrors.push({name: 'des_password', value:'La contraseña es incorrecta'});
+  }
+
+  return typesErrors ;
+};

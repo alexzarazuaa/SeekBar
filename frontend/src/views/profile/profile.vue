@@ -3,18 +3,16 @@
     <section>
       <SBheader />
     </section>
+    <main>
 
     <section>
       <article>
         <h1 class="sb-profile-username">Welcome,{{ profile.username }}</h1>
-        <!-- -->
-
-        <label class="switch">
-          <input type="checkbox" @click="toggleActivate"  checked/>
-          <span class="slider round"></span>
-        </label>
       </article>
       <article v-bind:src="profile.image" class="sb-profile-avatar"></article>
+      <button type="button" class="sb--profile--page--btntype">
+        <a :href="'/desactivate'">Desactivar Usuario</a>
+      </button>
     </section>
     <section>
       <ion-segment class="sb-profile-segments">
@@ -36,6 +34,7 @@
 
       <SBfooter />
     </section>
+    </main>
   </ion-page>
 </template>
 
@@ -51,7 +50,6 @@ import SBheader from "@/components/Layout/header.vue";
 import SBfooter from "@/components/Layout/footer.vue";
 import store from "@/store";
 import { mapGetters } from "vuex";
-//import BarsList from '@/components/BarsListComponent/BarsList'
 import { ActionsType } from "@/store/actions.type";
 import ApiService, { RegisterService } from "@/common/api.service";
 
@@ -76,11 +74,6 @@ export default {
   },
   computed: {
     ...mapGetters(["profile"]),
-  },
-  methods: {
-    toggleActivate() {
-      ApiService.desactivateUser();
-    },
   },
   watch: {
     deep: true,
@@ -169,66 +162,32 @@ export default {
   margin: 45px auto;
   margin-left: 15px;
 }
-
-.switch {
-  position: relative;
-  display: flex;
-  float: right;
-  right: 150px;
-  width: 60px;
-  height: 34px;
+/* SELECT TYPE USER */
+.sb--profile--page-typeUser {
+  width: 100%;
+  text-align: center;
 }
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
+.sb--profile--page--btntype {
+  background-color: black;
+  color: white;
+  width: 10%;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  text-align: center;
+}
+.sb--profile--page--btntype a {
+  text-decoration: none;
+  color: #fa9950;
 }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+.sb--profile--page--btntype:hover {
+  background-color: black;
+  color: white;
 }
 
-input:checked + .slider {
-  background-color: #2196f3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
+.sb--profile--page--btntype:active {
+  background-color: wheat;
+  color:white;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 </style>

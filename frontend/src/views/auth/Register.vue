@@ -10,11 +10,11 @@
         </ion-title>
 
         <ion-button color="dark" className="sb-register-page--homebtn">
-          <a :href="'/home'">HOME</a>
+          <a :href="'/desactivate'">Desactivar Usuario</a>
         </ion-button>
       </article>
     </section>
-    <section>
+    <main>
       <article class="sb-register-page-form">
         <form @submit.prevent="onSubmit">
           <input
@@ -100,7 +100,7 @@
           </ion-label>
         </form>
       </article>
-    </section>
+    </main>
   </ion-page>
 </template>
 

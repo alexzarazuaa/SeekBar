@@ -2,7 +2,7 @@
   <ion-page class="sb-createBar-page">
     <section>
       <article>
-        <img class="sb-createBar-page--logo" v-bind:src="'image'" :alt="alt" />
+        <img class="sb-createBar-page--logo" v-bind:src="imageSrc" :alt="alt" />
       </article>
       <article>
         <ion-title class="sb-createBar-page--title">CREATE YOUR BAR</ion-title>
@@ -11,7 +11,7 @@
         </ion-button>
       </article>
     </section>
-    <section>
+    <main>
       <article className="sb-createBar-page-form">
         <form
           @submit.prevent="
@@ -97,7 +97,7 @@
           <button class="sb-createBar-page--createBarbtn">Create</button>
         </form>
       </article>
-    </section>
+    </main>
   </ion-page>
 </template>
 
@@ -124,9 +124,13 @@ export default {
       errors: (state) => state.auth.errors,
     }),
     ...mapGetters(["bar", "currentUser", "isAuthenticated"]),
+       imageSrc: function () {
+      return `https://raw.githubusercontent.com/alexzarazuaa/SeekBar/main/frontend/src/assets/img/SEEK_BAR_BLANCO.png`;
+    }
   },
   methods: {
     onSubmit(name, description, phoneNumber, location, valoration) {
+      console.log(name, description, phoneNumber, location, valoration)
       this.errors = [];
       const regexErrors = CreateBarFormErrors(this);
       if (regexErrors.length > 0) {

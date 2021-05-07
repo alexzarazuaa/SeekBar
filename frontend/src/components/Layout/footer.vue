@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <section class="icons">
-      <div class="tab">
+      <article class="tab">
         <button
           class="tablinks"
        @click="$router.push('/home')"
@@ -13,7 +13,7 @@
         </button>
         <button class="tablinks" @click="$router.push('/profile')">
           PROFILE
-        </button>      <div class="tab">
+        </button>      <article class="tab">
         <button
           class="tablinks"
        @click="$router.push('/home')"
@@ -26,8 +26,8 @@
         <button class="tablinks" @click="$router.push('/profile')">
           PROFILE
         </button>
-      </div>
-      </div>
+      </article>
+      </article>
     </section>
   </footer>
 </template>

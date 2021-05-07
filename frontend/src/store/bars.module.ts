@@ -40,9 +40,20 @@ const getters = {
 };
 
 const actions = {
-  [ActionsType.FETCH_BARS]({ commit }: any, params: any) {
+  // [ActionsType.FETCH_BARS]({ commit }: any, params: any) {
+  //   commit(MutationsType.FETCH_START);
+  //   return BarsService.getBars()
+  //     .then(({ data }: any) => {
+  //       commit(MutationsType.FETCH_END, data);
+  //     })
+  //     .catch((error: any) => {
+  //       throw new Error(error);
+  //     });
+  // },
+
+  async [ActionsType.FETCH_BARS]({ commit }: any, params: any) {
     commit(MutationsType.FETCH_START);
-    return BarsService.getBars()
+    await BarsService.getBars()
       .then(({ data }: any) => {
         commit(MutationsType.FETCH_END, data);
       })
@@ -50,7 +61,6 @@ const actions = {
         throw new Error(error);
       });
   },
-
 
 
 };

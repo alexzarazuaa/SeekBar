@@ -1,4 +1,4 @@
-import ApiService, { RegisterService ,UserService} from "@/common/api.service";
+import ApiService, { RegisterService, UserService } from "@/common/api.service";
 import JwtService from "@/common/jwt.service";
 import { ActionsType } from "./actions.type";
 import { MutationsType } from "./mutations.type";
@@ -20,45 +20,134 @@ const getters = {
 
 const actions = {
   // Login
-  [ActionsType.LOGIN](context: any, credentials: any) {
-    return new Promise((resolve,reject) => {
-      ApiService.post("users/login", { user: credentials })
-        .then(({ data }) => {
-          context.commit(MutationsType.SET_AUTH, data.user);
-          resolve(data);
-        })
-        .catch(({ response }) => {
-          context.commit(MutationsType.SET_ERROR, response.data.errors);
-          reject(response);
-        });
-    });
+  // [ActionsType.LOGIN](context: any, credentials: any) {
+  //   return new Promise((resolve, reject) => {
+  //     ApiService.post("users/login", { user: credentials })
+  //       .then(({ data }) => {
+  //         context.commit(MutationsType.SET_AUTH, data.user);
+  //         resolve(data);
+  //       })
+  //       .catch(({ response }) => {
+  //         context.commit(MutationsType.SET_ERROR, response.data.errors);
+  //         reject(response);
+  //       });
+  //   });
+  // },
+
+
+  async [ActionsType.LOGIN](context: any, credentials: any) {
+    await ApiService.post("users/login", { user: credentials })
+      .then(({ data }) => {
+        context.commit(MutationsType.SET_AUTH, data.user);
+      })
+      .catch(({ response }) => {
+        context.commit(MutationsType.SET_ERROR, response.data.errors);
+      });
   },
 
   // Logout
-  [ActionsType.LOGOUT](context: any) {
-    context.commit(MutationsType.PURGE_AUTH);
+  async  [ActionsType.LOGOUT](context: any) {
+    await context.commit(MutationsType.PURGE_AUTH);
   },
 
   // Register
-  [ActionsType.REGISTER](context: any, credentials: any) {
-    return new Promise((resolve, reject) => {
-      RegisterService.register(credentials.type, { user: credentials })
-        .then(({ data }) => {
-          context.commit(MutationsType.SET_AUTH, data.user);
-          resolve(data);
-        })
-        .catch(({ response }) => {
-          context.commit(MutationsType.SET_ERROR, response.data);
-          reject(response);
-        });
-    });
+  // [ActionsType.REGISTER](context: any, credentials: any) {
+  //   return new Promise((resolve, reject) => {
+  //     RegisterService.register(credentials.type, { user: credentials })
+  //       .then(({ data }) => {
+  //         context.commit(MutationsType.SET_AUTH, data.user);
+  //         resolve(data);
+  //       })
+  //       .catch(({ response }) => {
+  //         context.commit(MutationsType.SET_ERROR, response.data);
+  //         reject(response);
+  //       });
+  //   });
+  // },
+
+  async [ActionsType.REGISTER](context: any, credentials: any) {
+    await RegisterService.register(credentials.type, { user: credentials })
+      .then(({ data }) => {
+        context.commit(MutationsType.SET_AUTH, data.user);
+      })
+      .catch(({ response }) => {
+        context.commit(MutationsType.SET_ERROR, response.data.errors);
+      });
   },
-  
+
+  // Desactivate
+  // [ActionsType.DESACTIVATE](context: any, credentials: any) {
+  //   return new Promise((resolve, reject) => {
+  //     console.log("delete store", credentials)
+  //     ApiService.delete("users/login", { user: credentials })
+  //       .then(({ data }) => {
+  //         context.commit(MutationsType.SET_AUTH, data);
+  //         resolve(data);
+  //       })
+  //       .catch(({ response }) => {
+  //         context.commit(MutationsType.SET_ERROR, response.data.errors);
+  //         reject(response);
+  //       });
+  //   });
+  // },
+
+  async [ActionsType.DESACTIVATE](context: any, credentials: any) {
+    await ApiService.delete("users/login", { user: credentials })
+      .then(({ data }) => {
+        context.commit(MutationsType.SET_AUTH, data.user);
+      })
+      .catch(({ response }) => {
+        context.commit(MutationsType.SET_ERROR, response.data.errors);
+      });
+  },
+
+
+  // ACTIVATE
+  // [ActionsType.ACTIVATE](context: any, credentials: any) {
+  //   return new Promise((resolve, reject) => {
+  //     ApiService.update("users/login", { user: credentials })
+  //       .then(({ data }) => {
+  //         context.commit(MutationsType.SET_AUTH, data);
+  //         resolve(data);
+  //       })
+  //       .catch(({ response }) => {
+  //         context.commit(MutationsType.SET_ERROR, response.data.errors);
+  //         reject(response);
+  //       });
+  //   });
+  // },
+
+  async [ActionsType.ACTIVATE](context: any, credentials: any) {
+    await ApiService.update("users/login", { user: credentials })
+      .then(({ data }) => {
+        context.commit(MutationsType.SET_AUTH, data.user);
+      })
+      .catch(({ response }) => {
+        context.commit(MutationsType.SET_ERROR, response.data.errors);
+      });
+  },
+
   // Check auth
-  [ActionsType.CHECK_AUTH](context: any) {
+  
+  // [ActionsType.CHECK_AUTH](context: any) {
+  //   if (JwtService.getToken()) {
+  //     ApiService.setHeader();
+  //     UserService.getUser("user")
+  //       .then(({ data }) => {
+  //         context.commit(MutationsType.SET_AUTH, data.user);
+  //       })
+  //       .catch(({ response }) => {
+  //         context.commit(MutationsType.SET_ERROR, response.data.errors);
+  //       });
+  //   } else {
+  //     context.commit(MutationsType.PURGE_AUTH);
+  //   }
+  // },
+
+  async [ActionsType.CHECK_AUTH](context: any, credentials: any) {
     if (JwtService.getToken()) {
       ApiService.setHeader();
-      UserService.getUser("user")
+      await UserService.getUser("user")
         .then(({ data }) => {
           context.commit(MutationsType.SET_AUTH, data.user);
         })
@@ -68,8 +157,9 @@ const actions = {
     } else {
       context.commit(MutationsType.PURGE_AUTH);
     }
-  }
-  
+  },
+
+
 
 
 };

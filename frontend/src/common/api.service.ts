@@ -25,14 +25,13 @@ const ApiService = {
     return axios.post(`${API_URL}/${resource}`, params);
   },
 
-  update(resource: string, slug: string, params: any) {
-    return axios.put(`${resource}/${slug}`, params);
+  update(slug: string, params: any) {
+    return axios.put(`${API_URL}/${slug}`, params);
   },
 
   delete(resource: string, params: any) {
-    return axios.delete(`${API_URL}/${resource}`,params).catch((error: any) => {
-      throw new Error(`[RWV] ApiService ${error}`);
-    });
+    console.log("delete",params)
+    return axios.delete(`${API_URL}/${resource}`,params);
   },
   
 };
@@ -42,8 +41,8 @@ const ApiService = {
 /* PROFILE SERVICE  */
 
 export const ProfileService = {
-  getProfile(check: any, username: any) {
-    return axios.get(`${API_URL}/${check}/${username}`).catch((error) => {
+  getProfile(checkType: any, username: any) {
+    return axios.get(`${API_URL}/${checkType}/${username}`).catch((error) => {
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },

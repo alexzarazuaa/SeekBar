@@ -14,26 +14,32 @@ const getters = {
 };
 
 const actions = {
-  [ActionsType.FETCH_PROFILE](context: any , params: any) {
+  // [ActionsType.FETCH_PROFILE](context: any , params: any) {
 
-    return ProfileService.getProfile(`${params.check}/${params.username}`,"")
-      .then(({ data }) => {
+  //   return ProfileService.getProfile(`${params.checkType}/${params.username}`,"")
+  //     .then(({ data }) => {
 
-        context.commit(MutationsType.SET_PROFILE, data);
-        return data;
-      })
-      .catch((response) => {
-        //  context.commit(MutationsType.SET_ERROR, response.data.errors)
-      });
+  //       context.commit(MutationsType.SET_PROFILE, data);
+  //       return data;
+  //     })
+  //     .catch((response) => {
+  //       //  context.commit(MutationsType.SET_ERROR, response.data.errors)
+  //     });
+  // },
+
+  async [ActionsType.FETCH_PROFILE](context: any, params: any) {
+    const { data } = await ProfileService.getProfile(`${params.checkType}/${params.username}`, "")
+    context.commit(MutationsType.SET_PROFILE, data);
+    return data;
   },
 
 };
 
 const mutations = {
-  [MutationsType.SET_ERROR] (state: any, error: any) {
+  [MutationsType.SET_ERROR](state: any, error: any) {
     state.errors = error
   },
-  [MutationsType.SET_PROFILE](state: any, profile:  any) {
+  [MutationsType.SET_PROFILE](state: any, profile: any) {
     state.profile = profile;
     state.errors = {};
   }

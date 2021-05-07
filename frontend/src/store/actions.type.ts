@@ -11,6 +11,8 @@ export enum ActionsType {
     BOOK_ADD="bookAdd",
     BOOK_REMOVE ="bookRemove",
     LOGIN = "login",
+    DESACTIVATE = "desactivate",
+    ACTIVATE = "activate",
     LOGOUT = "logout",
     REGISTER = "register",
     FETCH_PROFILE = "fetchProfile",

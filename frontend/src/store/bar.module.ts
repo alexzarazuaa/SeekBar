@@ -1,5 +1,4 @@
 import ApiService, { BarsService } from "@/common/api.service";
-import JwtService from "@/common/jwt.service";
 import { ActionsType } from "./actions.type";
 import { MutationsType } from "./mutations.type";
 
@@ -20,13 +19,13 @@ export const actions = {
     context.commit(MutationsType.SET_BAR, data.bar);
   },
   async [ActionsType.FETCH_BAR](context: any, barSlug: any) {
-    const { data } = await BarsService.getBar(barSlug);;
+    const { data } = await BarsService.getBar(barSlug);
     context.commit(MutationsType.SET_BAR, data);
     return data;
   },
   async [ActionsType.FAVORITE_ADD](context: any, barSlug: any) {
 
-    const { data } = await BarsService.addBarFavorite(barSlug);;
+    const { data } = await BarsService.addBarFavorite(barSlug);
     context.commit(MutationsType.SET_BAR, data.bar);
   },
   async [ActionsType.FAVORITE_REMOVE](context: any, barSlug: any) {

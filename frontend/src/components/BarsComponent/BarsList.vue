@@ -1,10 +1,10 @@
 <template>
   <section>
-    <div class="list">
-      <div v-for="bar in bars" :key="bar">
+    <article class="list">
+      <article v-for="bar in bars" :key="bar">
         <BarsPreview v-bind:bar="bar" />
-      </div>
-    </div>
+      </article>
+    </article>
 
     <!-- <article>
       <a @click="previous" class="previous round">&#8249;</a>
