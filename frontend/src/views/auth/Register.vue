@@ -120,7 +120,7 @@ export default {
       email: "",
       password: "",
       repeatPassword: "",
-      image: "../../assets/img/SEEK BAR BLANCO.png",
+      image: `https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/img/avatar.png`,
       alt: "logo_seekbar",
     };
   },
@@ -147,6 +147,7 @@ export default {
             password: this.password,
             name: this.name,
             type: this.type,
+            image:this.image
           })
           .then((response) => {
             this.$router.push({ name: "SBhome" });

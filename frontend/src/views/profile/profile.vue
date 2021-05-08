@@ -4,36 +4,39 @@
       <SBheader />
     </section>
     <main>
+      <section>
+        <article>
+          <h1 class="sb-profile-username">Welcome,{{ profile.username }}</h1>
+        </article>
+        <article>
+          <img class="sb-profile-avatar" v-bind:src="profile.image"/>
+        </article>
+      </section>
+      <section>
+        <article class="sb--profile--page--btndesactivate">
+          <button type="button" class="sb--profile--page--btntype">
+            <a :href="'/desactivate'">Desactivar Usuario</a>
+          </button>
+        </article>
+        <ion-segment class="sb-profile-segments">
+          <ion-segment-button value="recent">
+            <ion-label class="sb-profile-segments-titles">UPDATE</ion-label>
+          </ion-segment-button>
 
-    <section>
-      <article>
-        <h1 class="sb-profile-username">Welcome,{{ profile.username }}</h1>
-      </article>
-      <article v-bind:src="profile.image" class="sb-profile-avatar"></article>
-      <button type="button" class="sb--profile--page--btntype">
-        <a :href="'/desactivate'">Desactivar Usuario</a>
-      </button>
-    </section>
-    <section>
-      <ion-segment class="sb-profile-segments">
-        <ion-segment-button value="recent">
-          <ion-label class="sb-profile-segments-titles">UPDATE</ion-label>
-        </ion-segment-button>
+          <ion-segment-button value="yours" checked>
+            <ion-label class="sb-profile-segments-titles">FAVOURITES</ion-label>
+          </ion-segment-button>
 
-        <ion-segment-button value="yours" checked>
-          <ion-label class="sb-profile-segments-titles">FAVOURITES</ion-label>
-        </ion-segment-button>
+          <ion-segment-button value="favorited">
+            <ion-label class="sb-profile-segments-titles">BOOKINGS</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+        <ion-card class="sb-profile-cards">
+          <h1>PROFILE</h1>
+        </ion-card>
 
-        <ion-segment-button value="favorited">
-          <ion-label class="sb-profile-segments-titles">BOOKINGS</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-      <ion-card class="sb-profile-cards">
-        <h1>PROFILE</h1>
-      </ion-card>
-
-      <SBfooter />
-    </section>
+        <SBfooter />
+      </section>
     </main>
   </ion-page>
 </template>
@@ -145,7 +148,8 @@ export default {
 
 /* SEGMENTS */
 
-.sb-profile-segments {
+.sb-profile-segments,
+.sb--profile--page--btndesactivate {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -186,8 +190,12 @@ export default {
 
 .sb--profile--page--btntype:active {
   background-color: wheat;
-  color:white;
+  color: white;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+.sb--profile--page--btndesactivate {
+  margin-bottom: 15px;
+  margin-top: 10px;
 }
 </style>

@@ -45,7 +45,7 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch(ActionsType.LOGOUT);
-      this.$router.push({ name: "Sbhome" });
+      this.$router.push({ name: "SBhome"});
     },
     VAL_TOKEN() {
       this.$store.dispatch(ActionsType.CHECK_AUTH);
