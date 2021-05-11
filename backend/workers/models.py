@@ -23,6 +23,9 @@ class Worker(TimestampedModel):
     
     def deassign(self, bar):
         self.referenceWorker.remove(bar)
+    
+    def isOwner(self, bar):
+        return Work.objects.filter(bar_id=bar.id).values_list('isBoss', flat=True)[0]
 
 class Work(models.Model):
     class Meta:

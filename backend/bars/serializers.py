@@ -8,9 +8,7 @@ class DynamicFieldsModelSerializer(serializers.ModelSerializer):
     def __init__(self, *args, **kwargs):
         super(DynamicFieldsModelSerializer, self).__init__(*args, **kwargs)
 
-        try:
-            self.context.get('request', None).user.worker
-            fields = (
+        fields = (
             'slug',
             'name',
             'description',
@@ -21,14 +19,24 @@ class DynamicFieldsModelSerializer(serializers.ModelSerializer):
             'createdAt',
             'updatedAt',
         )
-        except:
-            fields = None
 
-        if fields is not None:
-            allowed = set(fields)
-            existing = set(self.fields)
-            for field_name in existing - allowed:
-                self.fields.pop(field_name)
+        fields=list(fields)
+
+        try:
+            self.context.get('request', None).user.worker
+            fieldsToPush=['isOwner']
+        except:
+            fieldsToPush=['favorited', 'favoritesCount']
+
+        for field in fieldsToPush:
+            fields.insert(0, field)
+
+        fields=tuple(fields)
+
+        allowed = set(fields)
+        existing = set(self.fields)
+        for field_name in existing - allowed:
+            self.fields.pop(field_name)
 
 class BarSerializer(DynamicFieldsModelSerializer):#Retrieve & List & Create Bar
     slug = serializers.SlugField(required=False)
@@ -42,6 +50,9 @@ class BarSerializer(DynamicFieldsModelSerializer):#Retrieve & List & Create Bar
     favoritesCount = serializers.SerializerMethodField(
         method_name='get_favorites_count'
     )
+
+    isOwner = serializers.SerializerMethodField()
+
 
     createdAt = serializers.SerializerMethodField(method_name='get_created_at')
     updatedAt = serializers.SerializerMethodField(method_name='get_updated_at')
@@ -59,7 +70,8 @@ class BarSerializer(DynamicFieldsModelSerializer):#Retrieve & List & Create Bar
             'createdAt',
             'updatedAt',
             'favorited',
-            'favoritesCount'
+            'favoritesCount',
+            'isOwner'
         )
 
     def create(self, validated_data):   #Create Bar
@@ -84,6 +96,17 @@ class BarSerializer(DynamicFieldsModelSerializer):#Retrieve & List & Create Bar
             return False
 
         return request.user.client.has_favorited(instance)
+
+    def get_isOwner(self, instance):
+        request = self.context.get('request', None)
+
+        if request is None:
+            return False
+
+        if not request.user.is_authenticated:
+            return False
+
+        return request.user.worker.isOwner(instance)
 
     def get_favorites_count(self, instance):
         return instance.favorited_by.count()

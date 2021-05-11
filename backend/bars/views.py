@@ -24,6 +24,11 @@ class BarViewSet(viewsets.ModelViewSet): #Retrieve & List & Create Bar
             queryset = queryset.filter(
                 favorited_by__user__username=favorited_by
             )
+        
+        try:
+            queryset=self.request.user.worker.referenceWorker.all()
+        except:
+            False
 
         return queryset
 
