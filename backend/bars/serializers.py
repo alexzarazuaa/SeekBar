@@ -3,7 +3,34 @@ from rest_framework import serializers
 from workers.serializers import WorkerSerializer
 from .models import Bar
 
-class BarSerializer(serializers.ModelSerializer):#Retrieve & List & Create Bar
+class DynamicFieldsModelSerializer(serializers.ModelSerializer):
+
+    def __init__(self, *args, **kwargs):
+        super(DynamicFieldsModelSerializer, self).__init__(*args, **kwargs)
+
+        try:
+            self.context.get('request', None).user.worker
+            fields = (
+            'slug',
+            'name',
+            'description',
+            'phone_number',
+            'location',
+            'valoration',
+            'image',
+            'createdAt',
+            'updatedAt',
+        )
+        except:
+            fields = None
+
+        if fields is not None:
+            allowed = set(fields)
+            existing = set(self.fields)
+            for field_name in existing - allowed:
+                self.fields.pop(field_name)
+
+class BarSerializer(DynamicFieldsModelSerializer):#Retrieve & List & Create Bar
     slug = serializers.SlugField(required=False)
     description = serializers.CharField(required=False)
     phone_number = serializers.CharField(required=False)
@@ -16,7 +43,6 @@ class BarSerializer(serializers.ModelSerializer):#Retrieve & List & Create Bar
         method_name='get_favorites_count'
     )
 
-    owner= WorkerSerializer(read_only=True)
     createdAt = serializers.SerializerMethodField(method_name='get_created_at')
     updatedAt = serializers.SerializerMethodField(method_name='get_updated_at')
 
@@ -32,7 +58,6 @@ class BarSerializer(serializers.ModelSerializer):#Retrieve & List & Create Bar
             'image',
             'createdAt',
             'updatedAt',
-            'owner',
             'favorited',
             'favoritesCount'
         )
