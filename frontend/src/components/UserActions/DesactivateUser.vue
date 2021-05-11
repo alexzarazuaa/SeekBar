@@ -63,7 +63,7 @@ export default {
     onSubmit(username, password) {
 
         this.$store
-          .dispatch(ActionsType.DESACTIVATE, { username, password })
+          .dispatch(ActionsType.DESACTIVATE, { 'user' :{ username:this.username, password: this.password}})
           .then(() => this.$router.push({ name: "SBhome" }))
       
     },

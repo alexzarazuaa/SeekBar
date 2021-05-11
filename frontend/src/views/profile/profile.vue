@@ -9,7 +9,7 @@
           <h1 class="sb-profile-username">Welcome,{{ profile.username }}</h1>
         </article>
         <article>
-          <img class="sb-profile-avatar" v-bind:src="profile.image"/>
+          <img class="sb-profile-avatar" v-bind:src="profile.image" />
         </article>
       </section>
       <section>
@@ -176,6 +176,7 @@ export default {
   color: white;
   width: 10%;
   cursor: pointer;
+  border-radius: 15px;
   text-align: center;
 }
 .sb--profile--page--btntype a {
@@ -197,5 +198,75 @@ export default {
 .sb--profile--page--btndesactivate {
   margin-bottom: 15px;
   margin-top: 10px;
+}
+
+/***************************************
+*         QUERIES RESPONSIVE           *
+***************************************/
+
+@media only screen and (max-width: 980px) and (min-width: 821px) {
+  .sb--profile--page--btntype {
+    background-color: black;
+    color: white;
+    width: 10%;
+    cursor: pointer;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 820px) and (min-width: 621px) {
+  .sb--profile--page--btntype {
+    background-color: black;
+    color: white;
+    width: 15%;
+    cursor: pointer;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 620px) and (min-width: 501px) {
+  .sb--profile--page--btntype {
+    background-color: black;
+    color: white;
+    width: 15%;
+    cursor: pointer;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 500px) and (min-width: 341px) {
+  .sb--profile--page--btntype {
+    background-color: black;
+    color: white;
+    width: 30%;
+    cursor: pointer;
+    text-align: center;
+  }
+  .sb-profile-segments-titles {
+    font-family: "Rubik Mono One", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 45px auto;
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 340px) and (min-width: 5px) {
+  .sb--profile--page--btntype {
+    background-color: black;
+    color: white;
+    width: 40%;
+    cursor: pointer;
+    text-align: center;
+  }
+    .sb-profile-segments-titles {
+    font-family: "Rubik Mono One", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 45px auto;
+    margin-left: 10px;
+  }
 }
 </style>

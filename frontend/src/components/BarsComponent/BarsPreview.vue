@@ -8,13 +8,14 @@
             class="bar-title"
             :alt="''"
             :content="'bar.description'"
+            style="  width: 120px; height: 120px;"
           />
 
 
-            <button class="btn-outline-primary" @click="toggleFavorite">
+            <!-- <button class="btn-outline-primary" @click="toggleFavorite">
               <i class="ion-heart"></i>&nbsp; &nbsp; &nbsp;
               <span class="counter"> {{ bar.favoritesCount }} </span>
-            </button>
+            </button> -->
         </ion-card>
       </ion-content>
     </main>
@@ -56,7 +57,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60vw;
+  width: 40vw;
   height: 20vh;
   cursor: pointer;
 }

@@ -1,4 +1,4 @@
-import ApiService, { RegisterService, UserService } from "@/common/api.service";
+import ApiService, { ProfileService, RegisterService, UserService } from "@/common/api.service";
 import JwtService from "@/common/jwt.service";
 import { ActionsType } from "./actions.type";
 import { MutationsType } from "./mutations.type";
@@ -20,21 +20,6 @@ const getters = {
 
 const actions = {
   // Login
-  // [ActionsType.LOGIN](context: any, credentials: any) {
-  //   return new Promise((resolve, reject) => {
-  //     ApiService.post("users/login", { user: credentials })
-  //       .then(({ data }) => {
-  //         context.commit(MutationsType.SET_AUTH, data.user);
-  //         resolve(data);
-  //       })
-  //       .catch(({ response }) => {
-  //         context.commit(MutationsType.SET_ERROR, response.data.errors);
-  //         reject(response);
-  //       });
-  //   });
-  // },
-
-
   async [ActionsType.LOGIN](context: any, credentials: any) {
     await ApiService.post("users/login", { user: credentials })
       .then(({ data }) => {
@@ -51,20 +36,6 @@ const actions = {
   },
 
   // Register
-  // [ActionsType.REGISTER](context: any, credentials: any) {
-  //   return new Promise((resolve, reject) => {
-  //     RegisterService.register(credentials.type, { user: credentials })
-  //       .then(({ data }) => {
-  //         context.commit(MutationsType.SET_AUTH, data.user);
-  //         resolve(data);
-  //       })
-  //       .catch(({ response }) => {
-  //         context.commit(MutationsType.SET_ERROR, response.data);
-  //         reject(response);
-  //       });
-  //   });
-  // },
-
   async [ActionsType.REGISTER](context: any, credentials: any) {
     await RegisterService.register(credentials.type, { user: credentials })
       .then(({ data }) => {
@@ -76,47 +47,16 @@ const actions = {
   },
 
   // Desactivate
-  // [ActionsType.DESACTIVATE](context: any, credentials: any) {
-  //   return new Promise((resolve, reject) => {
-  //     console.log("delete store", credentials)
-  //     ApiService.delete("users/login", { user: credentials })
-  //       .then(({ data }) => {
-  //         context.commit(MutationsType.SET_AUTH, data);
-  //         resolve(data);
-  //       })
-  //       .catch(({ response }) => {
-  //         context.commit(MutationsType.SET_ERROR, response.data.errors);
-  //         reject(response);
-  //       });
-  //   });
-  // },
-
   async [ActionsType.DESACTIVATE](context: any, credentials: any) {
-    await ApiService.delete("users/login", { user: credentials })
-      .then(({ data }) => {
-        context.commit(MutationsType.SET_AUTH, data.user);
-      })
-      .catch(({ response }) => {
-        context.commit(MutationsType.SET_ERROR, response.data.errors);
-      });
+
+    console.log("des", credentials)
+    const { data } = await ApiService.delete("users/login",credentials)
+    context.commit(MutationsType.SET_AUTH, data.user);
+
   },
 
 
   // ACTIVATE
-  // [ActionsType.ACTIVATE](context: any, credentials: any) {
-  //   return new Promise((resolve, reject) => {
-  //     ApiService.update("users/login", { user: credentials })
-  //       .then(({ data }) => {
-  //         context.commit(MutationsType.SET_AUTH, data);
-  //         resolve(data);
-  //       })
-  //       .catch(({ response }) => {
-  //         context.commit(MutationsType.SET_ERROR, response.data.errors);
-  //         reject(response);
-  //       });
-  //   });
-  // },
-
   async [ActionsType.ACTIVATE](context: any, credentials: any) {
     await ApiService.update("users/login", { user: credentials })
       .then(({ data }) => {
@@ -128,22 +68,6 @@ const actions = {
   },
 
   // Check auth
-  
-  // [ActionsType.CHECK_AUTH](context: any) {
-  //   if (JwtService.getToken()) {
-  //     ApiService.setHeader();
-  //     UserService.getUser("user")
-  //       .then(({ data }) => {
-  //         context.commit(MutationsType.SET_AUTH, data.user);
-  //       })
-  //       .catch(({ response }) => {
-  //         context.commit(MutationsType.SET_ERROR, response.data.errors);
-  //       });
-  //   } else {
-  //     context.commit(MutationsType.PURGE_AUTH);
-  //   }
-  // },
-
   async [ActionsType.CHECK_AUTH](context: any, credentials: any) {
     if (JwtService.getToken()) {
       ApiService.setHeader();

@@ -1,16 +1,22 @@
 <template>
-  <ion-page class="sb-barsList">
+  <ion-page class="sb--barPage">
     <section>
       <SBheader />
     </section>
 
     <ion-content>
-      <ion-card class="sb-bar-ionCard">
-        <ion-title>{{ bar.name }}</ion-title>
+      <ion-card class="sb--barPage-ionCard">
+        <img
+          v-bind:src="bar.image"
+          class="sb--barPage-ionCard-title"
+          :alt="''"
+          :content="'bar.description'"
+          style="width: 120px; height: 120px"
+        />
 
-        <article class="bar-buttons">
+        <article class="sb--barPage-ionCard-buttons">
           <button
-            class="btn-primary"
+            class="sb--barPage-ionCard-buttons-btn-primary"
             v-if="bar.favorited"
             @click="toggleFavorite"
           >
@@ -18,7 +24,11 @@
             <span class="counter"> {{ bar.favoritesCount }} </span>
           </button>
 
-          <button class="btn-outline-primary" v-else @click="toggleFavorite">
+          <button
+            class="sb--barPage-ionCard-buttons-btn-outline-primary"
+            v-else
+            @click="toggleFavorite"
+          >
             <i class="ion-heart"></i>&nbsp; &nbsp; &nbsp;
             <span class="counter"> {{ bar.favoritesCount }} </span>
           </button>
@@ -26,19 +36,19 @@
       </ion-card>
 
       <article>
-        <span class="sb-bar-tables"></span>
-        <span class="sb-bar-tables"></span>
-        <span class="sb-bar-tables"></span>
-        <span class="sb-bar-tables"></span>
+        <span class="sb--barPages-tables"></span>
+        <span class="sb--barPages-tables"></span>
+        <span class="sb--barPages-tables"></span>
+        <span class="sb--barPages-tables"></span>
       </article>
 
       <article>
-        <ion-card class="sb-bar-ionmap">
+        <ion-card class="sb--barPage-ionmap">
           <ion-title>jaj</ion-title>
         </ion-card>
       </article>
       <article>
-        <ion-label class="sb-bar-reviews"
+        <ion-label class="sb--barPage-reviews"
           >REVIEWS
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
@@ -81,7 +91,6 @@ export default {
     Promise.all([store.dispatch(ActionsType.FETCH_BAR, to.params.slug)]).then(
       (data) => {
         next();
-  
       }
     );
   },
@@ -134,13 +143,13 @@ export default {
   --margin--auto: auto;
 }
 /* PAGE  CONTENT */
-.sb-bar {
+.sb--barPage {
   background: rgba(244, 244, 244, 1);
   height: 100%;
   width: 100%;
 }
 /* BARS IONCARD */
-.sb-bar-ionCard {
+.sb--barPage-ionCard {
   background-color: white;
   margin: 0px var(--margin--auto);
   display: flex;
@@ -151,7 +160,7 @@ export default {
   border: 3px solid #000000;
 }
 /* BAR TABLES */
-.sb-bar-tables {
+.sb--barPage-tables {
   position: absolute;
   margin-top: -70px;
   width: 147px;
@@ -164,7 +173,7 @@ export default {
   box-sizing: border-box;
 }
 /* BAR MAP ASIDE */
-.sb-bar-ionmap {
+.sb--barPage-ionmap {
   position: absolute;
   display: flex;
   justify-content: var(--align--center);
@@ -176,7 +185,7 @@ export default {
   height: 200px;
 }
 /* BAR REVIEWS  */
-.sb-bar-reviews {
+.sb--barPage-reviews {
   width: 140px;
   height: 30px;
   position: absolute;
@@ -214,5 +223,139 @@ export default {
 .ion-heart {
   font-size: 25px;
   font-weight: bold;
+}
+
+/***************************************
+*         QUERIES RESPONSIVE           *
+***************************************/
+
+@media only screen and (max-width: 980px) and (min-width: 821px) {
+  /* BARS IONCARD */
+  .sb--barPage-ionCard {
+    background-color: white;
+    margin: 0px var(--margin--auto);
+    display: flex;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
+    width: 634px;
+    height: 223px;
+    border: 3px solid #000000;
+  }
+}
+
+@media only screen and (max-width: 820px) and (min-width: 621px) {
+  /* BARS IONCARD */
+  .sb--barPage-ionCard {
+    background-color: white;
+    margin: 0px var(--margin--auto);
+    display: flex;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
+    width: 634px;
+    height: 223px;
+    border: 3px solid #000000;
+  }
+}
+
+@media only screen and (max-width: 620px) and (min-width: 501px) {
+  /* BARS IONCARD */
+  .sb--barPage-ionCard {
+    background-color: white;
+    margin: 0px var(--margin--auto);
+    display: flex;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
+    width: 534px;
+    height: 223px;
+    border: 3px solid #000000;
+  }
+  /* BAR MAP ASIDE */
+  .sb--barPage-ionmap {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 500px) and (min-width: 341px) {
+  /* BARS IONCARD */
+  .sb--barPage-ionCard {
+    background-color: white;
+    margin: 0px var(--margin--auto);
+    display: flex;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
+    width: 334px;
+    height: 223px;
+    border: 3px solid #000000;
+  }
+  /* BAR MAP ASIDE */
+  .sb--barPage-ionmap {
+    display: none;
+  }
+  /* BAR REVIEWS  */
+  .sb--barPage-reviews {
+    width: 140px;
+    height: 30px;
+    position: absolute;
+    bottom: 40px;
+    width: 50%;
+    left: 50px;
+    font-family: Ruluko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 28px;
+    color: #000000;
+  }
+  /* BAR REVIEWS STARS */
+  .fa .fa-star {
+    bottom: 20px;
+    left: 10px;
+    width: 80px;
+    height: 80px;
+    background: #000000;
+    border: 1px solid #000000;
+  }
+}
+
+@media only screen and (max-width: 340px) and (min-width: 5px) {
+  /* BARS IONCARD */
+  .sb--barPage-ionCard {
+    background-color: white;
+    margin: 0px var(--margin--auto);
+    display: flex;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
+    width: 200px;
+    height: 223px;
+    border: 3px solid #000000;
+  }
+  /* BAR MAP ASIDE */
+  .sb--barPage-ionmap {
+    display: none;
+  }
+  /* BAR REVIEWS  */
+  .sb--barPage-reviews {
+    width: 140px;
+    height: 30px;
+    position: absolute;
+    bottom: 40px;
+    width: 50%;
+    left: 50px;
+    font-family: Ruluko;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+  }
+  /* BAR REVIEWS STARS */
+  .fa .fa-star {
+    bottom: 20px;
+    left: 50px;
+    width: 80px;
+    height: 80px;
+    background: #000000;
+    border: 1px solid #000000;
+  }
 }
 </style>

@@ -29,8 +29,8 @@ class BarViewSet(viewsets.ModelViewSet): #Retrieve & List & Create Bar
 
 
     def get_permissions(self):
-        # if self.request.method == 'POST':
-        #     self.permission_classes = [IsWorker,]
+        if self.request.method == 'POST':
+            self.permission_classes = [IsWorker,]
 
         return super(BarViewSet, self).get_permissions()
 

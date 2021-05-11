@@ -1,31 +1,38 @@
 <template>
-  <section class="header">
-    <nav class="header__nav">
+  <section class="sb--header">
+    <nav class="sb--header__nav">
       <article>
-        <div id="mySidenav" class="sidenav">
-          <a href="javascript:void(0)" class="closebtn" @click="closeNav()"
+        <div id="mySidenav" class="sb--header--sidenav">
+          <a
+            href="javascript:void(0)"
+            class="sb--header--sidenav--closebtn"
+            @click="closeNav()"
             >&times;</a
           >
           <a :href="'/bares'">Bares</a>
           <a :href="'/login'">Login</a>
         </div>
-        <span style="font-size:30px;cursor:pointer" @click="openNav()"
+        <span style="font-size: 30px; cursor: pointer" @click="openNav()"
           >&#9776;</span
         >
       </article>
 
-      <article class="navbar">
+      <article class="sb--header--navbar">
         <a v-if="!isAuthenticated" :href="'/login'" class="login"
-          ><i class="fa fa-user" aria-hidden="true"></i></a
+          ><i class="fa fa-user" aria-hidden="true"></i
+        ></a>
+
+        <a v-if="currentUser.checkType === 'Worker'" :href="'/create'"
+          >Create Bar</a
         >
 
-          <a v-if='currentUser.checkType==="Worker"' :href="'/create'" >Create Bar</a>
-
-        <a @click="profile(currentUser.checkType,currentUser.username)">
+        <a @click="profile(currentUser.checkType, currentUser.username)">
           {{ currentUser.username }}
         </a>
 
-        <a class="Btn-logout" v-if='isAuthenticated' @click="logout">LogOut</a>
+        <a class="sb--header--btn-logout" v-if="isAuthenticated" @click="logout"
+          >LogOut</a
+        >
       </article>
     </nav>
   </section>
@@ -45,16 +52,17 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch(ActionsType.LOGOUT);
-      this.$router.push({ name: "SBhome"});
+      this.$router.push({ name: "SBhome" });
     },
     VAL_TOKEN() {
       this.$store.dispatch(ActionsType.CHECK_AUTH);
     },
-    profile(checkType,username) {
-
-
-     const type= checkType==="Worker"? "workers" : "clients" 
-      this.$router.push({ name: "SBprofile", params: { checkType :type ,username: username } });
+    profile(checkType, username) {
+      const type = checkType === "Worker" ? "workers" : "clients";
+      this.$router.push({
+        name: "SBprofile",
+        params: { checkType: type, username: username },
+      });
     },
     openNav() {
       document.getElementById("mySidenav").style.width = "250px";
@@ -64,14 +72,14 @@ export default {
     },
   },
 
-     watch: {
-        currentUser: {
-          deep: true,
-          handler (value) {
-            console.log('watch currentUser' , value)
-          }
-    }
-  }
+  watch: {
+    currentUser: {
+      deep: true,
+      handler(value) {
+        console.log("watch currentUser", value);
+      },
+    },
+  },
 };
 </script>
 
@@ -80,20 +88,22 @@ export default {
 *             HEADER PAGE              *
 ***************************************/
 
-/* ALL PAGE  */
+/* FOR ALL  HEADER  */
+
 * {
   box-sizing: border-box;
 }
 
-/* HEADER CLASS */
+/* ALL HEADER CLASS */
 
-.header {
+.sb--header {
   overflow: hidden;
   background-color: #f4f4f4;
   padding: 10px 10px;
 }
 
-/* LOGIN BTN */
+/* LOGIN ICON */
+
 .login {
   font-family: Ruluko;
   font-style: normal;
@@ -102,7 +112,9 @@ export default {
   line-height: 28px;
   color: #000000;
 }
-
+.fa-user {
+  font-size: 34px;
+}
 /* MENU ICON */
 .container {
   display: inline-block;
@@ -121,7 +133,7 @@ export default {
 
 /* MENU TOGGLE */
 
-.sidenav {
+.sb--header--sidenav {
   height: 95.13%;
   width: 0;
   position: fixed;
@@ -134,7 +146,7 @@ export default {
   padding-top: 60px;
 }
 
-.sidenav a {
+.sb--header--sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
@@ -143,11 +155,11 @@ export default {
   transition: 0.3s;
 }
 
-.sidenav a:hover {
+.sb--header--sidenav a:hover {
   color: #f1f1f1;
 }
 
-.sidenav .closebtn {
+.sb--header--sidenav .sb--header--sidenav--closebtn {
   position: absolute;
   top: 0;
   right: 25px;
@@ -155,33 +167,33 @@ export default {
   margin-left: 50px;
 }
 
-/* a headers */
-.header a {
+/* A HEADERS  */
+
+.sb--header a {
   margin-left: 20px;
 }
-.header a:hover {
-  
-  color:#fa9950;
+.sb--header a:hover {
+  color: #fa9950;
 }
-.header__nav {
+.sb--header__nav {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 5px;
 }
-sidenav a,
+sb--header--sidenav a,
 a:visited,
- a:active {
-  color : #fff;
+a:active {
+  color: #fff;
   text-decoration: none;
 }
-/*  NAVBAR CLASS */
-.navbar {
+
+/*  HEADER NAVBAR CLASS */
+.sb--header--navbar {
   float: left;
   color: black;
   text-align: center;
-  padding: 12px;
   text-decoration: none;
   font-size: 18px;
   line-height: 25px;
@@ -189,19 +201,17 @@ a:visited,
   font-weight: bold;
   cursor: pointer;
 }
-.navbar a {
+.sb--header--navbar a {
   color: #000000;
   text-decoration: none;
 }
+
 /* BTN LOGOUT */
-.Btn-logout {
+.sb--header--btn-logout {
   cursor: pointer;
 }
-.Btn-logout a:hover {
+.sb--header--btn-logout a:hover {
   background-color: red;
   color: red;
-}
-.fa-user{
-  font-size: 34px;
 }
 </style>

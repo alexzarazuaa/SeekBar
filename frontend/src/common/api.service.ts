@@ -30,8 +30,8 @@ const ApiService = {
   },
 
   delete(resource: string, params: any) {
-    console.log("delete",params)
-    return axios.delete(`${API_URL}/${resource}`,params);
+    console.log("delete",params,resource)
+    return axios.delete(`${API_URL}/${resource}`,{data: params});
   },
   
 };
@@ -65,9 +65,6 @@ export const UserService = {
     });
   },
 
-  desactivateUser(){
-     ApiService.post(`${API_URL}/users/login`,"");
-  }
 };
 /* BARS SERVICE */
 

@@ -1,40 +1,56 @@
 <template>
-  <footer class="footer">
-    <section class="icons">
-      <article class="tab">
-        <button
-          class="tablinks"
-       @click="$router.push('/home')"
-        >
+  <footer class="sb--footer">
+    <section class="sb--footer--icons">
+      <article class="sb--footer--tab">
+        <button class="sb--footer-tab-tablinks" @click="$router.push('/home')">
           HOME
         </button>
-        <button class="tablinks" @click="$router.push('/bares')">
+        <button class="sb--footer-tab-tablinks" @click="$router.push('/bares')">
           BARES
         </button>
-        <button class="tablinks" @click="$router.push('/profile')">
-          PROFILE
-        </button>      <article class="tab">
         <button
-          class="tablinks"
-       @click="$router.push('/home')"
+          v-if="!isAuthenticated"
+          :href="'/login'"
+          class="sb--footer-tab-tablinks"
         >
-          HOME
-        </button>
-        <button class="tablinks" @click="$router.push('/bares')">
-          BARES
-        </button>
-        <button class="tablinks" @click="$router.push('/profile')">
           PROFILE
         </button>
-      </article>
+        <button
+          v-else
+          :href="'/login'"
+          class="sb--footer-tab-tablinks"
+          @click="profile(currentUser.checkType, currentUser.username)"
+        >
+          PROFILE
+        </button>
       </article>
     </section>
   </footer>
 </template>
 
 <script>
+import { ActionsType } from "@/store/actions.type";
+import { mapGetters } from "vuex";
 export default {
   name: "SBfooter",
+  mounted() {
+    this.VAL_TOKEN();
+  },
+  computed: {
+    ...mapGetters(["currentUser", "isAuthenticated"]),
+  },
+  methods: {
+    VAL_TOKEN() {
+      this.$store.dispatch(ActionsType.CHECK_AUTH);
+    },
+    profile(checkType, username) {
+      const type = checkType === "Worker" ? "workers" : "clients";
+      this.$router.push({
+        name: "SBprofile",
+        params: { checkType: type, username: username },
+      });
+    },
+  },
 };
 </script>
 
@@ -43,7 +59,7 @@ export default {
 *             FOOTER PAGE              *
 ***************************************/
 
-.footer i {
+.sb--footer i {
   position: fixed;
   left: 0;
   bottom: 0;
@@ -54,13 +70,13 @@ export default {
 }
 
 /* ICONS */
-.icons {
+.sb--footer--icons {
   display: inline-block;
   width: 100%;
 }
 
 /* Style the tab */
-.tab {
+.sb--footer--tab {
   background-color: black;
   position: fixed;
   left: 0;
@@ -74,7 +90,7 @@ export default {
 }
 
 /* Style the buttons inside the tab */
-.tab button {
+.sb--footer--tab button {
   background-color: inherit;
   float: center;
   border: none;
@@ -86,5 +102,4 @@ export default {
   background-color: black;
   color: #fa9950;
 }
-
 </style>
