@@ -25,3 +25,14 @@ class IsOwnerOrAdmin(permissions.BasePermission):
             return False
         
         return True
+
+class IsWorkerInBAR(permissions.BasePermission):
+    
+    def has_object_permission(self, request, view, bar=None):
+       
+        try:
+            idBars=request.user.worker.referenceWorker.all().values_list('id', flat=True)
+            return bar.id in idBars
+        except:
+            return False
+        

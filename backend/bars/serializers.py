@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from workers.serializers import WorkerSerializer
-from .models import Bar
+from .models import Bar, Promotions
 
 class DynamicFieldsModelSerializer(serializers.ModelSerializer):
 
@@ -110,3 +110,36 @@ class BarSerializer(DynamicFieldsModelSerializer):#Retrieve & List & Create Bar
 
     def get_favorites_count(self, instance):
         return instance.favorited_by.count()
+
+
+class BarPromotionsSerializer(serializers.ModelSerializer):
+    description = serializers.CharField()
+    bar = BarSerializer(read_only=True)
+
+    createdAt = serializers.SerializerMethodField(method_name='get_created_at')
+    updatedAt = serializers.SerializerMethodField(method_name='get_updated_at')
+
+
+    class Meta: #Retrieve & List
+        model = Promotions
+        fields = (
+            'idPromotion',
+            'description',
+            'createdAt',
+            'updatedAt',
+            'bar'
+        )
+
+    def create(self, data):   #Create Bar
+        bar = self.context.get('bar', None)
+        description=data.get('description', None)
+
+        promotion=Promotions(description=description, bar=bar)
+        promotion.save()
+        return promotion
+    
+    def get_created_at(self, instance):
+        return instance.created_at.isoformat()
+
+    def get_updated_at(self, instance):
+        return instance.updated_at.isoformat()

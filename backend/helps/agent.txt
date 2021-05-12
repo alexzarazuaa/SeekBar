@@ -37,6 +37,15 @@ http://0.0.0.0:8001/api/users/login
     }
 }
 
+Reactivate User -> PUT
+http://0.0.0.0:8001/api/users/login
+{
+    "user":{
+        "username":"viceentcb",        
+        "password":"123"
+    }
+}
+
 Update User -> PUT [Authentication]
 http://0.0.0.0:8001/api/user
 {
@@ -128,8 +137,36 @@ http://0.0.0.0:8001/api/bars/
 Get Bars -> GET
 http://0.0.0.0:8001/api/bars
 
+
+Get Bars of worker -> GET [Worker Authentication]
+http://0.0.0.0:8001/api/bars
+
 Get Bars of client -> GET
 http://0.0.0.0:8001/api/bars/?favorited=client-username
 
+
+
 ------------------------------- End Bars -------------------------------
+
+
+
+
+
+++++++++++++++++++++++++++++++ Promotions ++++++++++++++++++++++++++++++
+
+Create Prommotion -> POST [Worker Authentication]
+http://0.0.0.0:8001/api/promotions/?slug=barSlug
+{
+    "promotion":{
+        "description":"This is a proof"
+    }
+}
+
+All Promotions -> GET
+http://0.0.0.0:8001/api/promotions/
+
+Promotions of a bar -> GET
+http://0.0.0.0:8001/api/promotions/?slug=barSlug
+
+---------------------------- End Promotions ----------------------------
 

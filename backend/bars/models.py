@@ -14,3 +14,15 @@ class Bar(TimestampedModel):
     
     def __str__(self):
         return self.name 
+
+class Promotions(TimestampedModel):
+    idPromotion = models.AutoField(primary_key=True)
+    description = models.TextField()
+    bar = models.ForeignKey(Bar, on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
+
+    
+    def __str__(self):
+        return self.description 
+
+
