@@ -60,6 +60,10 @@
               <a :href="'/register'">Resgistrate</a>
             </ion-label>
           </ion-label>
+
+            <ion-button color="dark" className="sb-login-page--homebtn">
+          <a :href="'/activate'">ACTIVAR USUARIO</a>
+        </ion-button>
         </form>
       </article>
     </main>

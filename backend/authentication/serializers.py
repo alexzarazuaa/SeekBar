@@ -84,6 +84,8 @@ class LoginSerializer(serializers.Serializer): #Login & Deactive & Reactivate Us
         }
 
     def reactivate(data): #Reactivate User
+        print("---------------------------------------")
+        print(data)
         username = data.get('username')
         password = data.get('password')
         user = JWTAuthentication.login(username=username, password=password)

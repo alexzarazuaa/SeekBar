@@ -1,43 +1,43 @@
 <template>
-  <ion-page class="sb-desactivate-page">
+  <ion-page class="sb-activate-page">
     <section>
       <article>
         <img
-          class="sb-desactivate-page--logo"
+          class="sb-activate-page--logo"
           v-bind:src="imageSrc"
           :alt="'logo seekBar'"
-          :content="'Logo blanco SeekBar'"
+          :content="'Logo blanco SeekBAR'"
         />
       </article>
       <article>
-        <ion-title class="sb-desactivate-page--title">¿Quieres Desactivar Tu Usuario?</ion-title>
-        <ion-button color="dark" className="sb-desactivate-page--homebtn">
+        <ion-title class="sb-activate-page--title"
+          >¿Quieres ACTIVAR Tu Usuario?</ion-title
+        >
+        <ion-button color="dark" className="sb-activate-page--homebtn">
           <a :href="'/home'">HOME</a>
         </ion-button>
       </article>
     </section>
     <main>
-      <article className="sb-desactivate-page-form">
+      <article className="sb-activate-page-form">
         <form @submit.prevent="onSubmit(username, password)">
           <input
-            class="inputFielddesactivate"
+            class="inputFieldactivate"
             type="username"
             v-model="username"
             placeholder="username"
             required
           />
 
-
           <input
-            class="inputFielddesactivate"
+            class="inputFieldactivate"
             type="password"
             v-model="password"
             placeholder="password"
             required
           />
 
-          <button class="sb-desactivate-page--desactivatebtn">Desactivar</button>
-
+          <button class="sb-activate-page--activatebtn">Activar</button>
         </form>
       </article>
     </main>
@@ -51,21 +51,22 @@ import { ActionsType } from "@/store/actions.type";
 
 export default {
   components: { IonPage, IonTitle, IonButton },
-  name: "SBdesactivateUser",
+  name: "SBactivateUser",
   data() {
     return {
-
       username: null,
       password: null,
     };
   },
   methods: {
     onSubmit(username, password) {
-
-        this.$store
-          .dispatch(ActionsType.DESACTIVATE, { username, password })
-          .then(() => this.$router.push({ name: "SBhome" }))
-      
+      this.$store
+        .dispatch(ActionsType.ACTIVATE, {
+           user: { username: this.username, password: this.password },
+        })
+        .then(() => {
+          this.$router.push({ name: "SBlogin" });
+        });
     },
   },
   computed: {
@@ -81,7 +82,7 @@ export default {
 
 <style scoped>
 /***************************************
-*             desactivate PAGE         *
+*             activate PAGE               *
 ***************************************/
 
 /* VARIABLES */
@@ -92,14 +93,14 @@ export default {
 } */
 
 /* PAGE  CONTENT */
-.sb-desactivate-page {
+.sb-activate-page {
   background-color: #fa9950;
   height: 100vh;
   width: 100vw;
 }
 
 /* LOGO SEEKBAR */
-.sb-desactivate-page--logo {
+.sb-activate-page--logo {
   margin: auto;
   display: flex;
   justify-content: center;
@@ -107,7 +108,7 @@ export default {
   width: 35%;
 }
 /* PAGE TITLE */
-.sb-desactivate-page--title {
+.sb-activate-page--title {
   font-family: Rubik One;
   font-style: normal;
   font-weight: normal;
@@ -122,7 +123,7 @@ export default {
 
 /* HOME BTN */
 
-.sb-desactivate-page--homebtn a {
+.sb-activate-page--homebtn a {
   background-color: black;
   color: white;
   width: 10vw;
@@ -135,12 +136,12 @@ export default {
   margin: auto;
 }
 
-/* desactivate FORM */
-.sb-desactivate-page-form {
+/* activate FORM */
+.sb-activate-page-form {
   margin-top: 25px;
 }
-/*  desactivate INPUTS */
-.inputFielddesactivate {
+/*  activate INPUTS */
+.inputFieldactivate {
   background-color: white;
   display: flex;
   justify-content: center;
@@ -151,8 +152,8 @@ export default {
   width: 20vw;
 }
 
-/* desactivate BTN */
-.sb-desactivate-page--desactivatebtn {
+/* activate BTN */
+.sb-activate-page--activatebtn {
   background-color: black;
   color: white;
   width: 25vw;
@@ -164,7 +165,7 @@ export default {
   margin: auto;
   margin-top: 15px;
 }
-.sb-desactivate-page--account {
+.sb-activate-page--account {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -179,8 +180,8 @@ export default {
 ***************************************/
 
 @media only screen and (max-width: 980px) and (min-width: 821px) {
-  /*  desactivate INPUTS */
-  .inputFielddesactivate {
+  /*  activate INPUTS */
+  .inputFieldactivate {
     background-color: white;
     display: flex;
     justify-content: center;
@@ -191,8 +192,8 @@ export default {
     width: 28vw;
   }
 
-  /* desactivate BTN */
-  .sb-desactivate-page--desactivatebtn {
+  /* activate BTN */
+  .sb-activate-page--activatebtn {
     background-color: black;
     color: white;
     width: 35vw;
@@ -206,7 +207,7 @@ export default {
   }
   /* HOME BTN */
 
-  .sb-desactivate-page--homebtn {
+  .sb-activate-page--homebtn {
     background-color: black;
     color: white;
     width: 10vw;
@@ -219,7 +220,7 @@ export default {
     margin-top: 5px;
   }
   /* LOGO SEEKBAR */
-  .sb-desactivate-page--logo {
+  .sb-activate-page--logo {
     margin: auto;
     display: flex;
     justify-content: center;
@@ -229,8 +230,8 @@ export default {
 }
 
 @media only screen and (max-width: 820px) and (min-width: 621px) {
-  /*  desactivate INPUTS */
-  .inputFielddesactivate {
+  /*  activate INPUTS */
+  .inputFieldactivate {
     background-color: white;
     display: flex;
     justify-content: center;
@@ -240,8 +241,8 @@ export default {
     margin: 5px auto 20px;
     width: 35vw;
   }
-  /* desactivate BTN */
-  .sb-desactivate-page--desactivatebtn {
+  /* activate BTN */
+  .sb-activate-page--activatebtn {
     background-color: black;
     color: white;
     width: 40vw;
@@ -256,7 +257,7 @@ export default {
 
   /* HOME BTN */
 
-  .sb-desactivate-page--homebtn {
+  .sb-activate-page--homebtn {
     background-color: black;
     color: white;
     width: 25vw;
@@ -270,7 +271,7 @@ export default {
   }
 
   /* LOGO SEEKBAR */
-  .sb-desactivate-page--logo {
+  .sb-activate-page--logo {
     margin: auto;
     display: flex;
     justify-content: center;
@@ -280,8 +281,8 @@ export default {
 }
 
 @media only screen and (max-width: 620px) and (min-width: 501px) {
-  /*  desactivate INPUTS */
-  .inputFielddesactivate {
+  /*  activate INPUTS */
+  .inputFieldactivate {
     background-color: white;
     display: flex;
     justify-content: center;
@@ -291,8 +292,8 @@ export default {
     margin: 5px auto 20px;
     width: 40vw;
   }
-  /* desactivate BTN */
-  .sb-desactivate-page--desactivatebtn {
+  /* activate BTN */
+  .sb-activate-page--activatebtn {
     background-color: black;
     color: white;
     width: 45vw;
@@ -306,7 +307,7 @@ export default {
   }
   /* HOME BTN */
 
-  .sb-desactivate-page--homebtn {
+  .sb-activate-page--homebtn {
     background-color: black;
     color: white;
     width: 15vw;
@@ -319,7 +320,7 @@ export default {
     margin-top: 5px;
   }
   /* LOGO SEEKBAR */
-  .sb-desactivate-page--logo {
+  .sb-activate-page--logo {
     margin: auto;
     display: flex;
     justify-content: center;
@@ -329,8 +330,8 @@ export default {
 }
 
 @media only screen and (max-width: 500px) and (min-width: 341px) {
-  /*  desactivate INPUTS */
-  .inputFielddesactivate {
+  /*  activate INPUTS */
+  .inputFieldactivate {
     background-color: white;
     display: flex;
     justify-content: center;
@@ -340,8 +341,8 @@ export default {
     margin: 5px auto 20px;
     width: 55vw;
   }
-  /* desactivate BTN */
-  .sb-desactivate-page--desactivatebtn {
+  /* activate BTN */
+  .sb-activate-page--activatebtn {
     background-color: black;
     color: white;
     width: 65vw;
@@ -355,7 +356,7 @@ export default {
   }
   /* HOME BTN */
 
-  .sb-desactivate-page--homebtn {
+  .sb-activate-page--homebtn {
     background-color: black;
     color: white;
     width: 25vw;
@@ -368,7 +369,7 @@ export default {
     margin-top: 5px;
   }
   /* PAGE TITLE */
-  .sb-desactivate-page--title {
+  .sb-activate-page--title {
     font-family: "Rubik Mono One", sans-serif;
     font-size: 35px;
     font-weight: bold;
@@ -376,7 +377,7 @@ export default {
     margin: 75px auto;
   }
   /* LOGO SEEKBAR */
-  .sb-desactivate-page--logo {
+  .sb-activate-page--logo {
     margin: auto;
     display: flex;
     justify-content: center;
@@ -386,8 +387,8 @@ export default {
 }
 
 @media only screen and (max-width: 340px) and (min-width: 5px) {
-  /*  desactivate INPUTS */
-  .inputFielddesactivate {
+  /*  activate INPUTS */
+  .inputFieldactivate {
     background-color: white;
     display: flex;
     justify-content: center;
@@ -397,8 +398,8 @@ export default {
     margin: 5px auto 20px;
     width: 90vw;
   }
-  /* desactivate BTN */
-  .sb-desactivate-page--desactivatebtn {
+  /* activate BTN */
+  .sb-activate-page--activatebtn {
     background-color: black;
     color: white;
     width: 95vw;
@@ -412,7 +413,7 @@ export default {
   }
 
   /* PAGE TITLE */
-  .sb-desactivate-page--title {
+  .sb-activate-page--title {
     font-family: "Rubik Mono One", sans-serif;
     font-size: 30px;
     font-weight: bold;
@@ -421,7 +422,7 @@ export default {
   }
 
   /* LOGO SEEKBAR */
-  .sb-desactivate-page--logo {
+  .sb-activate-page--logo {
     margin: auto;
     display: flex;
     justify-content: center;

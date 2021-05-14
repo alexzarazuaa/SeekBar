@@ -13,28 +13,27 @@
           :content="'bar.description'"
           style="width: 120px; height: 120px"
         />
-
-        <article class="sb--barPage-ionCard-buttons">
-          <button
-            class="sb--barPage-ionCard-buttons-btn-primary"
-            v-if="bar.favorited"
-            @click="toggleFavorite"
-          >
-            <i class="ion-heart"></i>&nbsp; &nbsp; &nbsp;
-            <span class="counter"> {{ bar.favoritesCount }} </span>
-          </button>
-
-          <button
-            class="sb--barPage-ionCard-buttons-btn-outline-primary"
-            v-else
-            @click="toggleFavorite"
-          >
-            <i class="ion-heart"></i>&nbsp; &nbsp; &nbsp;
-            <span class="counter"> {{ bar.favoritesCount }} </span>
-          </button>
-        </article>
       </ion-card>
 
+      <article class="sb--barPage-ionCard-buttons">
+        <button
+          class="sb--barPage-ionCard-buttons-btn-primary"
+          v-if="bar.favorited"
+          @click="toggleFavorite"
+        >
+          <i class="ion-heart"></i>&nbsp; &nbsp; &nbsp;
+          <span class="counter"> {{ bar.favoritesCount }} </span>
+        </button>
+
+        <button
+          class="sb--barPage-ionCard-buttons-btn-outline-primary"
+          v-else
+          @click="toggleFavorite"
+        >
+          <i class="ion-heart"></i>&nbsp; &nbsp; &nbsp;
+          <span class="counter"> {{ bar.favoritesCount }} </span>
+        </button>
+      </article>
       <article>
         <span class="sb--barPages-tables"></span>
         <span class="sb--barPages-tables"></span>
@@ -159,6 +158,15 @@ export default {
   height: 223px;
   border: 3px solid #000000;
 }
+
+/* FAVORITED BUTTONS */
+.sb--barPage-ionCard-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 346px;
+  margin-top: 6px;
+}
+
 /* BAR TABLES */
 .sb--barPage-tables {
   position: absolute;
@@ -212,13 +220,13 @@ export default {
   color: #fa9950;
 }
 
-.btn-primary {
+.sb--barPage-ionCard-buttons-btn-primary {
   background-color: coral;
   color: red;
 }
-.btn-outline-primary {
-  background-color: transparent;
-  color: whitesmokeΰ;
+.sb--barPage-ionCard-buttons-btn-outline-primary {
+  background-color: black;
+  color: #fa9950;
 }
 .ion-heart {
   font-size: 25px;
@@ -241,6 +249,13 @@ export default {
     height: 223px;
     border: 3px solid #000000;
   }
+    /* FAVORITED BUTTONS */
+  .sb--barPage-ionCard-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 100px;
+    margin-top: 6px;
+  }
 }
 
 @media only screen and (max-width: 820px) and (min-width: 621px) {
@@ -254,6 +269,13 @@ export default {
     width: 634px;
     height: 223px;
     border: 3px solid #000000;
+  }
+    /* FAVORITED BUTTONS */
+  .sb--barPage-ionCard-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    margin-top: 6px;
   }
 }
 
@@ -272,6 +294,13 @@ export default {
   /* BAR MAP ASIDE */
   .sb--barPage-ionmap {
     display: none;
+  }
+  /* FAVORITED BUTTONS */
+  .sb--barPage-ionCard-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 26px;
+    margin-top: 6px;
   }
 }
 
@@ -314,6 +343,13 @@ export default {
     height: 80px;
     background: #000000;
     border: 1px solid #000000;
+  }
+  /* FAVORITED BUTTONS */
+  .sb--barPage-ionCard-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 26px;
+    margin-top: 6px;
   }
 }
 
