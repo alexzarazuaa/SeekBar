@@ -26,7 +26,6 @@ const ApiService = {
   },
 
   update(resource: string, params: any) {
-    console.log("entra",params);
     return axios.put(`${API_URL}/${resource}`,  params );
   },
 
