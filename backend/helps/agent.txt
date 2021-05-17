@@ -1,0 +1,172 @@
+Legend{
+    ()Optional
+    []Type
+}
+
++++++++++++++++++++++++++++ Authentication  +++++++++++++++++++++++++++
+
+Register -> POST
+http://0.0.0.0:8001/api/user/client
+http://0.0.0.0:8001/api/user/worker
+{
+    "user":{
+        "username":"viceentcb",        
+        "email":"viceentcb@gmail.com",
+        "password":"123",
+        "name":"Vicent Coll Borreda",
+        ("phone_number":"987654321"),
+        ("image":"..............")
+       }
+}
+
+Login -> POST
+http://0.0.0.0:8001/api/users/login
+{
+    "user":{
+        "username":"viceentcb",        
+        "password":"123"
+    }
+}
+
+Deactivate User -> DELETE
+http://0.0.0.0:8001/api/users/login
+{
+    "user":{
+        "username":"viceentcb",        
+        "password":"123"
+    }
+}
+
+Reactivate User -> PUT
+http://0.0.0.0:8001/api/users/login
+{
+    "user":{
+        "username":"viceentcb",        
+        "password":"123"
+    }
+}
+
+Update User -> PUT [Authentication]
+http://0.0.0.0:8001/api/user
+{
+    "user":{
+        ("username":"viceentcb"),        
+        ("email":"viceentcb@gmail.com"),
+        ("password":"1234"),
+        ("name":"Vicent Coll Borreda"),
+        ("phone_number":"987654321"),
+        ("image":"..............")
+       }
+}
+
+/*  RETRIEVE ES EL PROFILE */
+
+Retrieve User -> GET [Authentication]
+http://0.0.0.0:8001/api/user
+
+------------------------- End Authentication  -------------------------
+
+
+
+
+
++++++++++++++++++++++++++++++++ Clients  +++++++++++++++++++++++++++++++
+
+Retrieve Client -> GET
+http://0.0.0.0:8001/api/clients/username
+
+Favorite Bar -> POST
+http://0.0.0.0:8001/api/bars/slug-bar/favorite [Authentication]
+
+Unfavorite Bar -> Delete
+http://0.0.0.0:8001/api/bars/slug-bar/favorite [Authentication]
+
+----------------------------- End Clients  -----------------------------
+
+
+
+
+
++++++++++++++++++++++++++++++++ Workers  +++++++++++++++++++++++++++++++
+
+Update Worker -> PUT [Authentication]
+http://0.0.0.0:8001/api/workers/update
+{
+    "worker":{
+        ("dni":"987654321")
+       }
+}
+
+Retrieve Worker -> GET
+http://0.0.0.0:8001/api/workers/username
+
+List Workers of a bars -> GET [IsOwnerOrAdmin]
+http://0.0.0.0:8001/api/workers/assignbar/
+
+List Workers of a specific bar -> GET [IsOwnerOrAdmin]
+http://0.0.0.0:8001/api/workers/assignbar/?slug=bar_slug
+
+Assign Worker to bar -> POST [IsOwnerOrAdmin]
+http://0.0.0.0:8001/api/workers/assignbar/
+{
+    "info":{
+        "slug":"bar_slug",
+        "worker":"username"
+    }
+}
+------------------------------ End Workers ------------------------------
+
+
+
+
+
++++++++++++++++++++++++++++++++++ Bars +++++++++++++++++++++++++++++++++
+
+Create Bar -> POST [Worker Authentication]
+http://0.0.0.0:8001/api/bars/
+{
+    "bar":{
+        "name":"BarName",
+        ("description":"This is a bar"),
+        ("phone_number":"987654321"),
+        ("location":"LocationBar"),
+        ("valoration":"3.5")
+    }
+}
+
+Get Bars -> GET
+http://0.0.0.0:8001/api/bars
+
+
+Get Bars of worker -> GET [Worker Authentication]
+http://0.0.0.0:8001/api/bars
+
+Get Bars of client -> GET
+http://0.0.0.0:8001/api/bars/?favorited=client-username
+
+
+
+------------------------------- End Bars -------------------------------
+
+
+
+
+
+++++++++++++++++++++++++++++++ Promotions ++++++++++++++++++++++++++++++
+
+Create Prommotion -> POST [Worker Authentication]
+http://0.0.0.0:8001/api/promotions/?slug=barSlug
+{
+    "promotion":{
+        "description":"This is a proof"
+    }
+}
+
+All Promotions -> GET
+http://0.0.0.0:8001/api/promotions/
+
+Promotions of a bar -> GET
+http://0.0.0.0:8001/api/promotions/?slug=barSlug
+
+---------------------------- End Promotions ----------------------------
+

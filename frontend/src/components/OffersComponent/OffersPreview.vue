@@ -1,0 +1,79 @@
+<template>
+  <ion-page class="sb-promotions">
+    <main>
+      <ion-content>
+        <ion-card @click="details(bar.slug)" class="sb-promotions-ionCard">
+          <img
+            v-bind:src="bar.image"
+            class="bar-title"
+            :alt="''"
+            :content="'bar.description'"
+            style="  width: 120px; height: 120px;"
+          />
+
+
+            <!-- <button class="btn-outline-primary" @click="toggleFavorite">
+              <i class="ion-heart"></i>&nbsp; &nbsp; &nbsp;
+              <span class="counter"> {{ bar.favoritesCount }} </span>
+            </button> -->
+        </ion-card>
+      </ion-content>
+    </main>
+  </ion-page>
+</template>
+
+<script>
+import { IonCard, IonContent, IonPage } from "@ionic/vue";
+export default {
+  name: "SBoffersPreview",
+  components: { IonCard, IonContent, IonPage },
+  props: ["bar"],
+  methods: {
+    details(slug) {
+      this.$router.push({ name: "SBbar", params: { slug: slug } });
+    },
+  },
+
+};
+</script>
+
+<style scoped>
+/***************************************
+*             BAR PAGE                *
+***************************************/
+
+/* VARIABLES */
+
+/* :root {
+  --align--center: center;
+  --margin--auto: auto;
+} */
+
+/* BARS IONCARD */
+
+.sb-promotions-ionCard {
+  background-color: white;
+  margin: 5px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  height: 20vh;
+  cursor: pointer;
+}
+.btn-primary {
+  background-color: coral;
+  color: red;
+
+}
+.btn-outline-primary {
+  background-color: transparent;
+  color: whitesmokeΰ;
+  border: none;
+  float: right;
+}
+.ion-heart {
+  font-size: 25px;
+  font-weight: bold;
+}
+</style>
