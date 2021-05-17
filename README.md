@@ -129,6 +129,7 @@ On the other hand, there are also some improvements planned, which will be imple
 ## Other Technologies
 
  * JWT
+ * HTML5
  * CSS3
  * Axios
 
