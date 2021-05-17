@@ -89,7 +89,7 @@ On the other hand, there are also some improvements planned, which will be imple
   | - | - |
   | Home |  Promotions Bars List and Toggle Menu |
   | Bars | List using Django Rest FrameWork and PostGre |
-  | Bar | , Details using Django Rest FrameWork and PostGre, Img baber Bar and Favorite button |
+  | Bar | Details using Django Rest FrameWork and PostGre, Img baber Bar and Favorite button |
   | Profile | User info, favourited Bars, and Desactivate User Option |
 
   <br>
