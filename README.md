@@ -44,6 +44,7 @@ On the other hand, there are also some improvements planned, which will be imple
 
 
 ## Preview
+
   * WEB
 
       * HOME
@@ -59,22 +60,54 @@ On the other hand, there are also some improvements planned, which will be imple
       * PROFILE
         <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/web/ProfileDesktop.png"/>
   
+
   * MOBILE
 
-      * HOME
-        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Home_Ofertas_mobile.png"/>
-      * BARES 
-        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Bares_mobile.png"/>
-      * BAR
-        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Bar_detail_mobile.png"/>
-      * LOGIN
-        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Login__Mobile.png"/>
-      * REGISTER
-        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Register_Mobile.png"/>
-      * PROFILE
-        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Profile_Mobile.png"/>
+    * HOME
+      <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Home_Ofertas_mobile.png"/>
+
+    * BARES 
+      <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Bares_mobile.png"/>
+
+    * BAR
+      <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Bar_detail_mobile.png"/>
+
+    * LOGIN
+      <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Login__Mobile.png"/>
+
+    * REGISTER
+      <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Register_Mobile.png"/>
+
+    * PROFILE
+      <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Profile_Mobile.png"/>
+
+
 
 ## Features
+
+  | Page | Features |
+  | - | - |
+  | Home |  Promotions Bars List and Toggle Menu |
+  | Bars | List using Django Rest FrameWork and PostGre |
+  | Bar | , Details using Django Rest FrameWork and PostGre, Img baber Bar and Favorite button |
+  | Profile | User info, favourited Bars, and Desactivate User Option |
+
+  <br>
+
+  | Service | Features |
+  | - | - |
+  | Register | Regular register with the check if the user is already in use and the regular expresions  |
+  | Login | Regular login with Django and PostGre and the check if the user is already in use or not and the regular expresions |
+  | Favourites | Favourite button in each bar , favourited show up on profile  |
+  | Create Bar | Form for create the bar for the  owner of the bar can create his bar to be present in the app|
+
+
+  <br>
+
+  | Techical Feature | Where it works |
+  | - | - |
+  | Docker | Entire application is dockerized |
+  | Authentication | Login and Register Services with JWT |
 
 
 <br>
