@@ -44,6 +44,35 @@ On the other hand, there are also some improvements planned, which will be imple
 
 
 ## Preview
+  * WEB
+
+      * HOME
+        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/web/HomeOfertasDesktop.png"/>
+      * BARES 
+        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/web/BaresDesktop.png"/>
+      * BAR
+        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/web/BarDesktop.png"/>
+      * LOGIN
+        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/web/LoginDesktop.png"/>
+      * REGISTER
+        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/web/RegisterDesktop.png"/>
+      * PROFILE
+        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/web/ProfileDesktop.png"/>
+  
+  * MOBILE
+
+      * HOME
+        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Home_Ofertas_mobile.png"/>
+      * BARES 
+        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Bares_mobile.png"/>
+      * BAR
+        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Bar_detail_mobile.png"/>
+      * LOGIN
+        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Login__Mobile.png"/>
+      * REGISTER
+        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Register_Mobile.png"/>
+      * PROFILE
+        <img src="https://raw.githubusercontent.com/alexzarazuaa/SeekBar/develop/frontend/src/assets/MockUps/mobile/Profile_Mobile.png"/>
 
 ## Features
 
