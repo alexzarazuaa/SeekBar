@@ -4,16 +4,20 @@ import { MutationsType } from "./mutations.type";
 
 export interface State {
   Bars: any[];
+  Promotions: any[];
   IsLoading: boolean;
   BarsCount: number;
+  PromotionsCount: number;
   Next: null;
   Previous: null;
 }
 
 export const initialState: State = {
   Bars: [],
+  Promotions: [],
   IsLoading: false,
   BarsCount: 0,
+  PromotionsCount: 0,
   Next: null,
   Previous: null,
 };
@@ -24,6 +28,12 @@ const getters = {
   },
   bars: (initialState: any) => {
     return initialState.Bars;
+  },
+  promotionsCount: (initialState: any) => {
+    return initialState.PromotionsCount;
+  },
+  promotions: (initialState: any) => {
+    return initialState.Promotions;
   },
 
   previous(state: any) {
@@ -51,6 +61,18 @@ const actions = {
         throw new Error(error);
       });
   },
+
+  async [ActionsType.FETCH_PROMOTIONS]({ commit }: any, params: any) {
+    commit(MutationsType.FETCH_START);
+    await BarsService.getPromotions()
+      .then(({ data }: any) => {
+        commit(MutationsType.FETCH_END, data);
+      })
+      .catch((error: any) => {
+        throw new Error(error);
+      });
+  },
+
 
 
 };

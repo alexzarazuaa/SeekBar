@@ -6,6 +6,8 @@ export enum ActionsType {
     FAVORITE_ADD = "addFavorite",
     FAVORITE_REMOVE = "removeFavorite",
     FETCH_BAR = "fetchBar",
+    FETCH_PROMOTIONS = "fetchPromotions",
+    FETCH_PROMOTION = "fetchPromotion",
     FETCH_BARS = "fetchBars",
     FETCH_PAGINATION = "fetchPagination",
     BOOK_ADD="bookAdd",

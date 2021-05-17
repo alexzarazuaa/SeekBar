@@ -4,6 +4,7 @@ export enum MutationsType {
     FETCH_START = "setLoading",
     PURGE_AUTH = "logOut",
     SET_BAR = "setBar",
+    SET_PROMOTION = "setPromotion",
     SET_AUTH = "setUser",
     SET_ERROR = "setError",
     SET_PROFILE = "setProfile",

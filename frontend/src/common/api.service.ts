@@ -94,6 +94,15 @@ export const BarsService = {
     // UNFAVORITE BAR
     return ApiService.delete(`bars/${slug}/favorite`, null);
   },
+  getPromotions() {
+    //GET ALLS
+    return ApiService.get(`${API_URL}/promotions`);
+  },
+
+  getBarPromotion(slug: string) {
+    //GET ONE BAR
+    return ApiService.get(`${API_URL}/promotions/${slug}`);
+  },
 };
 
 
