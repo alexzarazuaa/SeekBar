@@ -3,11 +3,7 @@
 <p align="center">
 
   <a>
-<<<<<<< HEAD
     <img src="assets/LOGOTIPO_NEGRO.png" alt="Seekbar_logo">
-=======
-    <img src="frontend/src/assets/img/LOGOTIPO NEGRO.png" alt="Seekbar_logo">
->>>>>>> develop
   </a>
 
 </p>
