@@ -5,11 +5,6 @@
         <SBoffersPreview v-bind:promotion="promotion" />
       </article>
     </article>
-
-    <!-- <article>
-      <a @click="previous" class="previous round">&#8249;</a>
-      <a @click="next" class="next round">&#8250;</a>
-    </article> -->
   </section>
 </template>
 
@@ -18,7 +13,7 @@ import SBoffersPreview from "./OffersPreview";
 import { mapGetters } from "vuex";
 import { ActionsType } from "../../store/actions.type";
 export default {
-  name: "SBoffersList",
+  name: "SBoffersListComponent",
   components: {
     SBoffersPreview,
   },

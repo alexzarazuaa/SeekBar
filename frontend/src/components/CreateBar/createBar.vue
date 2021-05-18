@@ -72,27 +72,21 @@
               errors.filter((error) => error.name === "BarLocation")[0].value
             }}</span
           >
-          <input
-            class="inputFieldCreateBar"
-            type="number"
-            v-model="Valoration"
-            name="Valoration"
-            min="1"
-            max="5"
-          />
+
           <label
             class="inputFieldCreateBar labelBannerBar"
             for="bannerBar"
             style="background-color: #fa9950"
             >Choose a banner picture:</label
           >
-          <input
-            class="inputFieldCreateBar selectImg"
-            type="file"
-            id="bannerBar"
-            name="bannerBar"
-            accept="image/png, image/jpeg"
+            <input
+            class="inputFieldCreateBar"
+            type="text"
+            v-model="bannerBar"
+            placeholder="Banner"
           />
+
+          
 
           <button class="sb-createBar-page--createBarbtn">Create</button>
         </form>

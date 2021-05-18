@@ -92,9 +92,10 @@ export default {
       if (regexErrors.length > 0) {
         this.errors = regexErrors;
       } else {
+        console.log(username)
         this.$store
           .dispatch(ActionsType.LOGIN, { username, password })
-          .then(() => this.$router.push({ name: "SBhome" }))
+          .then(() => {this.$router.push({ name: "SBhome" })})
           .catch((response) => {
             response.data.errors.error
               ? this.errors.push({

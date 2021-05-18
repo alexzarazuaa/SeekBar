@@ -225,7 +225,7 @@ export default {
   color: red;
 }
 .sb--barPage-ionCard-buttons-btn-outline-primary {
-  background-color: black;
+  background-color: transparent;
   color: #fa9950;
 }
 .ion-heart {

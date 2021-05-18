@@ -28,6 +28,12 @@
             placeholder="username"
             required
           />
+          <span
+            v-if="errors.some((error) => error.name === 'des_username', value)"
+            >{{
+              errors.filter((error) => error.name === "des_username")[0].value
+            }}</span
+          >
 
           <input
             class="inputFielddesactivate"
@@ -36,6 +42,12 @@
             placeholder="password"
             required
           />
+          <span
+            v-if="errors.some((error) => error.name === 'des_password', value)"
+            >{{
+              errors.filter((error) => error.name === "des_password")[0].value
+            }}</span
+          >
 
           <button class="sb-desactivate-page--desactivatebtn">
             Desactivar
@@ -50,26 +62,33 @@
 import { IonPage, IonTitle, IonButton } from "@ionic/vue";
 import { mapState } from "vuex";
 import { ActionsType } from "@/store/actions.type";
-
+import { DesactivateFormErrors } from "../../utils/utils";
 export default {
   components: { IonPage, IonTitle, IonButton },
   name: "SBdesactivateUser",
   data() {
     return {
+      errors: [],
       username: null,
       password: null,
     };
   },
   methods: {
     onSubmit(username, password) {
-      this.$store
-        .dispatch(ActionsType.DESACTIVATE, {
-          user: { username: this.username, password: this.password },
-        })
-        .then(() => {
-          this.$store.dispatch(ActionsType.LOGOUT);
-          this.$router.push({ name: "SBhome" });
-        });
+      this.errors = [];
+      const regexErrors = DesactivateFormErrors(this);
+      if (regexErrors.length > 0) {
+        this.errors = regexErrors;
+      } else {
+        this.$store
+          .dispatch(ActionsType.DESACTIVATE, {
+            user: { username: this.username, password: this.password },
+          })
+          .then(() => {
+            this.$store.dispatch(ActionsType.LOGOUT);
+            this.$router.push({ name: "SBhome" });
+          });
+      }
     },
   },
   computed: {

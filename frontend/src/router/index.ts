@@ -23,7 +23,6 @@ const routes: Array<RouteRecordRaw> = [
     name: "SBhome",
     component: SBhome
   },
-
   {
     path: "/login",
     name: "SBlogin",
@@ -60,7 +59,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path:"/create",
     name:"SBcreateBar",
-    beforeEnter: noAuthGuard,
+    beforeEnter: authGuard,
     component:SBcreateBar,
   },
   {

@@ -2,8 +2,8 @@
   <footer class="sb--footer">
     <section class="sb--footer--icons">
       <article class="sb--footer--tab">
-        <button class="sb--footer-tab-tablinks" @click="$router.push('/home')">
-          HOME
+        <button class="sb--footer-tab-tablinks" @click="$router.push('/')">
+          INICIO
         </button>
         <button class="sb--footer-tab-tablinks" @click="$router.push('/bares')">
           BARES

@@ -28,7 +28,12 @@
             placeholder="username"
             required
           />
-
+          <span
+            v-if="errors.some((error) => error.name === 'act_username', value)"
+            >{{
+              errors.filter((error) => error.name === "act_username")[0].value
+            }}</span
+          >
           <input
             class="inputFieldactivate"
             type="password"
@@ -36,7 +41,12 @@
             placeholder="password"
             required
           />
-
+          <span
+            v-if="errors.some((error) => error.name === 'act_password', value)"
+            >{{
+              errors.filter((error) => error.name === "act_password")[0].value
+            }}</span
+          >
           <button class="sb-activate-page--activatebtn">Activar</button>
         </form>
       </article>
@@ -48,25 +58,33 @@
 import { IonPage, IonTitle, IonButton } from "@ionic/vue";
 import { mapState } from "vuex";
 import { ActionsType } from "@/store/actions.type";
+import { ActivateFormErrors } from "../../utils/utils";
 
 export default {
   components: { IonPage, IonTitle, IonButton },
   name: "SBactivateUser",
   data() {
     return {
+      errors: [],
       username: null,
       password: null,
     };
   },
   methods: {
     onSubmit(username, password) {
-      this.$store
-        .dispatch(ActionsType.ACTIVATE, {
-           user: { username: this.username, password: this.password },
-        })
-        .then(() => {
-          this.$router.push({ name: "SBlogin" });
-        });
+      this.errors = [];
+      const regexErrors = ActivateFormErrors(this);
+      if (regexErrors.length > 0) {
+        this.errors = regexErrors;
+      } else {
+        this.$store
+          .dispatch(ActionsType.ACTIVATE, {
+            user: { username: this.username, password: this.password },
+          })
+          .then(() => {
+            this.$router.push({ name: "SBlogin" });
+          });
+      }
     },
   },
   computed: {
