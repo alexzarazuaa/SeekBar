@@ -25,15 +25,16 @@ const ApiService = {
     return axios.post(`${API_URL}/${resource}`, params);
   },
 
-  update(slug: string, params: any) {
-    return axios.put(`${API_URL}/${slug}`, params);
+  update(resource: string, params: any) {
+    return axios.put(`${API_URL}/${resource}`,  params );
   },
 
   delete(resource: string, params: any) {
-    console.log("delete",params,resource)
-    return axios.delete(`${API_URL}/${resource}`,{data: params});
+    return axios.delete(`${API_URL}/${resource}`, { data: params });
   },
-  
+
+
+
 };
 
 
@@ -71,9 +72,9 @@ export const UserService = {
 export const BarsService = {
 
 
-  createBar(info: any){
+  createBar(info: any) {
     //CREATE BAR
-    return ApiService.post(`bars/`,info);
+    return ApiService.post(`bars/`, info);
   },
   getBars() {
     //GET ALLS
@@ -91,7 +92,16 @@ export const BarsService = {
   },
   removeBarFavorite(slug: string) {
     // UNFAVORITE BAR
-    return ApiService.delete(`bars/${slug}/favorite`,null);
+    return ApiService.delete(`bars/${slug}/favorite`, null);
+  },
+  getPromotions() {
+    //GET ALLS
+    return ApiService.get(`${API_URL}/promotions`);
+  },
+
+  getBarPromotion(slug: string) {
+    //GET ONE BAR
+    return ApiService.get(`${API_URL}/promotions/${slug}`);
   },
 };
 

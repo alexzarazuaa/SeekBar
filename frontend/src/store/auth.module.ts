@@ -48,9 +48,7 @@ const actions = {
 
   // Desactivate
   async [ActionsType.DESACTIVATE](context: any, credentials: any) {
-
-    console.log("des", credentials)
-    const { data } = await ApiService.delete("users/login",credentials)
+    const { data } = await ApiService.delete("users/login", credentials)
     context.commit(MutationsType.SET_AUTH, data.user);
 
   },
@@ -58,13 +56,7 @@ const actions = {
 
   // ACTIVATE
   async [ActionsType.ACTIVATE](context: any, credentials: any) {
-    await ApiService.update("users/login", { user: credentials })
-      .then(({ data }) => {
-        context.commit(MutationsType.SET_AUTH, data.user);
-      })
-      .catch(({ response }) => {
-        context.commit(MutationsType.SET_ERROR, response.data.errors);
-      });
+    const { data } = await ApiService.update("users/login", credentials)
   },
 
   // Check auth

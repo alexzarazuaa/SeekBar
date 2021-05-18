@@ -4,10 +4,12 @@ import { MutationsType } from "./mutations.type";
 
 export interface State {
   Bar: any;
+  Promotion: any;
 }
 
 export const InitialState: State = {
   Bar: {},
+  Promotion : {}
 };
 
 export const actions = {
@@ -21,6 +23,11 @@ export const actions = {
   async [ActionsType.FETCH_BAR](context: any, barSlug: any) {
     const { data } = await BarsService.getBar(barSlug);
     context.commit(MutationsType.SET_BAR, data);
+    return data;
+  },
+  async [ActionsType.FETCH_PROMOTION](context: any, barSlug: any) {
+    const { data } = await BarsService.getBarPromotion(barSlug);
+    context.commit(MutationsType.SET_PROMOTION, data);
     return data;
   },
   async [ActionsType.FAVORITE_ADD](context: any, barSlug: any) {
@@ -38,11 +45,17 @@ export const mutations = {
   [MutationsType.SET_BAR](state: State, bar: any) {
     state.Bar = bar;
   },
+  [MutationsType.SET_PROMOTION](state: State, promotion: any) {
+    state.Promotion = promotion;
+  },
 };
 
 const getters = {
   bar(state: State) {
     return state.Bar;
+  },
+  promotion(state: State) {
+    return state.Promotion;
   },
 };
 

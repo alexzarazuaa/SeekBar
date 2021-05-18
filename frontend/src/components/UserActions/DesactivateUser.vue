@@ -10,7 +10,9 @@
         />
       </article>
       <article>
-        <ion-title class="sb-desactivate-page--title">¿Quieres Desactivar Tu Usuario?</ion-title>
+        <ion-title class="sb-desactivate-page--title"
+          >¿Quieres Desactivar Tu Usuario?</ion-title
+        >
         <ion-button color="dark" className="sb-desactivate-page--homebtn">
           <a :href="'/home'">HOME</a>
         </ion-button>
@@ -27,7 +29,6 @@
             required
           />
 
-
           <input
             class="inputFielddesactivate"
             type="password"
@@ -36,8 +37,9 @@
             required
           />
 
-          <button class="sb-desactivate-page--desactivatebtn">Desactivar</button>
-
+          <button class="sb-desactivate-page--desactivatebtn">
+            Desactivar
+          </button>
         </form>
       </article>
     </main>
@@ -54,18 +56,20 @@ export default {
   name: "SBdesactivateUser",
   data() {
     return {
-
       username: null,
       password: null,
     };
   },
   methods: {
     onSubmit(username, password) {
-
-        this.$store
-          .dispatch(ActionsType.DESACTIVATE, { 'user' :{ username:this.username, password: this.password}})
-          .then(() => this.$router.push({ name: "SBhome" }))
-      
+      this.$store
+        .dispatch(ActionsType.DESACTIVATE, {
+          user: { username: this.username, password: this.password },
+        })
+        .then(() => {
+          this.$store.dispatch(ActionsType.LOGOUT);
+          this.$router.push({ name: "SBhome" });
+        });
     },
   },
   computed: {

@@ -7,7 +7,7 @@
       <ion-content>
         <ion-title class="sb-home-title">SEEKBAR</ion-title>
 
-        <BarsList />
+        <SBoffersList />
       </ion-content>
     </main>
 
@@ -19,7 +19,7 @@
 import {  IonTitle, IonContent, IonPage } from "@ionic/vue";
 import SBheader from "@/components/Layout/header.vue";
 import SBfooter from "@/components/Layout/footer.vue";
-import BarsList from "@/components/BarsComponent/BarsList";
+import SBoffersList from "@/components/OffersComponent/OffersList";
 export default {
   components: {
     SBheader,
@@ -27,7 +27,7 @@ export default {
     IonTitle,
     IonContent,
     IonPage,
-    BarsList,
+    SBoffersList,
   },
   name: "SBhome",
 };
