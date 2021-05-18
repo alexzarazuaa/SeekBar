@@ -16,7 +16,7 @@ class RegistrationAPIView(APIView): #Register
     renderer_classes = (UserJSONRenderer,)
     serializer_class = RegistrationSerializer
 
-    def post(self, request, type='None'):
+    def post(self, request, type='None'): #Register
         user = request.data.get('user', {})
         serializer = self.serializer_class(data=user, context={'type': type})
         serializer.is_valid(raise_exception=True)
@@ -44,7 +44,7 @@ class LoginAPIView(APIView): #Login & Deactive & Reactive User
             serializer = self.serializer_class.deactivate(data=user)
 
         return Response(serializer, status=status.HTTP_200_OK)
-    
+
     def put(self, request): #Reactivate User
         user = request.data.get('user', {})
         serializer = self.serializer_class.reactivate(data=user)

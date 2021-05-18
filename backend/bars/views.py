@@ -5,7 +5,7 @@ from rest_framework.exceptions import NotFound
 
 from rest_framework.permissions import IsAuthenticated
 
-from core.permissions import IsWorker, IsWorkerInBAR
+from core.permissions import IsWorker, IsWorkerInBar
 
 from .models import Bar, Promotions
 from .renderers import BarJSONRenderer
@@ -94,10 +94,9 @@ class BarsPromotionViewSet(viewsets.ModelViewSet):
     queryset = Promotions.objects.filter(is_active=True)
     serializer_class = BarPromotionsSerializer
 
-
     def get_permissions(self):
         if self.request.method == 'POST':
-            self.permission_classes = [IsWorkerInBAR,]
+            self.permission_classes = [IsWorkerInBar,]
         
         return super(BarsPromotionViewSet, self).get_permissions()
 

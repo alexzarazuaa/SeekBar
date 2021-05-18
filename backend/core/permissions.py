@@ -26,7 +26,7 @@ class IsOwnerOrAdmin(permissions.BasePermission):
         
         return True
 
-class IsWorkerInBAR(permissions.BasePermission):
+class IsWorkerInBar(permissions.BasePermission):
     
     def has_object_permission(self, request, view, bar=None):
        
