@@ -2,14 +2,8 @@
   <ion-page class="sb-promotions">
     <main>
       <ion-content>
-        <ion-card @click="details(bar.slug)" class="sb-promotions-ionCard">
-          <img
-            v-bind:src="bar.image"
-            class="bar-title"
-            :alt="''"
-            :content="'bar.description'"
-            style="  width: 120px; height: 120px;"
-          />
+        <ion-card @click="details(promotion.slug)" class="sb-promotions-ionCard">
+            <span>{{promotion.description}}</span>
 
 
             <!-- <button class="btn-outline-primary" @click="toggleFavorite">
@@ -27,7 +21,7 @@ import { IonCard, IonContent, IonPage } from "@ionic/vue";
 export default {
   name: "SBoffersPreview",
   components: { IonCard, IonContent, IonPage },
-  props: ["bar"],
+  props: ["promotion"],
   methods: {
     details(slug) {
       this.$router.push({ name: "SBbar", params: { slug: slug } });

@@ -6,11 +6,11 @@
       </article>
       <article>
         <ion-title class="sb-register-page--title">
-          SIGN UP
+          REGISTRATE
         </ion-title>
 
         <ion-button color="dark" className="sb-register-page--homebtn">
-          <a :href="'/desactivate'">Desactivar Usuario</a>
+          <a :href="'/desactivate'">INICIO</a>
         </ion-button>
       </article>
     </section>
@@ -153,8 +153,6 @@ export default {
             this.$router.push({ name: "SBhome" });
           })
           .catch((response) => {
-            console.log(response.data.errors);
-
             response.data.errors.username
               ? this.errors.push({
                   name: "userBack",
@@ -227,6 +225,7 @@ export default {
 }
 .sb-register-page--homebtn a {
   text-decoration: none;
+    color: white;
 }
 
 /* REGISTER FORM */
@@ -274,12 +273,16 @@ export default {
 /* SIGN IN LABEL LINK*/
 
 .sb-register-page--signin {
-  color: white;
+  background-color: transparent;
   margin-left: 5px;
   font-size: 20px;
   font-weight: bold;
 }
 
+.sb-register-page--signin a {
+  text-decoration: none;
+  color: white;
+}
 /* SELECT TYPE USER */
 .sb--register--page-typeUser {
   width: 100%;
@@ -291,6 +294,7 @@ export default {
   width: 10%;
   cursor: pointer;
   text-align: center;
+  margin: 14px;/* dar espacio entre botones */
 }
 
 .sb--register--page--btntype:hover {

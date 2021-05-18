@@ -11,10 +11,10 @@
       </article>
       <article>
         <ion-title class="sb-activate-page--title"
-          >¿Quieres ACTIVAR Tu Usuario?</ion-title
+          >¿Quieres Activar Tu Usuario?</ion-title
         >
         <ion-button color="dark" className="sb-activate-page--homebtn">
-          <a :href="'/home'">HOME</a>
+          <a :href="'/home'">INICIO</a>
         </ion-button>
       </article>
     </section>

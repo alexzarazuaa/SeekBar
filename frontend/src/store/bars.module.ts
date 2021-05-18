@@ -66,6 +66,7 @@ const actions = {
     commit(MutationsType.FETCH_START);
     await BarsService.getPromotions()
       .then(({ data }: any) => {
+        console.log(data)
         commit(MutationsType.FETCH_END, data);
       })
       .catch((error: any) => {
@@ -83,6 +84,7 @@ const mutations = {
   },
   [MutationsType.FETCH_END](state: any, { results, barsCount }: any) {
     state.Bars = results;
+    state.Promotions = results;
     state.BarsCount = barsCount;
     state.isLoading = false;
   },
@@ -94,6 +96,16 @@ const mutations = {
       bar.favorited = data.favorited;
       bar.favoritesCount = data.favoritesCount;
       return bar;
+    });
+  },
+  [MutationsType.UPDATE_PROMOTIONS_IN_LIST](state: any, data: any) {
+    console.log(data)
+    state.Promotions = state.Promotions.map((promotions: any) => {
+      if (promotions.slug !== data.slug) {
+        return promotions;
+      }
+
+      return promotions;
     });
   },
 };

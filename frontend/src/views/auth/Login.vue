@@ -10,9 +10,9 @@
         />
       </article>
       <article>
-        <ion-title class="sb-login-page--title">SIGN IN</ion-title>
+        <ion-title class="sb-login-page--title">INICIAR SESIÓN</ion-title>
         <ion-button color="dark" className="sb-login-page--homebtn">
-          <a :href="'/home'">HOME</a>
+          <a :href="'/home'">INICIO</a>
         </ion-button>
       </article>
     </section>
@@ -52,18 +52,18 @@
               errors.filter((error) => error.name === "log_password")[0].value
             }}</span
           >
-          <button class="sb-login-page--loginbtn">Sign In</button>
+          <button class="sb-login-page--loginbtn">INICIAR SESION</button>
 
           <ion-label class="sb-login-page--account">
             Aún no tienes una cuenta?
-            <ion-label class="sb-register-page--signin">
+            <ion-label class="sb-login-page--signin">
               <a :href="'/register'">Resgistrate</a>
             </ion-label>
           </ion-label>
 
-            <ion-button color="dark" className="sb-login-page--homebtn">
-          <a :href="'/activate'">ACTIVAR USUARIO</a>
-        </ion-button>
+          <ion-button color="dark" className="sb-login-page--activebtn">
+            <a :href="'/activate'">ACTIVAR USUARIO</a>
+          </ion-button>
         </form>
       </article>
     </main>
@@ -172,6 +172,18 @@ export default {
   text-align: center;
   margin: auto;
 }
+.sb-login-page--activebtn a {
+  background-color: black;
+  color: white;
+  width: 15vw;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+  margin: auto;
+}
 
 /* LOGIN FORM */
 .sb-login-page-form {
@@ -211,7 +223,19 @@ export default {
   font-size: 20px;
   font-weight: 500;
 }
+/* SIGN UP LABEL LINK*/
 
+.sb-login-page--signin {
+  background-color: transparent;
+  margin-left: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.sb-login-page--signin a {
+  text-decoration: none;
+  color: white;
+}
 /***************************************
 *         QUERIES RESPONSIVE           *
 ***************************************/
@@ -315,6 +339,18 @@ export default {
     align-items: center;
     width: 50%;
   }
+  .sb-login-page--activebtn a {
+    background-color: black;
+    color: white;
+    width: 22vw;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    margin: auto;
+  }
 }
 
 @media only screen and (max-width: 620px) and (min-width: 501px) {
@@ -363,6 +399,18 @@ export default {
     justify-content: center;
     align-items: center;
     width: 65%;
+  }
+  .sb-login-page--activebtn a {
+    background-color: black;
+    color: white;
+    width: 22vw;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    margin: auto;
   }
 }
 
@@ -420,6 +468,18 @@ export default {
     justify-content: center;
     align-items: center;
     width: 70%;
+  }
+  .sb-login-page--activebtn a {
+    background-color: black;
+    color: white;
+    width: 22vw;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    margin: auto;
   }
 }
 

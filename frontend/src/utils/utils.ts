@@ -79,3 +79,17 @@ export const DesactivateFormErrors = (values: any) => {
 
   return typesErrors ;
 };
+
+export const ActivateFormErrors = (values: any) => {
+  const typesErrors: any[] = [];
+
+  if (!CheckRegex(/^[a-zA-Z0-9]{3,16}$/, values.username)) {
+    typesErrors.push({name: 'act_username', value:'El username es incorrecto'});
+  }
+
+  if (!CheckRegex(/^[a-zA-Z0-9]{3,16}$/, values.password)) {
+    typesErrors.push({name: 'act_password', value:'La contraseña es incorrecta'});
+  }
+
+  return typesErrors ;
+};

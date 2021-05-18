@@ -9,5 +9,6 @@ export enum MutationsType {
     SET_ERROR = "setError",
     SET_PROFILE = "setProfile",
     UPDATE_BAR_IN_LIST = "updateBarInList",
+    UPDATE_PROMOTIONS_IN_LIST = "updatePromotionsInList",
     RESET_STATE = "resetModuleState"
 }// end_MutationsType

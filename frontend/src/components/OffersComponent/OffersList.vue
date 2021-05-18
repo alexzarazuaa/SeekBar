@@ -1,8 +1,8 @@
 <template>
   <section>
     <article class="list">
-      <article v-for="bar in bars" :key="bar">
-        <SBoffersPreview v-bind:bar="bar" />
+      <article v-for="promotion in promotions" :key="promotion">
+        <SBoffersPreview v-bind:promotion="promotion" />
       </article>
     </article>
 
@@ -37,7 +37,7 @@ export default {
     },
   },
   watch: {
-    bars: {
+    promotions: {
       deep: true,
       handler(value) {
         console.log("watch promotions", value);

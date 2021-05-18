@@ -28,12 +28,12 @@ const routes: Array<RouteRecordRaw> = [
     path: "/login",
     name: "SBlogin",
     component: SBlogin,
-    beforeEnter: noAuthGuard
   },
   {
     path: "/desactivate",
     name: "SBdesactivateUser",
-    component: SBdesactivateUser
+    component: SBdesactivateUser,
+    beforeEnter: authGuard
   },
   {
     path: "/activate",
@@ -45,7 +45,6 @@ const routes: Array<RouteRecordRaw> = [
     path: "/register",
     name: "SBregister",
     component: SBregister,
-    beforeEnter: noAuthGuard
   },
   {
     path: "/bares",
@@ -61,9 +60,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path:"/create",
     name:"SBcreateBar",
+    beforeEnter: noAuthGuard,
     component:SBcreateBar,
-
-  
   },
   {
     path: "/:checkType/:username",
