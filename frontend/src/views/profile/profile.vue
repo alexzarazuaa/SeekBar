@@ -3,7 +3,7 @@
     <section>
       <SBheader />
     </section>
-    <main>
+    <section>
       <section>
         <article>
           <h1 class="sb-profile-username">Welcome,{{ profile.username }}</h1>
@@ -37,7 +37,7 @@
 
         <SBfooter />
       </section>
-    </main>
+    </section>
   </ion-page>
 </template>
 

@@ -18,7 +18,7 @@
         </ion-button>
       </article>
     </section>
-    <main>
+    <section>
       <article className="sb-desactivate-page-form">
         <form @submit.prevent="onSubmit(username, password)">
           <input
@@ -54,7 +54,7 @@
           </button>
         </form>
       </article>
-    </main>
+    </section>
   </ion-page>
 </template>
 

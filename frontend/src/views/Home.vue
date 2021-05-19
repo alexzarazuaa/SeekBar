@@ -3,23 +3,25 @@
     <section>
       <SBheader />
     </section>
-    <main>
+    <section>
       <ion-content>
         <ion-title class="sb-home-title">SEEKBAR</ion-title>
 
         <SBoffersList />
       </ion-content>
-    </main>
+    </section>
 
     <SBfooter />
   </ion-page>
 </template>
 
 <script>
-import {  IonTitle, IonContent, IonPage } from "@ionic/vue";
+import { IonTitle, IonContent, IonPage } from "@ionic/vue";
 import SBheader from "@/components/Layout/header.vue";
 import SBfooter from "@/components/Layout/footer.vue";
 import SBoffersList from "@/components/OffersComponent/OffersList";
+import { ActionsType } from "@/store/actions.type";
+import store from "@/store";
 export default {
   components: {
     SBheader,
@@ -30,12 +32,20 @@ export default {
     SBoffersList,
   },
   name: "SBhome",
+
+  beforeRouteEnter(to, from, next) {
+    Promise.all([
+      store.dispatch(ActionsType.FETCH_PROMOTIONS, to.params.slug),
+    ]).then((data) => {
+      next();
+    });
+  },
 };
 </script>
 
 <style scoped>
 /***************************************
-*             HOME PAGE                                           *
+*             HOME PAGE                *
 ***************************************/
 
 /* VARIABLES */
@@ -63,5 +73,4 @@ export default {
   align-items: center;
   margin-top: -10px;
 }
-
 </style>

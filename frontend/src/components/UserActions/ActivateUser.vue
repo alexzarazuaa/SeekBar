@@ -18,7 +18,7 @@
         </ion-button>
       </article>
     </section>
-    <main>
+    <section>
       <article className="sb-activate-page-form">
         <form @submit.prevent="onSubmit(username, password)">
           <input
@@ -50,7 +50,7 @@
           <button class="sb-activate-page--activatebtn">Activar</button>
         </form>
       </article>
-    </main>
+    </section>
   </ion-page>
 </template>
 

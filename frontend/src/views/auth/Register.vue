@@ -14,7 +14,7 @@
         </ion-button>
       </article>
     </section>
-    <main>
+    <section>
       <article class="sb-register-page-form">
         <form @submit.prevent="onSubmit">
           <input
@@ -100,7 +100,7 @@
           </ion-label>
         </form>
       </article>
-    </main>
+    </section>
   </ion-page>
 </template>
 

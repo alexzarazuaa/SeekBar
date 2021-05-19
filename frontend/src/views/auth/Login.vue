@@ -16,7 +16,7 @@
         </ion-button>
       </article>
     </section>
-    <main>
+    <section>
       <article className="sb-login-page-form">
         <form @submit.prevent="onSubmit(username, password)">
           <input
@@ -66,7 +66,7 @@
           </ion-button>
         </form>
       </article>
-    </main>
+    </section>
   </ion-page>
 </template>
 

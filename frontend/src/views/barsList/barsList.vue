@@ -3,12 +3,12 @@
     <section>
       <SBheader />
     </section>
-    <main>
+    <section>
       <ion-content>
         <ion-title class="sb-barsList-title">SEEKBAR</ion-title>
         <BarsList />
       </ion-content>
-    </main>
+    </section>
 
     <SBfooter />
   </ion-page>

@@ -1,6 +1,6 @@
 <template>
   <ion-page class="sb-promotions">
-    <main>
+    <section>
       <ion-content>
         <ion-card
           @click="details(promotion.bar.slug)"
@@ -16,7 +16,7 @@
           />
         </ion-card>
       </ion-content>
-    </main>
+    </section>
   </ion-page>
 </template>
 
@@ -25,7 +25,7 @@ import { IonCard, IonContent, IonPage } from "@ionic/vue";
 export default {
   name: "SBoffersPreview",
   components: { IonCard, IonContent, IonPage },
-  props: ["promotion"],
+  props: ["promotion","bar"],
   methods: {
     details(slug) {
       this.$router.push({ name: "SBbar", params: { slug: slug } });

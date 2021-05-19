@@ -11,7 +11,7 @@
         </ion-button>
       </article>
     </section>
-    <main>
+    <section>
       <article className="sb-createBar-page-form">
         <form
           @submit.prevent="
@@ -91,7 +91,7 @@
           <button class="sb-createBar-page--createBarbtn">Create</button>
         </form>
       </article>
-    </main>
+    </section>
   </ion-page>
 </template>
 
