@@ -6,7 +6,9 @@
           @click="details(promotion.bar.slug)"
           class="sb-promotions-ionCard"
         >
-          <span class="sb-promotions-ionCard--description">{{ promotion.description }}</span>
+          <span class="sb-promotions-ionCard--description">{{
+            promotion.description
+          }}</span>
           <img
             v-bind:src="promotion.bar.image"
             class="promotion_bar_description"
@@ -25,7 +27,7 @@ import { IonCard, IonContent, IonPage } from "@ionic/vue";
 export default {
   name: "SBoffersPreview",
   components: { IonCard, IonContent, IonPage },
-  props: ["promotion","bar"],
+  props: ["promotion", "bar"],
   methods: {
     details(slug) {
       this.$router.push({ name: "SBbar", params: { slug: slug } });
@@ -36,7 +38,7 @@ export default {
 
 <style scoped>
 /***************************************
-*             PROMOTIONS PAGE          *
+*      PROMOTIONS PREVIEW COMPONENT    *
 ***************************************/
 
 /* VARIABLES */
@@ -46,7 +48,7 @@ export default {
   --margin--auto: auto;
 } */
 
-/* BARS IONCARD */
+/* PROMOTIONS IONCARD */
 
 .sb-promotions-ionCard {
   background-color: white;
@@ -60,31 +62,17 @@ export default {
   position: relative;
   text-align: center;
 }
-.btn-primary {
-  background-color: coral;
-  color: red;
-}
-.btn-outline-primary {
-  background-color: transparent;
-  color: whitesmokeΰ;
-  border: none;
-  float: right;
-}
-.ion-heart {
-  font-size: 25px;
-  font-weight: bold;
-}
 
-.sb-promotions-ionCard--description{
+/* PROMOTIONS DESCRIPTION */
+
+.sb-promotions-ionCard--description {
   position: absolute;
   bottom: 0;
-
-font-family: Rubik One;
-font-style: italic;
-font-weight: bolder;
-font-size: 22px;
-text-align: center;
-color: #000000;
-
+  font-family: Rubik One;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 22px;
+  text-align: center;
+  color: #000000;
 }
 </style>

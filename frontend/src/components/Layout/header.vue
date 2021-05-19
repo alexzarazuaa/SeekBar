@@ -85,7 +85,7 @@ export default {
 
 <style scoped>
 /***************************************
-*             HEADER PAGE              *
+*             HEADER COMPONENT         *
 ***************************************/
 
 /* FOR ALL  HEADER  */

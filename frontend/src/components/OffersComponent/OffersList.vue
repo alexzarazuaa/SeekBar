@@ -43,6 +43,11 @@ export default {
 </script>
 
 <style scoped>
+
+/***************************************
+*    PROMOTIONS_LIST COMPONENT         *
+***************************************/
+
 .list {
   width: 100%;
   display: flex;
@@ -51,18 +56,6 @@ export default {
   margin: auto;
   flex-direction: column;
 }
-.previous {
-  display: flex;
-  justify-content: flex-start;
-  font-size: 35px;
-  font-weight: bold;
-  margin-left: 85px;
-}
-.next {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 35px;
-  font-weight: bold;
-  margin-right: 85px;
-}
+
+
 </style>

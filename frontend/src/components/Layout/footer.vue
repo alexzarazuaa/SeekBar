@@ -56,8 +56,10 @@ export default {
 
 <style scoped>
 /***************************************
-*             FOOTER PAGE              *
+*             FOOTER COMPONENT         *
 ***************************************/
+
+/* FOOTER */
 
 .sb--footer i {
   position: fixed;
@@ -69,7 +71,7 @@ export default {
   text-align: center;
 }
 
-/* ICONS */
+/* LINKS */
 .sb--footer--icons {
   display: inline-block;
   width: 100%;

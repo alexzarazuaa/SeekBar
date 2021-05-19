@@ -47,7 +47,15 @@ export default {
 };
 </script>
 
+
 <style scoped>
+
+/***************************************
+*             BAR LIST COMPONENT       *
+***************************************/
+
+/* LIST */
+
 .list {
   width: 100%;
   display: flex;
@@ -56,6 +64,11 @@ export default {
   margin: auto;
   flex-direction: column;
 }
+
+
+
+/* PAGINATION */
+
 .previous {
   display: flex;
   justify-content: flex-start;
@@ -63,6 +76,7 @@ export default {
   font-weight: bold;
   margin-left: 85px;
 }
+
 .next {
   display: flex;
   justify-content: flex-end;

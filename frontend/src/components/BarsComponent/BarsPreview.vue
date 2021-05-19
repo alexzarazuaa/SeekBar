@@ -1,6 +1,6 @@
 <template>
   <ion-page class="sb-bar">
-    <main>
+    <section>
       <ion-content>
         <ion-card @click="details(bar.slug)" class="sb-bar-ionCard">
           <img
@@ -18,7 +18,7 @@
             </button> -->
         </ion-card>
       </ion-content>
-    </main>
+    </section>
   </ion-page>
 </template>
 
@@ -39,28 +39,29 @@ export default {
 
 <style scoped>
 /***************************************
-*             BAR PAGE                *
+*          BAR PREVIEW COMPONENT       *
 ***************************************/
 
 /* VARIABLES */
 
-/* :root {
+:root {
   --align--center: center;
   --margin--auto: auto;
-} */
+} 
 
 /* BARS IONCARD */
 
 .sb-bar-ionCard {
   background-color: white;
-  margin: 5px auto;
+  margin: 5px var(--margin--auto);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: var(--align--center);
+  align-items: var(--align--center);
   width: 40vw;
   height: 20vh;
   cursor: pointer;
 }
+/* BUTTONS FAVOURITE */
 .btn-primary {
   background-color: coral;
   color: red;
@@ -72,6 +73,8 @@ export default {
   border: none;
   float: right;
 }
+
+/* FAVORITE ICON */
 .ion-heart {
   font-size: 25px;
   font-weight: bold;

@@ -86,8 +86,6 @@
             placeholder="Banner"
           />
 
-          
-
           <button class="sb-createBar-page--createBarbtn">Create</button>
         </form>
       </article>
@@ -156,15 +154,15 @@ export default {
 
 <style scoped>
 /***************************************
-*             LOGIN PAGE               *
+*             CREATE PAGE              *
 ***************************************/
 
 /* VARIABLES */
 
-/* :root {
+:root {
   --align--center: center;
   --margin--auto: auto;
-} */
+} 
 
 /* PAGE  CONTENT */
 .sb-createBar-page {
@@ -175,10 +173,10 @@ export default {
 
 /* LOGO SEEKBAR */
 .sb-createBar-page--logo {
-  margin: auto;
+  margin: var(--margin--auto);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: var(--align--center);
+  align-items: var(--align--center);
   width: 35%;
 }
 /* PAGE TITLE */
@@ -188,11 +186,11 @@ export default {
   font-weight: normal;
   font-size: 36px;
   line-height: 45px;
-  text-align: center;
+  text-align: var(--align--center);
   color: #000000;
   display: flex;
-  justify-content: center;
-  margin: 75px auto;
+  justify-content: var(--align--center);
+  margin: 75px var(--margin--auto);
 }
 
 /* HOME BTN */
@@ -203,48 +201,48 @@ export default {
   width: 10vw;
   text-decoration: none;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: var(--align--center);
+  align-items: var(--align--center);
   cursor: pointer;
-  text-align: center;
-  margin: auto;
+  text-align: var(--align--center);
+  margin: var(--margin--auto);
 }
 
-/* LOGIN FORM */
+/* CREATE BAR FORM */
 .sb-createBar-page-form {
   margin-top: 25px;
 }
-/*  LOGIN INPUTS */
+/*  CREATE BAR INPUTS */
 .inputFieldCreateBar {
   background-color: white;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  justify-content: var(--align--center);
+  align-items: var(--align--center);
+  text-align: var(--align--center);
   cursor: pointer;
-  margin: 5px auto 20px;
+  margin: 5px var(--margin--auto) 20px;
   width: 20vw;
 }
 
-/* LOGIN BTN */
+/* CREATE BAR BTN */
 .sb-createBar-page--createBarbtn {
   background-color: black;
   color: white;
   width: 25vw;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: var(--align--center);
+  align-items: var(--align--center);
   cursor: pointer;
-  text-align: center;
-  margin: auto;
+  text-align: var(--align--center);
+  margin: var(--margin--auto);
   margin-top: 15px;
 }
 .sb-createBar-page--account {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin: 25px auto;
+  justify-content: var(--align--center);
+  align-items: var(--align--center);
+  text-align: var(--align--center);
+  margin: 25px var(--margin--auto);
   font-size: 20px;
   font-weight: 500;
 }
@@ -254,29 +252,29 @@ export default {
 ***************************************/
 
 @media only screen and (max-width: 980px) and (min-width: 821px) {
-  /*  LOGIN INPUTS */
+  /*  CREATE BAR INPUTS */
   .inputFieldCreateBar {
     background-color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
+    text-align: var(--align--center);
     cursor: pointer;
-    margin: 5px auto 20px;
+    margin: 5px var(--margin--auto) 20px;
     width: 28vw;
   }
 
-  /* LOGIN BTN */
+  /* CREATE BAR BTN */
   .sb-createBar-page--createBarbtn {
     background-color: black;
     color: white;
     width: 35vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     cursor: pointer;
-    text-align: center;
-    margin: auto;
+    text-align: var(--align--center);
+    margin: var(--margin--auto);
     margin-top: 15px;
   }
   /* HOME BTN */
@@ -286,19 +284,19 @@ export default {
     color: white;
     width: 10vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     cursor: pointer;
-    text-align: center;
-    margin: auto;
+    text-align: var(--align--center);
+    margin: var(--margin--auto);
     margin-top: 5px;
   }
   /* LOGO SEEKBAR */
   .sb-createBar-page--logo {
-    margin: auto;
+    margin: var(--margin--auto);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     width: 45%;
   }
 
@@ -308,28 +306,28 @@ export default {
 }
 
 @media only screen and (max-width: 820px) and (min-width: 621px) {
-  /*  LOGIN INPUTS */
+  /*  CREATE BAR INPUTS */
   .inputFieldCreateBar {
     background-color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
+    text-align: var(--align--center);
     cursor: pointer;
-    margin: 5px auto 20px;
+    margin: 5px var(--margin--auto) 20px;
     width: 35vw;
   }
-  /* LOGIN BTN */
+  /* CREATE BAR BTN */
   .sb-createBar-page--createBarbtn {
     background-color: black;
     color: white;
     width: 40vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     cursor: pointer;
-    text-align: center;
-    margin: auto;
+    text-align: var(--align--center);
+    margin: var(--margin--auto);
     margin-top: 15px;
   }
 
@@ -340,20 +338,20 @@ export default {
     color: white;
     width: 25vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     cursor: pointer;
-    text-align: center;
-    margin: auto;
+    text-align: var(--align--center);
+    margin: var(--margin--auto);
     margin-top: 5px;
   }
 
   /* LOGO SEEKBAR */
   .sb-createBar-page--logo {
-    margin: auto;
+    margin: var(--margin--auto);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     width: 50%;
   }
   .selectImg {
@@ -362,28 +360,28 @@ export default {
 }
 
 @media only screen and (max-width: 620px) and (min-width: 501px) {
-  /*  LOGIN INPUTS */
+  /*  CREATE BAR INPUTS */
   .inputFieldCreateBar {
     background-color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
+    text-align: var(--align--center);
     cursor: pointer;
-    margin: 5px auto 20px;
+    margin: 5px var(--margin--auto) 20px;
     width: 40vw;
   }
-  /* LOGIN BTN */
+  /* CREATE BAR BTN */
   .sb-createBar-page--createBarbtn {
     background-color: black;
     color: white;
     width: 45vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     cursor: pointer;
-    text-align: center;
-    margin: auto;
+    text-align: var(--align--center);
+    margin: var(--margin--auto);
     margin-top: 15px;
   }
   /* HOME BTN */
@@ -393,46 +391,46 @@ export default {
     color: white;
     width: 15vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     cursor: pointer;
-    text-align: center;
-    margin: auto;
+    text-align: var(--align--center);
+    margin: var(--margin--auto);
     margin-top: 5px;
   }
   /* LOGO SEEKBAR */
   .sb-createBar-page--logo {
-    margin: auto;
+    margin: var(--margin--auto);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     width: 65%;
   }
 }
 
 @media only screen and (max-width: 500px) and (min-width: 341px) {
-  /*  LOGIN INPUTS */
+  /*  CREATE BAR INPUTS */
   .inputFieldCreateBar {
     background-color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
+    text-align: var(--align--center);
     cursor: pointer;
-    margin: 5px auto 20px;
+    margin: 5px var(--margin--auto) 20px;
     width: 55vw;
   }
-  /* LOGIN BTN */
+  /* CREATE BAR BTN */
   .sb-createBar-page--createBarbtn {
     background-color: black;
     color: white;
     width: 65vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     cursor: pointer;
-    text-align: center;
-    margin: auto;
+    text-align: var(--align--center);
+    margin: var(--margin--auto);
     margin-top: 15px;
   }
   /* HOME BTN */
@@ -442,11 +440,11 @@ export default {
     color: white;
     width: 25vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     cursor: pointer;
-    text-align: center;
-    margin: auto;
+    text-align: var(--align--center);
+    margin: var(--margin--auto);
     margin-top: 5px;
   }
   /* PAGE TITLE */
@@ -454,42 +452,42 @@ export default {
     font-family: "Rubik Mono One", sans-serif;
     font-size: 35px;
     font-weight: bold;
-    text-align: center;
-    margin: 75px auto;
+    text-align: var(--align--center);
+    margin: 75px var(--margin--auto);
   }
   /* LOGO SEEKBAR */
   .sb-createBar-page--logo {
-    margin: auto;
+    margin: var(--margin--auto);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     width: 70%;
   }
 }
 
 @media only screen and (max-width: 340px) and (min-width: 5px) {
-  /*  LOGIN INPUTS */
+  /*  CREATE BAR INPUTS */
   .inputFieldCreateBar {
     background-color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
+    text-align: var(--align--center);
     cursor: pointer;
-    margin: 5px auto 20px;
+    margin: 5px var(--margin--auto) 20px;
     width: 90vw;
   }
-  /* LOGIN BTN */
+  /* CREATE BAR BTN */
   .sb-createBar-page--createBarbtn {
     background-color: black;
     color: white;
     width: 95vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     cursor: pointer;
-    text-align: center;
-    margin: auto;
+    text-align: var(--align--center);
+    margin: var(--margin--auto);
     margin-top: 15px;
   }
   /* HOME BTN */
@@ -499,11 +497,11 @@ export default {
     color: white;
     width: 35vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     cursor: pointer;
-    text-align: center;
-    margin: auto;
+    text-align: var(--align--center);
+    margin: var(--margin--auto);
     margin-top: 5px;
   }
   /* PAGE TITLE */
@@ -511,16 +509,16 @@ export default {
     font-family: "Rubik Mono One", sans-serif;
     font-size: 30px;
     font-weight: bold;
-    text-align: center;
-    margin: 75px auto;
+    text-align: var(--align--center);
+    margin: 75px var(--margin--auto);
   }
 
   /* LOGO SEEKBAR */
   .sb-createBar-page--logo {
-    margin: auto;
+    margin: var(--margin--auto);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: var(--align--center);
+    align-items: var(--align--center);
     width: 85%;
   }
 }
