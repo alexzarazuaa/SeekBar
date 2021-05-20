@@ -6,6 +6,15 @@
     <section>
       <ion-content>
         <ion-title class="sb-barsList-title">SEEKBAR</ion-title>
+        <ion-segment class="sb-barsList-segments">
+          <ion-segment-button value="recent">
+            <ion-label class="sb-barsList-segments-titles">TODOS</ion-label>
+          </ion-segment-button>
+
+          <ion-segment-button value="yours" checked>
+            <ion-label class="sb-barsList-segments-titles">TUYOS</ion-label>
+          </ion-segment-button>
+        </ion-segment>
         <BarsList />
       </ion-content>
     </section>
@@ -18,7 +27,9 @@
 
 <script>
 import {
-
+  IonSegment,
+  IonLabel,
+  IonSegmentButton,
   IonTitle,
   IonContent,
   IonPage,
@@ -31,7 +42,9 @@ export default {
   components: {
     SBheader,
     SBfooter,
-
+    IonSegment,
+    IonLabel,
+    IonSegmentButton,
     IonTitle,
     IonContent,
     IonPage,
@@ -81,23 +94,27 @@ export default {
   height: 20vh;
 }
 
+
+
 /* SEGMENTS */
 
-.sb-barsList-segments {
+.sb-barsList-segments,
+.sb--barsList--page--btndesactivate {
   display: flex;
   justify-content: center;
   align-content: center;
-  margin-top: 15px;
+  margin: auto;
 }
 
 /* SEGMENTS TITLES */
 
-.sb-barsList-segments-titles:first-of-type {
+.sb-barsList-segments-titles {
   font-family: "Rubik Mono One", sans-serif;
   font-size: 24px;
   font-weight: bold;
   text-align: center;
-  margin: 0px 200px auto;
+  margin: 45px auto;
+  margin-left: 15px;
 }
 .sb-barsList-segments-titles:checked {
   text-decoration: underline;
@@ -110,6 +127,4 @@ export default {
 .sb-barsList-segments-titles:active {
   text-decoration: underline;
 }
-
-
 </style>

@@ -43,7 +43,7 @@
 
       <article>
         <ion-card class="sb--barPage-ionmap">
-          <ion-title>jaj</ion-title>
+         <i class="fa fa-map-marker fa-5x" aria-hidden="true"></i>
         </ion-card>
       </article>
       <article>
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { IonCard, IonLabel, IonTitle, IonContent, IonPage } from "@ionic/vue";
+import { IonCard, IonLabel,  IonContent, IonPage } from "@ionic/vue";
 import SBheader from "@/components/Layout/header.vue";
 import SBfooter from "@/components/Layout/footer.vue";
 import store from "@/store";
@@ -75,7 +75,6 @@ export default {
     SBfooter,
     IonLabel,
     IonCard,
-    IonTitle,
     IonContent,
     IonPage,
   },
@@ -232,6 +231,7 @@ export default {
   font-size: 25px;
   font-weight: bold;
 }
+
 
 /***************************************
 *         QUERIES RESPONSIVE           *

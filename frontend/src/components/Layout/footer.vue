@@ -2,7 +2,7 @@
   <footer class="sb--footer">
     <section class="sb--footer--icons">
       <article class="sb--footer--tab">
-        <button class="sb--footer-tab-tablinks" @click="()=>{$router.push('/')}">
+        <button class="sb--footer-tab-tablinks" @click="$router.push('/')">
           INICIO
         </button>
         <button class="sb--footer-tab-tablinks" @click="$router.push('/bares')">
@@ -56,10 +56,10 @@ export default {
 
 <style scoped>
 /***************************************
-*             FOOTER COMPONENT         *
+*             FOOTER PAGE              *
 ***************************************/
 
-/* FOOTER */
+/* FOOTER*/
 
 .sb--footer i {
   position: fixed;

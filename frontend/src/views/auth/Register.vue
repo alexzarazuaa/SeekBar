@@ -2,12 +2,15 @@
   <ion-page class="sb-register-page">
     <section>
       <article>
-        <img class="sb-register-page--logo" v-bind:src="imageSrc" :alt="'logo seekBar'" :content="'Logo blanco SeekBAR'"/>
+        <img
+          class="sb-register-page--logo"
+          v-bind:src="imageSrc"
+          :alt="'logo seekBar'"
+          :content="'Logo blanco SeekBAR'"
+        />
       </article>
       <article>
-        <ion-title class="sb-register-page--title">
-          REGISTRATE
-        </ion-title>
+        <ion-title class="sb-register-page--title"> REGISTRATE </ion-title>
 
         <ion-button color="dark" className="sb-register-page--homebtn">
           <a :href="'/desactivate'">INICIO</a>
@@ -33,12 +36,14 @@
             required
           />
           <span
+            class="inputFieldRegister-error"
             v-if="errors.some((error) => error.name === 'username', value)"
             >{{
               errors.filter((error) => error.name === "username")[0].value
             }}</span
           >
           <span
+            class="inputFieldRegister-error"
             v-if="errors.some((error) => error.name === 'userBack', value)"
             >{{
               errors.filter((error) => error.name === "userBack")[0].value
@@ -70,9 +75,13 @@
             placeholder="password"
             required
           />
-          <span v-if="errors.some((error) => error.name === 'repeat', value)">{{
-            errors.filter((error) => error.name === "repeat")[0].value
-          }}</span>
+          <span
+            class="inputFieldRegister-error"
+            v-if="errors.some((error) => error.name === 'repeat', value)"
+            >{{
+              errors.filter((error) => error.name === "repeat")[0].value
+            }}</span
+          >
 
           <article class="sb--register--page-typeUser">
             <button
@@ -129,7 +138,7 @@ export default {
     ...mapState({
       errors: (state) => state.auth.errors,
     }),
-    imageSrc: function() {
+    imageSrc: function () {
       return `https://raw.githubusercontent.com/alexzarazuaa/SeekBar/main/frontend/src/assets/img/SEEK_BAR_BLANCO.png`;
     },
   },
@@ -147,7 +156,7 @@ export default {
             password: this.password,
             name: this.name,
             type: this.type,
-            image:this.image
+            image: this.image,
           })
           .then((response) => {
             this.$router.push({ name: "SBhome" });
@@ -225,7 +234,7 @@ export default {
 }
 .sb-register-page--homebtn a {
   text-decoration: none;
-    color: white;
+  color: white;
 }
 
 /* REGISTER FORM */
@@ -244,7 +253,17 @@ export default {
   margin: 5px auto 20px;
   width: 20vw;
 }
-
+.inputFieldRegister-error {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  margin: 5px auto 20px;
+  width: 20vw;
+  color: red;
+}
 /* REGISTER BTN */
 .sb-register-page--registerbtn {
   background-color: black;
@@ -294,7 +313,7 @@ export default {
   width: 10%;
   cursor: pointer;
   text-align: center;
-  margin: 14px;/* dar espacio entre botones */
+  margin: 14px; /* dar espacio entre botones */
 }
 
 .sb--register--page--btntype:hover {

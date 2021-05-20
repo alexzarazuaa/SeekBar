@@ -27,12 +27,13 @@
             required
           />
           <span
+            class="inputFieldLogin-error"
             v-if="errors.some((error) => error.name === 'log_username', value)"
             >{{
               errors.filter((error) => error.name === "log_username")[0].value
             }}</span
           >
-          <span
+          <span class="inputFieldLogin-error"
             v-if="errors.some((error) => error.name === 'logUserBack', value)"
             >{{
               errors.filter((error) => error.name === "logUserBack")[0].value
@@ -46,7 +47,7 @@
             placeholder="password"
             required
           />
-          <span
+          <span class="inputFieldLogin-error"
             v-if="errors.some((error) => error.name === 'log_password', value)"
             >{{
               errors.filter((error) => error.name === "log_password")[0].value
@@ -92,10 +93,12 @@ export default {
       if (regexErrors.length > 0) {
         this.errors = regexErrors;
       } else {
-        console.log(username)
+        console.log(username);
         this.$store
           .dispatch(ActionsType.LOGIN, { username, password })
-          .then(() => {this.$router.push({ name: "SBhome" })})
+          .then(() => {
+            this.$router.push({ name: "SBhome" });
+          })
           .catch((response) => {
             response.data.errors.error
               ? this.errors.push({
@@ -200,6 +203,17 @@ export default {
   cursor: pointer;
   margin: 5px auto 20px;
   width: 20vw;
+}
+.inputFieldLogin-error {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  margin: 5px auto 20px;
+  width: 20vw;
+  color:red;
 }
 
 /* LOGIN BTN */
